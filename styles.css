@@ -88,12 +88,24 @@ body > header {
   position: relative;
 }
 
-body > header h1 {
-  color: var(--gold-light);
-  font-size: 26px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-right: 30px;
+/* Buddy Smokes main logo */
+
+.site-logo {
+  position: relative;
+  display: block;
+  width: 220px;
+  height: 72px;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.site-logo img {
+  position: absolute;
+  width: 205px;
+  height: auto;
+  left: -18px;
+  top: -54px;
+  z-index: 20;
 }
 
 body > header nav {
@@ -618,9 +630,9 @@ input[type="submit"] {
     padding: 18px;
   }
 
-  body > header h1 {
-    margin-bottom: 14px;
-  }
+.site-logo {
+  margin-bottom: 14px;
+}
 
   body > header nav {
     gap: 14px;
