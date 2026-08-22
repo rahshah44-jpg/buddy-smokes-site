@@ -1863,12 +1863,10 @@ body > header .connect-button:hover {
 
   gap: 11px;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(8,8,8,0.88),
-      rgba(3,3,3,0.98)
-    );
+ background: #1f2227;
+
+border-top: 2px solid rgba(130, 136, 142, 0.75);
+border-bottom: 1px solid rgba(130, 136, 142, 0.45);
 
   color: #ffffff;
 
