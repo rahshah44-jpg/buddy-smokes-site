@@ -705,13 +705,17 @@ input[type="submit"] {
 
 .site-logo {
   margin-bottom: 14px;
-}
-
+} 
+   
   body > header nav {
     gap: 14px;
   }
 
-  .homepage-layout {
+   .featured-video-info h3 {
+  white-space: normal;
+}
+  
+   .homepage-layout {
     grid-template-columns: 1fr;
   }
 
