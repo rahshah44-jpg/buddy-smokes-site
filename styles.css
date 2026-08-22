@@ -222,7 +222,7 @@ background:
 
 .featured-play {
   position: absolute;
-  top: 43%;
+  top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -261,6 +261,11 @@ background:
 .featured-video-info {
   position: relative;
   z-index: 4;
+}
+
+.featured-video-info h3 {
+  white-space: nowrap;
+  font-size: clamp(28px, 2.6vw, 44px);
 }
 
 .top-story-label {
