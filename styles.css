@@ -1788,3 +1788,255 @@ body > header .connect-button:hover {
   }
 
 }
+
+/* =========================================================
+   FEATURED VIDEO - MOCKUP LAYOUT
+   ========================================================= */
+
+#featured-video {
+  min-height: 0;
+
+  display: block;
+
+  padding: 0;
+
+  background: #050505;
+
+  border: 1px solid var(--border);
+
+  overflow: hidden;
+}
+
+
+/* Video/image area */
+
+.featured-media {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background:
+    url("assets/images/featured-video-cover.jpg")
+    center center / cover no-repeat;
+
+  border-bottom: 1px solid rgba(201, 163, 74, 0.25);
+
+  overflow: hidden;
+}
+
+
+/* Dark subtle image treatment */
+
+.featured-media::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0.02) 0%,
+      rgba(0,0,0,0.08) 70%,
+      rgba(0,0,0,0.20) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Main play button */
+
+.featured-play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 78px;
+  height: 78px;
+
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.40);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 5;
+}
+
+.featured-play span {
+  color: #ffffff;
+
+  font-size: 32px;
+
+  margin-left: 5px;
+}
+
+
+/* Fake player controls until real video is connected */
+
+.player-controls {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  min-height: 46px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8,8,8,0.88),
+      rgba(3,3,3,0.98)
+    );
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  z-index: 6;
+}
+
+.player-small-play {
+  font-size: 13px;
+}
+
+.player-time {
+  white-space: nowrap;
+}
+
+.player-progress {
+  position: relative;
+
+  height: 3px;
+
+  flex: 1;
+
+  background: rgba(255,255,255,0.20);
+}
+
+.player-progress span {
+  display: block;
+
+  width: 28%;
+  height: 100%;
+
+  background: #c52828;
+}
+
+.player-controls i {
+  font-size: 13px;
+}
+
+
+/* Message board beneath video */
+
+#featured-video .featured-video-info {
+  position: relative;
+
+  padding: 26px 34px 30px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #090909 0%,
+      #050505 100%
+    );
+
+  z-index: 7;
+}
+
+
+#featured-video .featured-video-info h3 {
+  margin: 10px 0 8px;
+
+  color: var(--cream);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(25px, 2.1vw, 36px);
+
+  line-height: 1.1;
+
+  white-space: nowrap;
+}
+
+
+#featured-video .featured-video-info p {
+  margin: 0 0 18px;
+
+  color: #aaa493;
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+
+/* Top Story */
+
+#featured-video .top-story-label {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  margin: 0;
+
+  background: var(--olive-light);
+
+  border: 1px solid var(--gold);
+
+  color: var(--cream);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+/* Watch Full Video */
+
+.watch-full-video {
+  display: inline-block;
+
+  padding: 9px 15px;
+
+  border: 1px solid var(--gold);
+
+  background: rgba(41,55,16,0.55);
+
+  color: var(--gold-light);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  text-transform: uppercase;
+}
+
+.watch-full-video:hover {
+  background: var(--olive);
+}
+
+
+/* Make sure old pseudo badge stays hidden */
+
+#featured-video::before {
+  display: none !important;
+}
