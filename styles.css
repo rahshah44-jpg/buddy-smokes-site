@@ -2040,3 +2040,74 @@ body > header .connect-button:hover {
 #featured-video::before {
   display: none !important;
 }
+
+/* =========================================================
+   ARCHIVE FOOTER
+   ========================================================= */
+
+#archive {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.archive-list {
+  flex: 0 0 auto;
+}
+
+
+/* Dedicated lower Archive field */
+
+.archive-footer {
+  min-height: 145px;
+
+  margin-top: auto;
+
+  border-top: 1px solid rgba(201, 163, 74, 0.35);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px 14px;
+}
+
+
+/* Button centered inside footer */
+
+.archive-view-all {
+  width: 100%;
+
+  max-width: 220px;
+
+  margin: 0;
+
+  padding: 12px 10px;
+
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+
+  #featured-video .featured-video-info h3 {
+    white-space: normal;
+  }
+
+  #featured-video .featured-video-info {
+    padding: 22px;
+  }
+
+  .featured-play {
+    width: 62px;
+    height: 62px;
+  }
+
+  .featured-play span {
+    font-size: 25px;
+  }
+
+  .archive-footer {
+    min-height: 120px;
+  }
+
+}
