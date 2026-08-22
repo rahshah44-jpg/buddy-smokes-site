@@ -218,7 +218,73 @@ background:
   padding: 35px;
   position: relative;
 }
+/* Featured video play button */
 
+.featured-play {
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 82px;
+  height: 82px;
+
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 5;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.featured-play span {
+  color: #ffffff;
+  font-size: 34px;
+  margin-left: 5px;
+}
+
+.featured-play:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: rgba(122, 53, 255, 0.65);
+}
+
+
+/* Featured story information */
+
+.featured-video-info {
+  position: relative;
+  z-index: 4;
+}
+
+.top-story-label {
+  display: inline-block;
+
+  background: var(--olive-light);
+  border: 1px solid var(--gold);
+
+  color: var(--cream);
+
+  padding: 6px 12px;
+  margin-bottom: 12px;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+/* Hide the old Featured Video badge */
+
+#featured-video::before {
+  display: none;
+}
 #featured-video::before {
   content: "FEATURED VIDEO";
   position: absolute;
