@@ -2055,7 +2055,6 @@ body > header .connect-button:hover {
   flex: 0 0 auto;
 }
 
-
 /* Dedicated lower Archive field */
 
 .archive-footer {
@@ -2063,15 +2062,12 @@ body > header .connect-button:hover {
 
   margin-top: auto;
 
-  border-top: 1px solid rgba(201, 163, 74, 0.35);
-
   display: flex;
   align-items: center;
   justify-content: center;
 
   padding: 20px 14px;
 }
-
 
 /* Button centered inside footer */
 
