@@ -896,3 +896,373 @@ input[type="submit"] {
     gap: 18px;
   }
 }
+
+/* =========================================================
+   FINAL HEADER / NAVIGATION REFINEMENT
+   ========================================================= */
+
+body > header {
+  margin-top: 70px;
+
+  min-height: 76px;
+
+  padding: 0 22px 0 265px;
+
+  position: relative;
+
+  background: #293710;
+  border: 1px solid rgba(201, 163, 74, 0.5);
+
+  overflow: visible;
+}
+
+
+/* Larger Buddy logo */
+
+.site-logo {
+  position: absolute;
+
+  left: -5px;
+  top: -58px;
+
+  width: 270px;
+  height: 240px;
+
+  z-index: 30;
+}
+
+.site-logo img {
+  position: relative;
+
+  width: 270px;
+  height: auto;
+
+  left: 0;
+  top: 0;
+
+  z-index: 30;
+}
+
+
+/* Social icons above the navigation */
+
+.social-links {
+  position: absolute;
+
+  right: 15px;
+  top: -42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  z-index: 20;
+}
+
+.social-links a {
+  color: #ffffff;
+
+  font-size: 15px;
+
+  opacity: 0.92;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+
+/* Main navigation */
+
+body > header .main-nav {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 24px;
+
+  flex-wrap: nowrap;
+}
+
+body > header .main-nav > a:not(.connect-button) {
+  color: var(--cream);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+body > header .main-nav > a:not(.connect-button):hover {
+  color: var(--gold-light);
+}
+
+
+/* Search bar */
+
+.site-search {
+  width: 175px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  background: #0b0d08;
+  border: 1px solid rgba(201, 163, 74, 0.4);
+}
+
+.site-search input {
+  flex: 1;
+  min-width: 0;
+
+  height: 100%;
+
+  padding: 0 10px;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  color: var(--cream);
+
+  font-size: 12px;
+}
+
+.site-search input::placeholder {
+  color: #918b79;
+}
+
+.site-search button {
+  width: 36px;
+  height: 32px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: var(--gold-light);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+
+/* CONNECT button */
+
+body > header .connect-button {
+  min-width: 126px;
+  height: 36px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 18px;
+
+  border: 1px solid var(--gold);
+
+  color: var(--gold-light);
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  white-space: nowrap;
+}
+
+body > header .connect-button:hover {
+  background: rgba(201, 163, 74, 0.12);
+}
+
+
+/* =========================================================
+   THE CULTURE HAS CHARACTERS BANNER
+   ========================================================= */
+
+.culture-title {
+  width: calc(100% - 275px);
+  margin-left: 275px;
+
+  margin-top: 20px;
+  margin-bottom: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+}
+
+.culture-title h2 {
+  margin: 0;
+
+  color: var(--gold);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(27px, 2.5vw, 40px);
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+
+  white-space: nowrap;
+}
+
+.culture-leaf {
+  color: var(--gold);
+
+  font-size: 24px;
+
+  flex-shrink: 0;
+}
+
+.culture-line {
+  height: 1px;
+
+  flex: 1;
+
+  max-width: 125px;
+  min-width: 65px;
+
+  background: var(--gold);
+}
+
+
+/* =========================================================
+   HEADER RESPONSIVE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  body > header {
+    padding-left: 220px;
+  }
+
+  .site-logo {
+    width: 225px;
+  }
+
+  .site-logo img {
+    width: 225px;
+  }
+
+  body > header .main-nav {
+    gap: 13px;
+  }
+
+  body > header .main-nav > a:not(.connect-button) {
+    font-size: 10px;
+  }
+
+  .site-search {
+    width: 135px;
+  }
+
+  .connect-button {
+    min-width: 105px;
+  }
+
+  .culture-title {
+    width: calc(100% - 230px);
+    margin-left: 230px;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  body > header {
+    margin-top: 65px;
+
+    padding:
+      115px
+      18px
+      18px;
+
+    min-height: auto;
+  }
+
+  .site-logo {
+    left: 12px;
+    top: -55px;
+
+    width: 190px;
+    height: 170px;
+  }
+
+  .site-logo img {
+    width: 190px;
+  }
+
+  .social-links {
+    top: -42px;
+    right: 12px;
+
+    gap: 13px;
+  }
+
+  body > header .main-nav {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+  .site-search {
+    width: 100%;
+  }
+
+  body > header .connect-button {
+    width: 100%;
+  }
+
+  .culture-title {
+    width: 100%;
+
+    margin-left: 0;
+
+    margin-top: 22px;
+    margin-bottom: 28px;
+
+    gap: 8px;
+  }
+
+  .culture-title h2 {
+    font-size: 23px;
+
+    white-space: normal;
+  }
+
+  .culture-leaf {
+    font-size: 17px;
+  }
+
+  .culture-line {
+    min-width: 22px;
+  }
+
+}
