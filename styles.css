@@ -263,9 +263,10 @@ background:
   z-index: 4;
 }
 
-.featured-video-info h3 {
+#featured-video .featured-video-info h3 {
   white-space: nowrap;
-  font-size: clamp(28px, 2.6vw, 44px);
+  font-size: clamp(26px, 2.1vw, 36px);
+  line-height: 1.1;   
 }
 
 .top-story-label {
