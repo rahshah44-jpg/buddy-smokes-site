@@ -33,7 +33,6 @@ video {
   display: block;
 }
 
-
 /* =========================================================
    COLOR SYSTEM
    ========================================================= */
@@ -56,7 +55,6 @@ video {
   --border: rgba(201, 163, 74, 0.48);
 }
 
-
 /* =========================================================
    PAGE WIDTH
    ========================================================= */
@@ -68,7 +66,6 @@ body > footer {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /* =========================================================
    HEADER
@@ -128,7 +125,6 @@ body > header nav a:hover {
   color: var(--gold-light);
 }
 
-
 /* =========================================================
    MAIN
    ========================================================= */
@@ -136,7 +132,6 @@ body > header nav a:hover {
 main {
   padding-top: 28px;
 }
-
 
 /* =========================================================
    THE CULTURE HAS CHARACTERS
@@ -152,7 +147,6 @@ main {
   text-transform: uppercase;
 }
 
-
 /* =========================================================
    MAIN THREE-COLUMN LAYOUT
    Archive | Featured Video | Sidebar
@@ -164,7 +158,6 @@ main {
   gap: 20px;
   align-items: start;
 }
-
 
 /* =========================================================
    ARCHIVE
@@ -422,7 +415,6 @@ background:
   letter-spacing: 1px;
 }
 
-
 /* Hide the old Featured Video badge */
 
 #featured-video::before {
@@ -458,7 +450,6 @@ background:
   max-width: 720px;
 }
 
-
 /* =========================================================
    RIGHT SIDEBAR
    ========================================================= */
@@ -487,7 +478,6 @@ background:
   color: #d0cab8;
 }
 
-
 /* Advertisement placeholders */
 
 #sidebar section:nth-of-type(3),
@@ -501,7 +491,6 @@ background:
   text-align: center;
   color: #777;
 }
-
 
 /* =========================================================
    ANCIENT ROOTS BANNER
@@ -543,7 +532,6 @@ background:
   letter-spacing: 2px;
 }
 
-
 /* =========================================================
    INDUSTRY ARTICLES
    ========================================================= */
@@ -577,7 +565,6 @@ background:
   font-size: 15px;
 }
 
-
 /* =========================================================
    LOWER CONTENT ROW
    ========================================================= */
@@ -602,7 +589,6 @@ background:
   font-size: 24px;
   margin-bottom: 20px;
 }
-
 
 /* Desktop lower row */
 
@@ -629,7 +615,6 @@ background:
   min-height: 365px;
 }
 
-
 /* =========================================================
    BIO SECTION
    ========================================================= */
@@ -648,7 +633,6 @@ background:
   color: #bcb5a3;
   font-size: 13px;
 }
-
 
 /* =========================================================
    MISSION STATEMENT
@@ -687,7 +671,6 @@ background:
   font-size: 15px;
 }
 
-
 /* =========================================================
    MY STORY PICTURES
    ========================================================= */
@@ -719,7 +702,6 @@ background:
   color: #d0cab8;
   font-size: 15px;
 }
-
 
 /* =========================================================
    FOOTER
@@ -761,7 +743,6 @@ body > footer nav a:hover {
   color: var(--gold-light);
 }
 
-
 /* =========================================================
    BUTTONS
    ========================================================= */
@@ -782,7 +763,6 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-
 /* =========================================================
    SELECTION COLOR
    ========================================================= */
@@ -791,7 +771,6 @@ input[type="submit"] {
   background: var(--purple);
   color: white;
 }
-
 
 /* =========================================================
    TABLET
@@ -828,7 +807,6 @@ input[type="submit"] {
   }
 }
 
-
 /* =========================================================
    MOBILE
    ========================================================= */
@@ -862,9 +840,15 @@ input[type="submit"] {
   }
 
   #featured-video {
-    min-height: 430px;
-    padding: 24px;
-  }
+  min-height: auto;
+  background: #050505;
+  border: 2px solid rgba(120, 126, 132, 0.7);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
 
   #sidebar {
     grid-template-columns: 1fr;
@@ -916,7 +900,6 @@ body > header {
   overflow: visible;
 }
 
-
 /* Larger Buddy logo */
 
 .site-logo {
@@ -942,7 +925,6 @@ body > header {
 
   z-index: 30;
 }
-
 
 /* Social icons above the navigation */
 
@@ -977,7 +959,6 @@ body > header {
   transform: translateY(-2px);
 }
 
-
 /* Main navigation */
 
 body > header .main-nav {
@@ -1005,7 +986,6 @@ body > header .main-nav > a:not(.connect-button) {
 body > header .main-nav > a:not(.connect-button):hover {
   color: var(--gold-light);
 }
-
 
 /* Search bar */
 
@@ -1060,7 +1040,6 @@ body > header .main-nav > a:not(.connect-button):hover {
   cursor: pointer;
 }
 
-
 /* CONNECT button */
 
 body > header .connect-button {
@@ -1091,7 +1070,6 @@ body > header .connect-button:hover {
   background: rgba(201, 163, 74, 0.12);
 }
 
-
 /* =========================================================
    THE CULTURE HAS CHARACTERS BANNER
    ========================================================= */
@@ -1110,34 +1088,52 @@ body > header .connect-button:hover {
   gap: 16px;
 }
 
+.culture-title {
+  width: calc(100% - 280px);
+  margin: 34px 0 26px 280px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .culture-title h2 {
   margin: 0;
-
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: 2px;
   color: var(--gold);
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(27px, 2.5vw, 40px);
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-align: center;
-
   white-space: nowrap;
+}
+
+.culture-line {
+  height: 2px;
+  flex: 1;
+}
+
+.culture-line-left {
+  max-width: 110px;
+  background: linear-gradient(
+    to right,
+    rgba(212, 169, 71, 0.95),
+    rgba(212, 169, 71, 0.55)
+  );
+}
+
+.culture-line-right {
+  background: linear-gradient(
+    to right,
+    rgba(212, 169, 71, 0.95),
+    rgba(212, 169, 71, 0)
+  );
 }
 
 .culture-leaf {
   color: var(--gold);
-
-  font-size: 24px;
-
-  flex-shrink: 0;
+  font-size: 22px;
+  line-height: 1;
+  transform: translateY(1px);
 }
-
-.culture-line {
-  height: 1px;
 
   flex: 1;
 
@@ -1146,7 +1142,6 @@ body > header .connect-button:hover {
 
   background: var(--gold);
 }
-
 
 /* =========================================================
    HEADER RESPONSIVE ADJUSTMENTS
@@ -1188,7 +1183,6 @@ body > header .connect-button:hover {
   }
 
 }
-
 
 @media (max-width: 720px) {
 
@@ -1277,7 +1271,6 @@ body > header .connect-button:hover {
   margin-top: 58px;
 }
 
-
 /* Larger, cleaner Archive entries */
 
 .archive-item {
@@ -1289,7 +1282,6 @@ body > header .connect-button:hover {
 
   align-items: center;
 }
-
 
 /* Smaller number in upper-left */
 
@@ -1305,13 +1297,11 @@ body > header .connect-button:hover {
   line-height: 1;
 }
 
-
 /* Hide VIDEO label */
 
 .archive-category {
   display: none;
 }
-
 
 /* Tighter title area */
 
@@ -1334,7 +1324,6 @@ body > header .connect-button:hover {
   line-height: 1.3;
 }
 
-
 /* Bigger Archive thumbnail */
 
 .archive-thumb {
@@ -1348,7 +1337,6 @@ body > header .connect-button:hover {
   width: 32px;
   height: 32px;
 }
-
 
 /* Mobile Archive */
 
@@ -1393,7 +1381,6 @@ body > header .connect-button:hover {
   color: var(--gold);
 }
 
-
 /* Stem */
 
 .cannabis-mark::after {
@@ -1411,7 +1398,6 @@ body > header .connect-button:hover {
 
   transform: translateX(-50%);
 }
-
 
 /* Seven pointed leaflets */
 
@@ -1437,14 +1423,12 @@ body > header .connect-button:hover {
   );
 }
 
-
 /* Far left */
 
 .cannabis-mark > span:nth-child(1) {
   height: 14px;
   transform: translateX(-50%) rotate(-68deg);
 }
-
 
 /* Left outer */
 
@@ -1453,14 +1437,12 @@ body > header .connect-button:hover {
   transform: translateX(-50%) rotate(-46deg);
 }
 
-
 /* Left inner */
 
 .cannabis-mark > span:nth-child(3) {
   height: 24px;
   transform: translateX(-50%) rotate(-24deg);
 }
-
 
 /* Center */
 
@@ -1469,14 +1451,12 @@ body > header .connect-button:hover {
   transform: translateX(-50%);
 }
 
-
 /* Right inner */
 
 .cannabis-mark > span:nth-child(5) {
   height: 24px;
   transform: translateX(-50%) rotate(24deg);
 }
-
 
 /* Right outer */
 
@@ -1485,14 +1465,12 @@ body > header .connect-button:hover {
   transform: translateX(-50%) rotate(46deg);
 }
 
-
 /* Far right */
 
 .cannabis-mark > span:nth-child(7) {
   height: 14px;
   transform: translateX(-50%) rotate(68deg);
 }
-
 
 @media (max-width: 720px) {
 
@@ -1519,7 +1497,6 @@ body > header .connect-button:hover {
   flex-direction: column;
 }
 
-
 /* Each Archive entry */
 
 .archive-item {
@@ -1538,7 +1515,6 @@ body > header .connect-button:hover {
   border-bottom: 1px solid rgba(201, 163, 74, 0.28);
 }
 
-
 /* Number goes in extreme upper-left */
 
 .archive-number {
@@ -1556,7 +1532,6 @@ body > header .connect-button:hover {
   font-weight: 800;
   line-height: 1;
 }
-
 
 /* Text directly beneath number */
 
@@ -1594,7 +1569,6 @@ body > header .connect-button:hover {
   text-align: left;
 }
 
-
 /* Portrait-shaped thumbnail */
 
 .archive-thumb {
@@ -1616,7 +1590,6 @@ body > header .connect-button:hover {
   height: 34px;
 }
 
-
 /* Push View All toward bottom of Archive field */
 
 .archive-view-all {
@@ -1632,7 +1605,6 @@ body > header .connect-button:hover {
   text-align: center;
 }
 
-
 /* Restore and strengthen cannabis leaf icons */
 
 .culture-title .culture-leaf {
@@ -1645,7 +1617,6 @@ body > header .connect-button:hover {
 
   flex: 0 0 auto;
 }
-
 
 /* Larger portrait thumbnails when Archive stacks on mobile */
 
@@ -1729,7 +1700,6 @@ body > header .connect-button:hover {
   flex: 0 0 auto;
 }
 
-
 /* Short solid line on LEFT */
 
 .culture-title .culture-line:first-child {
@@ -1743,7 +1713,6 @@ body > header .connect-button:hover {
 
   background: var(--gold);
 }
-
 
 /* Longer line on RIGHT with fade */
 
@@ -1807,7 +1776,6 @@ body > header .connect-button:hover {
   overflow: hidden;
 }
 
-
 /* Video/image area */
 
 .featured-media {
@@ -1824,7 +1792,6 @@ body > header .connect-button:hover {
 
   overflow: hidden;
 }
-
 
 /* Dark subtle image treatment */
 
@@ -1844,7 +1811,6 @@ body > header .connect-button:hover {
 
   pointer-events: none;
 }
-
 
 /* Main play button */
 
@@ -1878,7 +1844,6 @@ body > header .connect-button:hover {
 
   margin-left: 5px;
 }
-
 
 /* Fake player controls until real video is connected */
 
@@ -1943,7 +1908,6 @@ body > header .connect-button:hover {
   font-size: 13px;
 }
 
-
 /* Message board beneath video */
 
 #featured-video .featured-video-info {
@@ -1961,7 +1925,6 @@ body > header .connect-button:hover {
   z-index: 7;
 }
 
-
 #featured-video .featured-video-info h3 {
   margin: 10px 0 8px;
 
@@ -1976,7 +1939,6 @@ body > header .connect-button:hover {
   white-space: nowrap;
 }
 
-
 #featured-video .featured-video-info p {
   margin: 0 0 18px;
 
@@ -1985,7 +1947,6 @@ body > header .connect-button:hover {
   font-size: 13px;
   line-height: 1.4;
 }
-
 
 /* Top Story */
 
@@ -2007,7 +1968,6 @@ body > header .connect-button:hover {
 
   letter-spacing: 0.7px;
 }
-
 
 /* Watch Full Video */
 
@@ -2034,7 +1994,6 @@ body > header .connect-button:hover {
   background: var(--olive);
 }
 
-
 /* Make sure old pseudo badge stays hidden */
 
 #featured-video::before {
@@ -2049,7 +2008,6 @@ body > header .connect-button:hover {
   display: flex;
   flex-direction: column;
 }
-
 
 .archive-list {
   flex: 0 0 auto;
