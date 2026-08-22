@@ -1685,3 +1685,106 @@ body > header .connect-button:hover {
   }
 
 }
+
+/* =========================================================
+   CULTURE TITLE - CENTER OVER FEATURED VIDEO
+   ========================================================= */
+
+.culture-title {
+  width: calc(100% - 570px);
+  margin-left: 275px;
+
+  margin-top: 24px;
+  margin-bottom: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+}
+
+.culture-title h2 {
+  margin: 0;
+
+  color: var(--gold);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(24px, 2.15vw, 34px);
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  text-align: center;
+  white-space: nowrap;
+
+  flex: 0 0 auto;
+}
+
+.culture-title .culture-leaf {
+  color: var(--gold);
+
+  font-size: 20px;
+
+  flex: 0 0 auto;
+}
+
+
+/* Short solid line on LEFT */
+
+.culture-title .culture-line:first-child {
+  width: 75px;
+  min-width: 75px;
+  max-width: 75px;
+
+  height: 1px;
+
+  flex: 0 0 75px;
+
+  background: var(--gold);
+}
+
+
+/* Longer line on RIGHT with fade */
+
+.culture-title .culture-line:last-child {
+  height: 1px;
+
+  min-width: 100px;
+
+  flex: 1;
+
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    rgba(201, 163, 74, 0.9) 35%,
+    rgba(201, 163, 74, 0.45) 70%,
+    rgba(201, 163, 74, 0) 100%
+  );
+}
+
+@media (max-width: 720px) {
+
+  .culture-title {
+    width: 100%;
+    margin-left: 0;
+
+    gap: 8px;
+  }
+
+  .culture-title h2 {
+    font-size: 21px;
+    white-space: normal;
+  }
+
+  .culture-title .culture-line:first-child {
+    width: 30px;
+    min-width: 30px;
+    flex-basis: 30px;
+  }
+
+  .culture-title .culture-line:last-child {
+    min-width: 30px;
+  }
+
+}
