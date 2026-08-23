@@ -2130,3 +2130,86 @@ border-bottom: 1px solid rgba(130, 136, 142, 0.45);
     rgba(201, 163, 74, 0) 100%
   ) !important;
 }
+
+/* =========================================================
+   CULTURE TITLE - FINAL MOCKUP PROPORTIONS
+   ========================================================= */
+
+.culture-title {
+  width: calc(100% - 570px) !important;
+  margin-left: 275px !important;
+
+  margin-top: 28px !important;
+  margin-bottom: 28px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 12px !important;
+
+  overflow: hidden;
+}
+
+/* Taller, condensed mockup-style title */
+
+.culture-title h2 {
+  margin: 0 !important;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+
+  font-size: 38px !important;
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: 1.4px !important;
+
+  color: var(--gold) !important;
+
+  white-space: nowrap !important;
+
+  flex: 0 0 auto !important;
+}
+
+/* Cannabis leaves */
+
+.culture-title .culture-leaf {
+  display: inline-block !important;
+
+  color: var(--gold) !important;
+
+  font-size: 20px !important;
+
+  flex: 0 0 auto !important;
+}
+
+/* Left tan line */
+
+.culture-title .culture-line:first-child {
+  width: 90px !important;
+  min-width: 90px !important;
+
+  flex: 0 0 90px !important;
+
+  height: 1px !important;
+
+  background: var(--gold) !important;
+}
+
+/* Right tan line - fills remaining video width and fades */
+
+.culture-title .culture-line:last-child {
+  min-width: 0 !important;
+
+  flex: 1 1 auto !important;
+
+  height: 1px !important;
+
+  background: linear-gradient(
+    90deg,
+    rgba(201, 163, 74, 1) 0%,
+    rgba(201, 163, 74, 0.90) 30%,
+    rgba(201, 163, 74, 0.55) 65%,
+    rgba(201, 163, 74, 0) 100%
+  ) !important;
+}
