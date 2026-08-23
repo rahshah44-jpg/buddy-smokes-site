@@ -2251,37 +2251,62 @@ border-bottom: 1px solid rgba(130, 136, 142, 0.45);
   color: #f3f3f3 !important;
 }
 
-   body {
+/* =========================================================
+   FIXED CANNABIS BACKGROUND
+   ========================================================= */
+
+html {
   background: #000000;
-  position: relative;
 }
 
-/* Fixed blurred cannabis leaf background */
+body {
+  background: transparent !important;
+  position: relative;
+  min-height: 100vh;
+}
+
+
+/* Stationary purple/green cannabis leaves */
+
 body::before {
   content: "";
+
   position: fixed;
-  inset: 0;
-  background: url("assets/images/cannabis-bg.png") center center / cover no-repeat;
-  filter: blur(10px);
-  opacity: 0.22;
-  z-index: -2;
+  inset: -15px;
+
+  background-image: url("assets/images/cannabis-bg.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter: blur(6px);
+  opacity: 0.65;
+
+  z-index: 0;
   pointer-events: none;
 }
 
-/* Dark overlay so the page content stays readable */
+
+/* Dark transparent layer over the leaves */
+
 body::after {
   content: "";
+
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.72);
-  z-index: -1;
+
+  background: rgba(0, 0, 0, 0.42);
+
+  z-index: 1;
   pointer-events: none;
 }
 
-/* Make sure all page content sits above the background */
-header,
-main,
-footer {
+
+/* Website content scrolls above stationary background */
+
+body > header,
+body > main,
+body > footer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
