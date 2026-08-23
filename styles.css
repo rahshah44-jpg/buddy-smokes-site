@@ -2351,3 +2351,158 @@ body > footer {
 
   box-sizing: border-box;
 }
+
+/* =========================================================
+   CULTURE TITLE - REFERENCE IMAGE LOOK
+   ========================================================= */
+
+.culture-title {
+  /* EXACTLY matches the featured-video column */
+  width: calc(100% - 570px) !important;
+  margin-left: 275px !important;
+
+  /* Gives the title its own taller black-space area */
+  height: 115px !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 18px !important;
+
+  overflow: visible !important;
+}
+
+
+/* Remove the cannabis icons from this title */
+.culture-title .culture-leaf {
+  display: none !important;
+}
+
+
+/* Reference-image typography */
+.culture-title h2 {
+  margin: 0 !important;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+
+  font-size: 50px !important;
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+  letter-spacing: 1.5px !important;
+
+  color: #f3eed8 !important;
+
+  white-space: nowrap !important;
+
+  flex: 0 0 auto !important;
+}
+
+
+/* Both side lines */
+.culture-title .culture-line {
+  height: 2px !important;
+
+  min-width: 0 !important;
+  max-width: none !important;
+
+  flex: 1 1 auto !important;
+
+  background: #f3eed8 !important;
+}
+
+
+/* Left line */
+.culture-title .culture-line:first-child {
+  background: linear-gradient(
+    90deg,
+    rgba(243, 238, 216, 0) 0%,
+    rgba(243, 238, 216, 0.75) 20%,
+    #f3eed8 100%
+  ) !important;
+}
+
+
+/* Right line - fades toward right edge */
+.culture-title .culture-line:last-child {
+  background: linear-gradient(
+    90deg,
+    #f3eed8 0%,
+    rgba(243, 238, 216, 0.75) 80%,
+    rgba(243, 238, 216, 0) 100%
+  ) !important;
+}
+
+/* =========================================================
+   CULTURE TITLE - CENTERED OVER VIDEO PLAYER
+   ========================================================= */
+
+.culture-title {
+  /* Same horizontal width as the center video column */
+  width: calc(100% - 570px) !important;
+  margin-left: 275px !important;
+
+  height: 115px !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 18px !important;
+
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+
+/* No cannabis icons in this version */
+
+.culture-title .culture-leaf {
+  display: none !important;
+}
+
+
+/* THE CULTURE HAS CHARACTERS */
+
+.culture-title h2 {
+  margin: 0 !important;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+
+  font-size: 50px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+
+  letter-spacing: 1.5px !important;
+
+  color: #f3eed8 !important;
+
+  white-space: nowrap !important;
+
+  flex: 0 0 auto !important;
+}
+
+
+/* BOTH LINES - EXACTLY THE SAME */
+
+.culture-title .culture-line,
+.culture-title .culture-line:first-child,
+.culture-title .culture-line:last-child {
+  height: 2px !important;
+
+  flex: 1 1 0 !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  background: #f3eed8 !important;
+}
+
