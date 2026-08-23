@@ -2213,3 +2213,44 @@ border-bottom: 1px solid rgba(130, 136, 142, 0.45);
     rgba(201, 163, 74, 0) 100%
   ) !important;
 }
+
+/* =========================================================
+   FEATURED PLAYER - DARK CHARCOAL FRAME
+   ========================================================= */
+
+/* Frame around image + control bar */
+.featured-media {
+  border: 3px solid #303338 !important;
+  border-bottom: 4px solid #34373c !important;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+}
+
+
+/* Darker control strip */
+.player-controls {
+  background: #202327 !important;
+
+  border-top: 2px solid #3a3e43 !important;
+  border-bottom: 0 !important;
+
+  min-height: 47px !important;
+}
+
+
+/* Progress-track area */
+.player-progress {
+  background: #55595e !important;
+  height: 3px !important;
+}
+
+
+/* Keep player icons bright against the darker bar */
+.player-controls,
+.player-controls i,
+.player-small-play,
+.player-time {
+  color: #f3f3f3 !important;
+}
