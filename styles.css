@@ -3586,3 +3586,51 @@ body > footer {
   }
 
 }
+
+/* =========================================================
+   HERO CENTER COLUMN
+   TOP STORY + AUDIENCE REACTIONS
+   ========================================================= */
+
+.hero-center-column {
+  grid-column: 2;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+
+  align-self: start;
+}
+
+
+/* Audience Reactions now sits directly below Top Story */
+
+.hero-center-column #audience-reactions {
+  width: 100%;
+
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* Keep reactions inside center column */
+
+.hero-center-column .reactions-frame {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .hero-center-column {
+    grid-column: auto;
+    width: 100%;
+  }
+
+}
