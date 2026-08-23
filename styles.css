@@ -2561,3 +2561,261 @@ body > footer {
 
   background: #f3eed8 !important;
 }
+
+/* =========================================================
+   RIGHT SIDEBAR - FINAL DESIGN
+   ========================================================= */
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#sidebar .sidebar-panel {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: rgba(8, 10, 7, 0.92);
+
+  border: 1px solid rgba(201, 163, 74, 0.55);
+
+  padding: 22px;
+
+  color: #f3eed8;
+}
+
+
+/* HEADINGS */
+
+#sidebar .sidebar-panel h3 {
+  margin: 0 0 16px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  color: var(--gold-light);
+
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+
+/* =========================================================
+   STAY CONNECTED
+   ========================================================= */
+
+.stay-connected p {
+  margin: 0 0 16px;
+
+  color: #c8c3b4;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.subscribe-form input {
+  width: 100%;
+  height: 36px;
+
+  box-sizing: border-box;
+
+  padding: 0 11px;
+
+  background: #080907;
+
+  border: 1px solid rgba(201, 163, 74, 0.42);
+
+  outline: none;
+
+  color: #f3eed8;
+
+  font-size: 11px;
+}
+
+.subscribe-form input::placeholder {
+  color: #8d897c;
+}
+
+.subscribe-form button {
+  width: 100%;
+  height: 36px;
+
+  border: 1px solid rgba(201, 163, 74, 0.7);
+
+  background: rgba(41, 55, 16, 0.85);
+
+  color: var(--gold-light);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  background: var(--olive);
+}
+
+
+/* =========================================================
+   SOCIAL / CONNECT
+   ========================================================= */
+
+.social-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+.social-list a {
+  display: grid;
+
+  grid-template-columns: 19px 70px 1fr;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #f3eed8;
+
+  font-size: 11px;
+}
+
+.social-list a:hover {
+  color: var(--gold-light);
+}
+
+.social-list i {
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.social-list small {
+  color: #aaa493;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+
+/* Social icon colors */
+
+.youtube-icon {
+  color: #ff3131;
+}
+
+.instagram-icon {
+  color: #e556b6;
+}
+
+.tiktok-icon {
+  color: #f3f3f3;
+}
+
+.facebook-icon {
+  color: #5a8ee6;
+}
+
+.linkedin-icon {
+  color: #5ca4df;
+}
+
+
+/* =========================================================
+   ADVERTISEMENT PANELS
+   ========================================================= */
+
+#sidebar .advertisement-panel {
+  min-height: 185px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+#sidebar .advertisement-panel h3 {
+  margin: 10px 0 3px;
+
+  font-size: 18px;
+}
+
+.advertisement-panel span {
+  color: #8f8b80;
+
+  font-size: 10px;
+
+  letter-spacing: 1.4px;
+}
+
+.ad-leaf {
+  color: rgba(243, 238, 216, 0.17);
+
+  font-size: 36px;
+}
+
+
+/* =========================================================
+   BUSINESS INQUIRIES
+   ========================================================= */
+
+.business-panel a {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #f3eed8;
+
+  font-size: 11px;
+
+  word-break: break-word;
+}
+
+.business-panel a:hover {
+  color: var(--gold-light);
+}
+
+.business-panel i {
+  color: var(--gold-light);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+  #sidebar {
+    gap: 14px;
+  }
+
+  #sidebar .sidebar-panel {
+    padding: 20px;
+  }
+
+  #sidebar .advertisement-panel {
+    min-height: 145px;
+  }
+
+  .social-list a {
+    grid-template-columns: 22px 80px 1fr;
+  }
+
+}
