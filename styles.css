@@ -2831,3 +2831,50 @@ body > footer {
 #featured-video .featured-video-info {
   background: rgba(5, 5, 5, 0.72) !important;
 }
+
+/* =========================================================
+   SIDEBAR HEIGHT + SMALL THIRD AD
+   ========================================================= */
+
+#sidebar {
+  height: 100%;
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Smaller third advertisement */
+
+#sidebar .advertisement-panel-small {
+  min-height: 90px;
+
+  flex: 1 1 auto;
+
+  padding: 14px 18px;
+}
+
+
+/* Smaller contents inside third ad */
+
+#sidebar .advertisement-panel-small .ad-leaf {
+  font-size: 24px;
+}
+
+#sidebar .advertisement-panel-small h3 {
+  margin: 6px 0 2px;
+
+  font-size: 15px;
+}
+
+#sidebar .advertisement-panel-small span {
+  font-size: 9px;
+}
+
+
+/* Keep Business Inquiries at bottom of sidebar */
+
+#sidebar .business-panel {
+  margin-top: auto;
+}
