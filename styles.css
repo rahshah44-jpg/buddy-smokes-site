@@ -2063,3 +2063,70 @@ border-bottom: 1px solid rgba(130, 136, 142, 0.45);
   }
 
 }
+
+/* =========================================================
+   FORCE FINAL CULTURE TITLE LOOK
+   ========================================================= */
+
+.culture-title {
+  width: calc(100% - 570px) !important;
+  margin-left: 275px !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 13px !important;
+}
+
+.culture-title h2 {
+  margin: 0 !important;
+
+  font-family: "Arial Narrow", Impact, sans-serif !important;
+  font-size: 42px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+
+  letter-spacing: 1px !important;
+
+  color: var(--gold) !important;
+
+  white-space: nowrap !important;
+}
+
+.culture-title .culture-leaf {
+  display: inline-block !important;
+
+  color: var(--gold) !important;
+
+  font-size: 21px !important;
+
+  flex: 0 0 auto !important;
+}
+
+.culture-title .culture-line:first-child {
+  width: 85px !important;
+  min-width: 85px !important;
+  max-width: 85px !important;
+
+  flex: 0 0 85px !important;
+
+  height: 1px !important;
+
+  background: var(--gold) !important;
+}
+
+.culture-title .culture-line:last-child {
+  height: 1px !important;
+
+  min-width: 120px !important;
+
+  flex: 1 !important;
+
+  background: linear-gradient(
+    90deg,
+    var(--gold) 0%,
+    rgba(201, 163, 74, 0.9) 30%,
+    rgba(201, 163, 74, 0.55) 65%,
+    rgba(201, 163, 74, 0) 100%
+  ) !important;
+}
