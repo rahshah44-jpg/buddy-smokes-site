@@ -3309,3 +3309,280 @@ body > footer {
   }
 
 }
+
+/* =========================================================
+   AUDIENCE REACTIONS
+   ========================================================= */
+
+#audience-reactions {
+  width: 100%;
+
+  margin-top: 22px;
+  margin-bottom: 26px;
+}
+
+
+/* =========================================================
+   REACTIONS HEADING
+   ========================================================= */
+
+.reactions-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 12px;
+}
+
+.reactions-heading > span {
+  flex: 0 0 auto;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+
+  font-size: 28px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 1.4px;
+
+  color: #f3eed8;
+}
+
+.reactions-heading-line {
+  flex: 1;
+
+  height: 2px;
+
+  background: rgba(243, 238, 216, 0.55);
+}
+
+
+/* =========================================================
+   OUTER REACTIONS FRAME
+   ========================================================= */
+
+.reactions-frame {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 0;
+
+  position: relative;
+
+  background: rgba(5, 5, 5, 0.52);
+
+  border: 3px solid #303338;
+  border-bottom: 4px solid #34373c;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   INDIVIDUAL REACTION
+   ========================================================= */
+
+.reaction-card {
+  min-width: 0;
+
+  padding: 20px 24px 18px;
+
+  background: rgba(5, 5, 5, 0.38);
+}
+
+.reaction-card:first-child {
+  border-right: 1px solid rgba(201, 163, 74, 0.30);
+}
+
+
+/* USER */
+
+.reaction-user {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 11px;
+}
+
+.reaction-avatar {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(201, 163, 74, 0.60);
+
+  background: rgba(41, 55, 16, 0.60);
+
+  color: var(--gold-light);
+
+  font-size: 12px;
+}
+
+.reaction-user > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.reaction-user strong {
+  color: #f3eed8;
+
+  font-size: 11px;
+
+  letter-spacing: 0.4px;
+}
+
+.reaction-user span {
+  margin-top: 2px;
+
+  color: #817d72;
+
+  font-size: 9px;
+}
+
+
+/* COMMENT */
+
+.reaction-card p {
+  margin: 0 0 14px;
+
+  color: #c3beb0;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* LIKE + REPLY */
+
+.reaction-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.reaction-actions button {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #8f8b80;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+}
+
+.reaction-actions button:hover {
+  color: var(--gold-light);
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+   ========================================================= */
+
+.reactions-footer {
+  grid-column: 1 / -1;
+
+  min-height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 24px;
+
+  padding: 0 22px;
+
+  border-top: 1px solid rgba(201, 163, 74, 0.28);
+
+  background: rgba(12, 13, 12, 0.60);
+}
+
+.join-conversation,
+.view-reactions {
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+.join-conversation:hover,
+.view-reactions:hover {
+  color: #f3eed8;
+}
+
+.view-reactions {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+/* =========================================================
+   REACTIONS MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .reactions-frame {
+    grid-template-columns: 1fr;
+  }
+
+  .reaction-card:first-child {
+    border-right: 0;
+
+    border-bottom:
+      1px solid rgba(201, 163, 74, 0.30);
+  }
+
+  .reaction-card {
+    padding: 18px 20px;
+  }
+
+  .reactions-footer {
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 0 18px;
+  }
+
+  .reactions-heading > span {
+    font-size: 25px;
+  }
+
+}
