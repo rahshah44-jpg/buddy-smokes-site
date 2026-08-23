@@ -2272,17 +2272,19 @@ body {
 
 body::before {
   content: "";
-
   position: fixed;
-  inset: -15px;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
 
   background-image: url("assets/images/cannabis-bg.png");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 1100px auto;
 
-  filter: blur(6px);
-  opacity: 0.65;
+  filter: blur(2px);
+  opacity: 0.20;
+}
 
   z-index: 0;
   pointer-events: none;
