@@ -4204,3 +4204,22 @@ body > footer {
 .section-view-all i {
   color: inherit !important;
 }
+
+/* =========================================================
+   ARUC VIEW ALL - RIGHT SIDE WITHOUT MOVING TITLE
+   ========================================================= */
+
+#culture-banner {
+  position: relative !important;
+}
+
+#culture-banner .section-view-all {
+  position: absolute !important;
+
+  right: 14px !important;
+  top: 50% !important;
+
+  transform: translateY(-50%) !important;
+
+  margin-right: 0 !important;
+}
