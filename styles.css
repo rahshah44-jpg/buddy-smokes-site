@@ -4277,3 +4277,75 @@ body > footer {
 .section-view-all:hover i {
   color: #ffffff !important;
 }
+
+/* =========================================================
+   21+ FOOTER NOTICE
+   ========================================================= */
+
+.adult-content-notice {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0;
+
+  margin-top: 22px;
+  padding: 14px 20px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid rgba(201, 163, 74, 0.32);
+  border-bottom: 1px solid rgba(201, 163, 74, 0.32);
+
+  background: rgba(0, 0, 0, 0.28);
+
+  color: #aaa493;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-align: center;
+}
+
+.adult-content-notice span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.adult-content-notice span:not(:last-child)::after {
+  content: "|";
+
+  margin: 0 14px;
+
+  color: rgba(201, 163, 74, 0.75);
+}
+
+.adult-content-notice span:first-child {
+  color: var(--gold-light);
+
+  font-size: 11px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .adult-content-notice {
+    gap: 7px;
+
+    padding: 13px 12px;
+
+    font-size: 8px;
+  }
+
+  .adult-content-notice span:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
+}
