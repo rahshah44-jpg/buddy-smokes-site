@@ -94,7 +94,7 @@
 
 <div class="archive-list">
 
-  <a href="#" class="archive-item">
+  <div class="archive-item">
   <span class="archive-number">1</span>
 
 <div class="archive-text">
@@ -102,10 +102,24 @@
   <p>Buddy Smokes & The Resin Team</p>
 </div>
 
-    <div class="archive-thumb">
-      <span>▶</span>
-    </div>
+<wistia-player
+  media-id="uaagyg7rjg"
+  popover-content="link"
+  wistia-popover="true"
+  aspect="1.7777777777777777"
+  class="archive-wistia-player">
+
+  <a
+    href="#"
+    class="archive-thumb archive-wistia-trigger"
+    aria-label="Play Buddy Smokes & The Cannabis Campaign">
+
+    <span>▶</span>
+
   </a>
+
+</wistia-player>
+ </div>
 
 
   <a href="#" class="archive-item">
@@ -961,5 +975,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script src="https://fast.wistia.com/player.js" async></script>
+
+<script
+  src="https://fast.wistia.com/embed/uaagyg7rjg.js"
+  async
+  type="module">
+</script>  
 </body>
 </html>
