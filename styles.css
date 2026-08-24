@@ -4223,3 +4223,57 @@ body > footer {
 
   margin-right: 0 !important;
 }
+
+/* =========================================================
+   FINAL VIEW ALL POSITIONING
+   ========================================================= */
+
+/* Music + Interview: same distance from right edge */
+
+.lower-section-heading .section-view-all {
+  margin-right: 14px !important;
+}
+
+
+/* ARUC: button floats at right without changing banner height */
+
+#culture-banner {
+  position: relative !important;
+}
+
+#culture-banner > .section-view-all {
+  position: absolute !important;
+
+  right: 14px !important;
+  top: 50% !important;
+
+  transform: translateY(-50%) !important;
+
+  margin: 0 !important;
+}
+
+
+/* All three buttons: clear/translucent */
+
+.section-view-all {
+  background: rgba(0, 0, 0, 0.08) !important;
+
+  border: 1px solid rgba(201, 163, 74, 0.70) !important;
+
+  color: var(--gold-light) !important;
+}
+
+
+/* Hover turns white */
+
+.section-view-all:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+
+  border-color: #ffffff !important;
+
+  color: #ffffff !important;
+}
+
+.section-view-all:hover i {
+  color: #ffffff !important;
+}
