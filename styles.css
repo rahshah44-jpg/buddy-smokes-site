@@ -4550,3 +4550,19 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   border: 0 !important;
 }
+
+/* =========================================================
+   ARCHIVE NUMBERS - GRAY / BEBAS NEUE
+   ========================================================= */
+
+#archive .archive-number {
+  color: #55595e !important;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+
+  font-size: 20px !important;
+  font-weight: 400 !important;
+
+  line-height: 1 !important;
+  letter-spacing: 1px !important;
+}
