@@ -4518,3 +4518,35 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   }
 
 }
+
+/* =========================================================
+   REAL TCHC / TOP STORY YOUTUBE VIDEO
+   ========================================================= */
+
+#featured-video .featured-media {
+  position: relative !important;
+
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+
+  height: auto !important;
+
+  overflow: hidden !important;
+
+  padding: 0 !important;
+
+  background: #000 !important;
+}
+
+#featured-video .featured-youtube-video {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+
+  border: 0 !important;
+}
