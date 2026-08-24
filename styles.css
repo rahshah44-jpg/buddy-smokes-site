@@ -4566,3 +4566,27 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   line-height: 1 !important;
   letter-spacing: 1px !important;
 }
+
+/* Larger Archive thumbnails */
+
+#archive .archive-item {
+  grid-template-columns: minmax(0, 1fr) 112px !important;
+  column-gap: 10px !important;
+  min-height: 155px !important;
+  padding: 31px 8px 9px 8px !important;
+}
+
+#archive .archive-thumb {
+  grid-column: 2 !important;
+  width: 108px !important;
+  height: 138px !important;
+  justify-self: end !important;
+  align-self: center !important;
+  border: 1px solid var(--border) !important;
+  overflow: hidden !important;
+}
+
+#archive .archive-thumb span {
+  width: 38px !important;
+  height: 38px !important;
+}
