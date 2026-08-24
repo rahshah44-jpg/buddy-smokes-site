@@ -4590,3 +4590,40 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   width: 38px !important;
   height: 38px !important;
 }
+
+/* =========================================================
+   ARCHIVE #1 - WISTIA POPOVER
+   ========================================================= */
+
+.archive-wistia-player {
+  grid-column: 2;
+
+  width: 82px;
+  height: 106px;
+
+  justify-self: end;
+  align-self: center;
+
+  display: block !important;
+}
+
+.archive-wistia-trigger {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-sizing: border-box !important;
+
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.archive-wistia-trigger span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
