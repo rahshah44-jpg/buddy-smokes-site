@@ -4142,3 +4142,65 @@ body > footer {
   }
 
 }
+
+/* =========================================================
+   VIEW ALL BUTTONS - TRANSPARENT / MATCHED POSITION
+   ========================================================= */
+
+.section-view-all {
+  flex: 0 0 auto !important;
+
+  min-width: 128px !important;
+  height: 38px !important;
+
+  margin-right: 14px !important;
+  padding: 0 16px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 16px !important;
+
+  box-sizing: border-box !important;
+
+  /* CLEAR / TRANSLUCENT */
+  background: rgba(0, 0, 0, 0.18) !important;
+
+  border: 1px solid rgba(201, 163, 74, 0.70) !important;
+
+  color: var(--gold-light) !important;
+
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.8px !important;
+
+  text-decoration: none !important;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease !important;
+}
+
+
+/* WHITE ON HOVER */
+
+.section-view-all:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+
+  border-color: #ffffff !important;
+
+  color: #ffffff !important;
+}
+
+.section-view-all:hover i {
+  color: #ffffff !important;
+}
+
+
+/* Keep the dots the same color as the text */
+
+.section-view-all i {
+  color: inherit !important;
+}
