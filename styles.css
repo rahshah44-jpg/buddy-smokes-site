@@ -4394,3 +4394,127 @@ body > footer {
 
   color: rgba(201, 163, 74, 0.65) !important;
 }
+
+/* =========================================================
+   FOOTER - CLEAN SINGLE ROW
+   ========================================================= */
+
+body > footer {
+  display: grid !important;
+
+  grid-template-columns: auto 1fr auto !important;
+
+  align-items: center !important;
+
+  column-gap: 30px !important;
+
+  min-height: 70px !important;
+
+  padding: 18px 30px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* COPYRIGHT */
+
+.footer-copyright {
+  margin: 0 !important;
+
+  white-space: nowrap !important;
+
+  color: #a8a394 !important;
+
+  font-size: 11px !important;
+}
+
+
+/* FOOTER LINKS */
+
+body > footer .footer-links {
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 22px !important;
+
+  flex-wrap: wrap !important;
+}
+
+body > footer .footer-links a {
+  color: #ccc5b3 !important;
+
+  font-size: 11px !important;
+}
+
+body > footer .footer-links a:hover {
+  color: #ffffff !important;
+}
+
+
+/* 21+ NOTICE */
+
+body > footer .adult-content-notice {
+  width: auto !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
+
+  white-space: nowrap !important;
+
+  color: #aaa493 !important;
+
+  font-size: 8px !important;
+  font-weight: 600 !important;
+
+  letter-spacing: 0.6px !important;
+}
+
+body > footer .adult-content-notice span:first-child {
+  color: #c9a34a !important;
+
+  font-size: 9px !important;
+  font-weight: 800 !important;
+}
+
+body > footer .adult-content-notice span:not(:last-child)::after {
+  content: "•" !important;
+
+  margin: 0 9px !important;
+
+  color: rgba(201, 163, 74, 0.70) !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  body > footer {
+    grid-template-columns: 1fr !important;
+
+    row-gap: 13px !important;
+
+    text-align: center !important;
+  }
+
+  .footer-copyright,
+  body > footer .adult-content-notice {
+    justify-self: center !important;
+  }
+
+  body > footer .footer-links {
+    justify-content: center !important;
+  }
+
+}
