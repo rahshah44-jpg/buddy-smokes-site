@@ -4627,3 +4627,30 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   align-items: center;
   justify-content: center;
 }
+
+/* =========================================================
+   WISTIA ARCHIVE POPOVER - CUSTOM THUMBNAIL TRIGGER
+   ========================================================= */
+
+#archive .archive-wistia-player {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+#archive .archive-wistia-trigger {
+  grid-column: 2 !important;
+
+  width: 108px !important;
+  height: 138px !important;
+
+  justify-self: end !important;
+  align-self: center !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
