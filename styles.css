@@ -3634,3 +3634,511 @@ body > footer {
   }
 
 }
+
+/* =========================================================
+   LOWER HOMEPAGE - FULL WIDTH REBUILD
+   ========================================================= */
+
+
+/* All primary lower sections align with page margins */
+
+#music,
+#interviews,
+#characters,
+#culture-banner,
+#latest,
+.closing-row {
+  width: 100% !important;
+  margin-left: 0 !important;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SHARED SECTION SPACING
+   ========================================================= */
+
+#music,
+#interviews,
+#characters {
+  margin-top: 34px !important;
+
+  padding: 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+
+  display: block !important;
+
+  min-height: 0 !important;
+}
+
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.lower-section-heading {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 15px;
+}
+
+.lower-section-heading h2 {
+  margin: 0 !important;
+
+  flex: 0 0 auto;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+
+  font-size: 34px !important;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 1.5px;
+
+  color: #f3eed8 !important;
+}
+
+.lower-heading-line {
+  height: 2px;
+
+  flex: 1;
+
+  background: rgba(243, 238, 216, 0.55);
+}
+
+
+/* =========================================================
+   MUSIC + INTERVIEW CARDS
+   ========================================================= */
+
+.lower-card-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.lower-media-card {
+  min-width: 0;
+
+  padding: 0 0 20px;
+
+  overflow: hidden;
+
+  background: rgba(5, 5, 5, 0.65);
+
+  border: 1px solid rgba(201, 163, 74, 0.45);
+}
+
+.lower-media-placeholder {
+  height: 190px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(41, 55, 16, 0.78),
+      rgba(10, 10, 10, 0.88)
+    );
+
+  border-bottom: 3px solid #303338;
+
+  color: rgba(243, 238, 216, 0.55);
+}
+
+.lower-media-placeholder i {
+  font-size: 31px;
+}
+
+.lower-media-placeholder span {
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.3px;
+}
+
+.lower-media-card .lower-card-label,
+.lower-media-card h3,
+.lower-media-card p {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.lower-card-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.lower-media-card h3 {
+  margin-bottom: 9px;
+
+  color: #f3eed8;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 20px;
+}
+
+.lower-media-card p {
+  color: #aaa493;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   THE RESIN TEAM
+   ========================================================= */
+
+#characters {
+  width: 100% !important;
+}
+
+.character-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+#characters .character-card {
+  padding: 0 0 17px !important;
+
+  overflow: hidden;
+
+  background: rgba(5, 5, 5, 0.66);
+
+  border: 1px solid rgba(201, 163, 74, 0.45);
+}
+
+.character-image-placeholder {
+  height: 230px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 16px;
+
+  margin-bottom: 15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(41, 55, 16, 0.60),
+      rgba(5, 5, 5, 0.95)
+    );
+
+  border-bottom: 3px solid #303338;
+
+  color: rgba(243, 238, 216, 0.42);
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+
+  font-size: 22px;
+
+  letter-spacing: 1px;
+}
+
+#characters .character-card h3 {
+  padding: 0 15px;
+
+  color: #f3eed8;
+
+  font-size: 16px;
+}
+
+#characters .character-card p {
+  padding: 3px 15px 0;
+
+  color: #aaa493;
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   ANCIENT ROOTS
+   ========================================================= */
+
+#culture-banner {
+  margin-top: 42px !important;
+  margin-bottom: 18px !important;
+
+  padding: 21px 20px !important;
+
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+
+  text-align: center;
+}
+
+#culture-banner h2 {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+
+  font-size: 38px !important;
+  font-weight: 400;
+
+  letter-spacing: 2px;
+
+  color: #f3eed8 !important;
+}
+
+
+/* =========================================================
+   THREE CULTURE ARTICLES
+   ========================================================= */
+
+#latest {
+  display: grid !important;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+}
+
+#latest .culture-article {
+  min-height: 0 !important;
+
+  padding: 0 0 22px !important;
+
+  overflow: hidden;
+
+  background: rgba(5, 5, 5, 0.66) !important;
+
+  border: 1px solid rgba(201, 163, 74, 0.45) !important;
+}
+
+.article-image-placeholder {
+  height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 19px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(45, 21, 62, 0.72),
+      rgba(24, 38, 13, 0.77)
+    );
+
+  border-bottom: 3px solid #303338;
+
+  color: rgba(243, 238, 216, 0.42);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.4px;
+}
+
+.article-category,
+#latest .culture-article h2,
+#latest .culture-article p,
+#latest .culture-article a {
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+.article-category {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+#latest .culture-article h2 {
+  margin-bottom: 10px !important;
+
+  color: #f3eed8;
+
+  font-size: 23px !important;
+}
+
+#latest .culture-article p {
+  margin-bottom: 18px;
+
+  color: #aaa493;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+#latest .culture-article a {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* =========================================================
+   FINAL ROW
+   MY STORY PICTURES | MISSION STATEMENT
+   ========================================================= */
+
+.closing-row {
+  margin-top: 36px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.closing-row #about,
+.closing-row #culture {
+  width: 100% !important;
+
+  min-height: 260px !important;
+
+  margin: 0 !important;
+
+  padding: 31px !important;
+
+  display: block !important;
+
+  background: rgba(5, 5, 5, 0.68);
+
+  border: 1px solid rgba(201, 163, 74, 0.48);
+
+  box-sizing: border-box;
+}
+
+.closing-row #culture {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 17, 9, 0.82),
+      rgba(20, 25, 10, 0.72)
+    );
+}
+
+.closing-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: var(--gold-light);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+.closing-row h2 {
+  margin-bottom: 16px !important;
+
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+
+  font-size: 34px !important;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  color: #f3eed8 !important;
+}
+
+.closing-row p {
+  max-width: 630px;
+
+  color: #c6c0af !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   LOWER SECTIONS - TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+  .lower-card-grid,
+  #latest {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   LOWER SECTIONS - MOBILE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+  .lower-card-grid,
+  #latest,
+  .character-grid,
+  .closing-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .lower-section-heading h2 {
+    font-size: 29px !important;
+  }
+
+  #culture-banner h2 {
+    font-size: 29px !important;
+  }
+
+  .character-image-placeholder {
+    height: 260px;
+  }
+
+}
