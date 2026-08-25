@@ -4654,3 +4654,25 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   text-decoration: none !important;
   cursor: pointer !important;
 }
+
+/* =========================================================
+   ARCHIVE #1 - SHOW WISTIA THUMBNAIL
+   ========================================================= */
+
+#archive .archive-wistia-player {
+  display: block !important;
+
+  width: 108px !important;
+  height: 138px !important;
+
+  grid-column: 2 !important;
+
+  justify-self: end !important;
+  align-self: center !important;
+
+  overflow: hidden !important;
+
+  border: 1px solid var(--border) !important;
+
+  box-sizing: border-box !important;
+}
