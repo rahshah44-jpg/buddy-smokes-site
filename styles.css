@@ -4748,3 +4748,93 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   color: #ffffff !important;
 }
+
+/* =========================================================
+   ARCHIVE VIDEO PLAYS INSIDE TOP STORY FRAME
+   ========================================================= */
+
+#featured-video .featured-media {
+  position: relative !important;
+}
+
+
+/* Wistia occupies EXACTLY the YouTube player area */
+
+#featured-video .top-story-wistia {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  z-index: 20 !important;
+
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+
+  background: #000 !important;
+}
+
+
+/* When Archive video is active */
+
+#featured-video .featured-media.wistia-active .top-story-wistia {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+
+/* Hide YouTube while Archive video is playing */
+
+#featured-video .featured-media.wistia-active .featured-youtube-video {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+
+/* Return-to-Top-Story X */
+
+.archive-player-close {
+  position: absolute !important;
+
+  top: 10px !important;
+  right: 10px !important;
+
+  z-index: 40 !important;
+
+  width: 34px !important;
+  height: 34px !important;
+
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+
+  border: 1px solid rgba(255,255,255,.75) !important;
+
+  background: rgba(0,0,0,.65) !important;
+
+  color: #fff !important;
+
+  font-size: 24px !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
+}
+
+.featured-media.wistia-active .archive-player-close {
+  display: flex !important;
+}
+
+
+/* Archive #1 temporary launcher */
+
+#archive .archive-wistia-launch {
+  padding: 0 !important;
+  cursor: pointer !important;
+}
