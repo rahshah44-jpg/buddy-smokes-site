@@ -987,6 +987,68 @@ document.addEventListener("DOMContentLoaded", function () {
   src="https://fast.wistia.com/embed/uaagyg7rjg.js"
   async
   type="module">
-</script>  
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const launch =
+    document.getElementById("archive-wistia-launch-1");
+
+  const mediaFrame =
+    document.querySelector("#featured-video .featured-media");
+
+  const wistiaPlayer =
+    document.getElementById("top-story-wistia");
+
+  const youtubePlayer =
+    document.querySelector(".featured-youtube-video");
+
+  const closeButton =
+    document.getElementById("archive-player-close");
+
+
+  if (!launch || !mediaFrame || !wistiaPlayer || !closeButton) {
+    return;
+  }
+
+
+  launch.addEventListener("click", function () {
+
+    /* Stop YouTube if it was playing */
+    if (youtubePlayer) {
+      youtubePlayer.src = youtubePlayer.src;
+    }
+
+    mediaFrame.classList.add("wistia-active");
+
+    /* Bring viewer to the existing TOP STORY player */
+    document
+      .getElementById("featured-video")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    if (typeof wistiaPlayer.play === "function") {
+      wistiaPlayer.play();
+    }
+
+  });
+
+
+  closeButton.addEventListener("click", function () {
+
+    if (typeof wistiaPlayer.pause === "function") {
+      wistiaPlayer.pause();
+    }
+
+    mediaFrame.classList.remove("wistia-active");
+
+    closeButton.blur();
+
+  });
+
+});
+</script>
 </body>
 </html>
