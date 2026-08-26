@@ -4838,3 +4838,59 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   padding: 0 !important;
   cursor: pointer !important;
 }
+
+/* =========================================
+   ARCHIVE #1 – fill thumbnail / center play
+   ========================================= */
+
+#archive .archive-wistia-launch {
+  position: relative !important;
+  display: block !important;
+
+  width: 108px !important;
+  height: 138px !important;
+
+  padding: 0 !important;
+  overflow: hidden !important;
+
+  border: 1px solid var(--border) !important;
+  background: #0a0a0a !important;
+
+  cursor: pointer !important;
+}
+
+/* make the image fill the entire thumbnail area */
+#archive .archive-wistia-launch img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center top !important;
+}
+
+/* center the play icon on top of the image */
+#archive .archive-wistia-launch span {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+
+  z-index: 2 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+  border: 2px solid rgba(255,255,255,0.9) !important;
+  border-radius: 50% !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  color: #ffffff !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+
+  background: rgba(0,0,0,0.20) !important;
+  pointer-events: none !important;
+}
