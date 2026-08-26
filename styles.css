@@ -4894,3 +4894,63 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   background: rgba(0,0,0,0.20) !important;
   pointer-events: none !important;
 }
+
+/* =========================================================
+   ARCHIVE #2–#5 STATIC THUMBNAILS
+   MATCH ARCHIVE #1
+   ========================================================= */
+
+#archive .archive-static-thumb {
+  position: relative !important;
+
+  padding: 0 !important;
+
+  overflow: hidden !important;
+}
+
+
+/* Fill entire thumbnail — no black side spaces */
+
+#archive .archive-static-thumb img {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+
+/* Center play symbol over image */
+
+#archive .archive-static-thumb > span {
+  position: absolute !important;
+
+  top: 50% !important;
+  left: 50% !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  z-index: 5 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 2px solid rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50% !important;
+
+  background: rgba(0, 0, 0, 0.20) !important;
+
+  color: #ffffff !important;
+
+  pointer-events: none !important;
+}
