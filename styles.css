@@ -4866,7 +4866,7 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   height: 100% !important;
 
   object-fit: cover !important;
-  object-position: center top !important;
+  object-position: center 20% !important;
 }
 
 /* center the play icon on top of the image */
