@@ -4972,7 +4972,7 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   z-index: 30 !important;
 
-  overflow-y: auto !important;
+ overflow-y: scroll !important;
   overflow-x: hidden !important;
 
   scrollbar-gutter: stable !important;
