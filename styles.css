@@ -4954,3 +4954,23 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   pointer-events: none !important;
 }
+/* =========================================================
+   VIEW ALL ARCHIVE - SOLID GRAY PANEL
+   ========================================================= */
+
+#archive-viewall-panel {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  box-sizing: border-box !important;
+
+  background: #303338 !important;
+
+  z-index: 30 !important;
+
+  overflow: hidden !important;
+}
