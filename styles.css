@@ -4972,5 +4972,28 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   z-index: 30 !important;
 
-  overflow: hidden !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  scrollbar-gutter: stable !important;
+}
+
+
+/* VIEW ALL ARCHIVE SCROLLBAR */
+
+#archive-viewall-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+#archive-viewall-panel::-webkit-scrollbar-track {
+  background: #202327;
+}
+
+#archive-viewall-panel::-webkit-scrollbar-thumb {
+  background: #55595e;
+  border: 2px solid #202327;
+}
+
+#archive-viewall-panel::-webkit-scrollbar-thumb:hover {
+  background: #777b80;
 }
