@@ -200,9 +200,13 @@
 
 <div class="archive-footer">
 
-  <a href="#" class="archive-view-all">
-    VIEW ALL ARCHIVE
-  </a>
+<a
+  href="#"
+  class="archive-view-all"
+  id="archive-viewall-launch"
+  onclick="event.preventDefault(); document.getElementById('archive-viewall-panel').hidden = false;">
+  VIEW ALL ARCHIVE
+</a>
 
 </div>
 
@@ -238,9 +242,30 @@
   aria-label="Return to Top Story">
   ×
 </button>
-    
-</div>
+<div id="archive-viewall-panel" hidden>
 
+  <button
+    type="button"
+    aria-label="Close Archive"
+    onclick="document.getElementById('archive-viewall-panel').hidden = true;"
+    style="
+      position:absolute;
+      top:10px;
+      right:10px;
+      z-index:40;
+      width:34px;
+      height:34px;
+      border:1px solid rgba(255,255,255,.75);
+      background:rgba(0,0,0,.65);
+      color:#fff;
+      font-size:24px;
+      cursor:pointer;">
+    ×
+  </button>
+
+</div>
+  
+</div>
 
   <div class="featured-video-info">
 
