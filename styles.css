@@ -4968,32 +4968,103 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   box-sizing: border-box !important;
 
+  padding: 18px 28px 30px !important;
+
   background: #303338 !important;
 
   z-index: 30 !important;
 
- overflow-y: scroll !important;
+  overflow-y: scroll !important;
   overflow-x: hidden !important;
 
   scrollbar-gutter: stable !important;
+
+  scrollbar-width: auto !important;
+  scrollbar-color: #a6aaaf #d7d9dc !important;
 }
 
 
-/* VIEW ALL ARCHIVE SCROLLBAR */
+/* CLOSE BUTTON */
+
+.archive-viewall-close {
+  position: sticky !important;
+
+  top: 0 !important;
+  left: 100% !important;
+
+  z-index: 40 !important;
+
+  width: 30px !important;
+  height: 30px !important;
+
+  margin: 0 0 8px auto !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+
+  background: rgba(0, 0, 0, 0.65) !important;
+
+  color: #ffffff !important;
+
+  font-size: 22px !important;
+  line-height: 1 !important;
+
+  cursor: pointer !important;
+}
+
+
+/* 18 ARCHIVE PLACEHOLDERS */
+
+.archive-viewall-grid {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns: repeat(3, 108px) !important;
+
+  justify-content: space-around !important;
+
+  column-gap: 34px !important;
+  row-gap: 30px !important;
+
+  padding: 0 0 30px !important;
+
+  box-sizing: border-box !important;
+}
+
+
+.archive-viewall-thumb {
+  width: 108px !important;
+  height: 138px !important;
+
+  background: #405816 !important;
+
+  border: 1px solid #657522 !important;
+
+  box-sizing: border-box !important;
+}
+
+
+/* SCROLLBAR */
 
 #archive-viewall-panel::-webkit-scrollbar {
-  width: 10px;
+  width: 12px;
 }
 
 #archive-viewall-panel::-webkit-scrollbar-track {
-  background: #202327;
+  background: #d7d9dc;
 }
 
 #archive-viewall-panel::-webkit-scrollbar-thumb {
-  background: #55595e;
-  border: 2px solid #202327;
+  background: #a6aaaf;
+
+  border: 2px solid #d7d9dc;
 }
 
 #archive-viewall-panel::-webkit-scrollbar-thumb:hover {
-  background: #777b80;
+  background: #858a90;
 }
