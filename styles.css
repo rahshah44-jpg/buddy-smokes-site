@@ -5002,6 +5002,9 @@ body > footer .adult-content-notice span:not(:last-child)::after {
   box-sizing: border-box !important;
 
   direction: ltr !important;
+
+  position: relative !important;
+  left: -90px !important;
 }
 
 .archive-viewall-item {
