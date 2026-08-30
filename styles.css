@@ -5003,8 +5003,6 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
   direction: ltr !important;
 
-  position: relative !important;
-  left: -90px !important;
 }
 
 .archive-viewall-item {
@@ -5154,24 +5152,6 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 
 
 /* 18 ARCHIVE PLACEHOLDERS */
-
-.archive-viewall-grid {
-  width: 100% !important;
-
-  display: grid !important;
-
-  grid-template-columns: repeat(3, 108px) !important;
-
-  justify-content: space-around !important;
-
-  column-gap: 34px !important;
-  row-gap: 30px !important;
-
-  padding: 0 0 30px !important;
-
-  box-sizing: border-box !important;
-}
-
 
 .archive-viewall-thumb {
   width: 108px !important;
