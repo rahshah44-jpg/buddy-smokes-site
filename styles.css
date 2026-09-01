@@ -3757,6 +3757,17 @@ background-color: #ffffff;
 
   color: rgba(243, 238, 216, 0.55);
 }
+.lower-media-placeholder iframe {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block !important;
+
+  border: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
 
 .lower-media-placeholder i {
   font-size: 31px;
