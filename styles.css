@@ -3885,6 +3885,11 @@ object-fit: contain;
 object-position: center;
 }
 
+.buddy-character-photo img {
+    object-fit: cover;
+    object-position: center top;
+}
+
 #characters .character-card h3 {
   padding: 0 15px;
 
