@@ -3873,6 +3873,17 @@ background-color: #ffffff;
 
   letter-spacing: 1px;
 }
+.character-image-photo {
+    padding: 0;
+}
+
+.character-image-photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 30%;
+}
 
 #characters .character-card h3 {
   padding: 0 15px;
