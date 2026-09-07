@@ -3885,17 +3885,6 @@ object-fit: contain;
 object-position: center;
 }
 
-.buddy-character-photo {
-    overflow: hidden;
-}
-
-.buddy-character-photo img {
-    object-fit: cover;
-    object-position: center top;
-    transform: scale(1.45);
-    transform-origin: center 35%;
-}
-
 #characters .character-card h3 {
   padding: 0 15px;
 
