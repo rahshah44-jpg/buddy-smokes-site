@@ -923,7 +923,35 @@
     </article>
 
   </div>
+<div class="character-bio-overlay" id="buddy-bio-overlay" hidden>
 
+    <article class="character-bio-popover" role="dialog" aria-modal="true" aria-labelledby="buddy-bio-title">
+
+        <button class="character-bio-close" id="buddy-bio-close" type="button" aria-label="Close Buddy Smokes biography">&times;</button>
+
+        <div class="character-bio-layout">
+
+            <div class="character-bio-image">
+                <img src="assets/images/Buddy Smokes Bio Picture.png" alt="Buddy Smokes surrounded by reporters at a cannabis convention">
+            </div>
+
+            <div class="character-bio-content">
+
+                <p class="character-bio-label">THE LEADER</p>
+
+                <h2 id="buddy-bio-title">Buddy Smokes</h2>
+
+                <p><strong>Buddy Smokes</strong> wasn’t created in a boardroom or dreamed up by some high-powered marketing team—he came home with Sekai Rasha Lewis. Years ago, Sekai walked through the door excited about a photograph he had taken of cannabis inside a plastic bag, an ordinary image that somehow had a face, a personality, and something to say. That photograph became the seed of an idea between father and son: what if cannabis itself could speak? What if it could tell its own story instead of constantly having its story told by stereotypes: celebrities, politicians, corporations, critics, and the justice system? From that idea a half pound of weed became Buddy Smokes—a blunt, funny, intelligent, unapologetic voice for a plant whose history stretches back hundreds of thousands of years. But before Sekai and I could fully realize that vision together, he tragically passed away following a motorcycle accident in 2025. What began as one of our creative ideas suddenly became something much more personal. Bringing Buddy to life became part of carrying Sekai's creativity forward. Today, Buddy's purpose is bigger than simply entertaining people: through music, comedy, interviews, culture, and <em>The Cannabis Campaign</em>, he challenges misinformation, confronts hypocrisy, questions the laws and industries built around cannabis, and gives the plant something it has never had—a voice of its own.</p>
+
+                <p class="character-bio-closing"><strong>Sekai captured the image and together we saw the character. Now Buddy carries the vision forward.</strong></p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
 </section>
 
 
@@ -1194,5 +1222,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+<script>
+(() => {
+    const buddyBioButton = document.querySelector('[data-character="buddy"]');
+    const buddyBioOverlay = document.getElementById("buddy-bio-overlay");
+    const buddyBioClose = document.getElementById("buddy-bio-close");
+
+    function openBuddyBio() {
+        buddyBioOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        buddyBioClose.focus();
+    }
+
+    function closeBuddyBio() {
+        buddyBioOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        buddyBioButton.focus();
+    }
+
+    buddyBioButton.addEventListener("click", openBuddyBio);
+    buddyBioClose.addEventListener("click", closeBuddyBio);
+
+    buddyBioOverlay.addEventListener("click", function (event) {
+        if (event.target === buddyBioOverlay) {
+            closeBuddyBio();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !buddyBioOverlay.hidden) {
+            closeBuddyBio();
+        }
+    });
+})();
+</script>  
 </body>
 </html>
