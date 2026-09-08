@@ -899,10 +899,10 @@
     <img src="assets/images/Kush Bio Picture - Clear Cap.png" alt="Kush Th3-OG">
 </div>
 
-      <h3>Kush The OG</h3>
+      <h3>Kush Th3 OG</h3>
 <div class="character-card-footer">
     <p>aka Red Eye</p>
-    <button class="character-bio-button" type="button" data-character="kush" aria-label="Read more about Kush Th3-OG">READ MORE...</button>
+<button class="character-bio-button" type="button" data-character="kush" aria-label="Read more about Kush Th3 OG">READ MORE...</button>
 </div>
 
     </article>
@@ -998,6 +998,33 @@
                 <h2 id="sour-bio-title">Sour Diesel</h2>
 
                 <p>Sour Diesel, aka <strong>“The Pollinator,”</strong> is the youngest member of The Resin Team—a rebellious young singer and rapper whose sound, like his genetics, refuses to stay in one lane. Sour D’s real-world lineage is somewhat mysterious, but it’s widely believed to descend from <strong>Chemdawg ’91 and Super Skunk</strong>, producing a sativa-dominant hybrid known for being energetic, cerebral, talkative, and unmistakably loud. Diesel carries that same mixed blood into his music, blending <strong>R&amp;B, hip-hop, soul, melodic rap, and touches of rock</strong> into something that doesn’t quite belong to any one genre. Even his eyes refuse to match—one gray, the other tan—almost like nature stamped him with a reminder that different sides can exist in the same body and still make something dope. He’s the young heartthrob of the crew: smooth, mysterious, naturally charismatic, and usually the one getting the loudest reaction when The Resin Team hits the stage. But behind the pretty-boy appeal is a young rebel with very little interest in playing industry politics. Diesel says what everybody else is thinking, whether it helps him or gets him in trouble, and if the truth is sour, <strong>he’s still going to give it to you unfiltered.</strong></p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div> 
+<div class="character-bio-overlay" id="kush-bio-overlay" hidden>
+
+    <article class="character-bio-popover" role="dialog" aria-modal="true" aria-labelledby="kush-bio-title">
+
+        <button class="character-bio-close" id="kush-bio-close" type="button" aria-label="Close Kush Th3 OG biography">&times;</button>
+
+        <div class="character-bio-layout">
+
+            <div class="character-bio-image">
+                <img src="assets/images/Kush Bio Picture - Clear Cap.png" alt="Kush Th3 OG, also known as The Red Eye">
+            </div>
+
+            <div class="character-bio-content">
+
+                <p class="character-bio-label">THE RED EYE</p>
+
+                <h2 id="kush-bio-title">Kush Th3 OG</h2>
+
+                <p><strong>Kush Th3 OG—aka “The Red Eye”</strong>—is a hard-to-read hybrid with roots that stretch from the mountains of Central Asia to Thailand and deep into American cannabis culture. Born from <strong>Chemdawg</strong>, his streetwise, loud-mouthed father with that unmistakable diesel funk; <strong>Lemon Thai</strong>, his sharp, energetic mother who brought the citrus, creativity and cerebral edge; and the old-world <strong>Hindu Kush</strong> bloodline that gave him his heavy body, resilience and unmistakable Kush character, Kush comes from a family that learned early how to survive underground. When he was young, his family left the West during an era when cannabis prohibition could turn the plant they came from into a reason for arrest, incarceration and a ruined future. They headed East, where Kush grew up learning how to move quietly, read people and never forget where he came from. Years later, legalization changed the landscape, but it didn't erase his memory. Today, <strong>Kush Th3 OG</strong> keeps one foot in the streets that raised him and the other in the legal dispensaries of the West Coast that now sell openly what his family once had to hide. He doesn't talk much about those years—but the permanently red eyes earned him the name <strong>“The Red Eye,”</strong> and when Kush does speak, everybody on The Resin Team knows there’s usually a story behind what he says.</p>
 
             </div>
 
@@ -1377,6 +1404,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 })();
-</script>  
+</script>
+  <script>
+(() => {
+    const kushBioButton = document.querySelector('[data-character="kush"]');
+    const kushBioOverlay = document.getElementById("kush-bio-overlay");
+    const kushBioClose = document.getElementById("kush-bio-close");
+
+    function openKushBio() {
+        kushBioOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        kushBioClose.focus();
+    }
+
+    function closeKushBio() {
+        kushBioOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        kushBioButton.focus();
+    }
+
+    kushBioButton.addEventListener("click", openKushBio);
+    kushBioClose.addEventListener("click", closeKushBio);
+
+    kushBioOverlay.addEventListener("click", function (event) {
+        if (event.target === kushBioOverlay) {
+            closeKushBio();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !kushBioOverlay.hidden) {
+            closeKushBio();
+        }
+    });
+})();
+</script>
 </body>
 </html>
