@@ -979,6 +979,33 @@
     </article>
 
 </div>
+<div class="character-bio-overlay" id="sour-bio-overlay" hidden>
+
+    <article class="character-bio-popover" role="dialog" aria-modal="true" aria-labelledby="sour-bio-title">
+
+        <button class="character-bio-close" id="sour-bio-close" type="button" aria-label="Close Sour Diesel biography">&times;</button>
+
+        <div class="character-bio-layout">
+
+            <div class="character-bio-image">
+                <img src="assets/images/Sour Diesel Bio Pic.jpg" alt="Sour Diesel, also known as The Pollinator">
+            </div>
+
+            <div class="character-bio-content">
+
+                <p class="character-bio-label">THE POLLINATOR</p>
+
+                <h2 id="sour-bio-title">Sour Diesel</h2>
+
+                <p>Sour Diesel, aka <strong>“The Pollinator,”</strong> is the youngest member of The Resin Team—a rebellious young singer and rapper whose sound, like his genetics, refuses to stay in one lane. Sour D’s real-world lineage is somewhat mysterious, but it’s widely believed to descend from <strong>Chemdawg ’91 and Super Skunk</strong>, producing a sativa-dominant hybrid known for being energetic, cerebral, talkative, and unmistakably loud. Diesel carries that same mixed blood into his music, blending <strong>R&amp;B, hip-hop, soul, melodic rap, and touches of rock</strong> into something that doesn’t quite belong to any one genre. Even his eyes refuse to match—one gray, the other tan—almost like nature stamped him with a reminder that different sides can exist in the same body and still make something dope. He’s the young heartthrob of the crew: smooth, mysterious, naturally charismatic, and usually the one getting the loudest reaction when The Resin Team hits the stage. But behind the pretty-boy appeal is a young rebel with very little interest in playing industry politics. Diesel says what everybody else is thinking, whether it helps him or gets him in trouble, and if the truth is sour, <strong>he’s still going to give it to you unfiltered.</strong></p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div>  
 </section>
 
 
@@ -1313,6 +1340,40 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && !dreamBioOverlay.hidden) {
             closeDreamBio();
+        }
+    });
+})();
+</script>
+<script>
+(() => {
+    const sourBioButton = document.querySelector('[data-character="sour-diesel"]');
+    const sourBioOverlay = document.getElementById("sour-bio-overlay");
+    const sourBioClose = document.getElementById("sour-bio-close");
+
+    function openSourBio() {
+        sourBioOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        sourBioClose.focus();
+    }
+
+    function closeSourBio() {
+        sourBioOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        sourBioButton.focus();
+    }
+
+    sourBioButton.addEventListener("click", openSourBio);
+    sourBioClose.addEventListener("click", closeSourBio);
+
+    sourBioOverlay.addEventListener("click", function (event) {
+        if (event.target === sourBioOverlay) {
+            closeSourBio();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !sourBioOverlay.hidden) {
+            closeSourBio();
         }
     });
 })();
