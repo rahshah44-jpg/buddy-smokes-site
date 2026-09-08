@@ -3894,11 +3894,36 @@ object-position: center;
 }
 
 #characters .character-card p {
-  padding: 3px 15px 0;
+    padding: 0;
+    margin: 0;
+    color: #aaa493;
+    font-size: 11px;
+}
 
-  color: #aaa493;
+.character-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 3px 15px 12px;
+}
 
-  font-size: 11px;
+.character-bio-button {
+    flex-shrink: 0;
+    padding: 5px 8px;
+    color: #f3eed8;
+    background: transparent;
+    border: 1px solid rgba(201, 163, 74, 0.75);
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.character-bio-button:hover,
+.character-bio-button:focus-visible {
+    color: #050505;
+    background: #c9a34a;
 }
 
 
