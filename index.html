@@ -952,6 +952,33 @@
     </article>
 
 </div>
+<div class="character-bio-overlay" id="dream-bio-overlay" hidden>
+
+    <article class="character-bio-popover" role="dialog" aria-modal="true" aria-labelledby="dream-bio-title">
+
+        <button class="character-bio-close" id="dream-bio-close" type="button" aria-label="Close Dream biography">&times;</button>
+
+        <div class="character-bio-layout">
+
+            <div class="character-bio-image">
+                <img src="assets/images/Dream Bio Picture.png" alt="Dream, also known as Blue Dream">
+            </div>
+
+            <div class="character-bio-content">
+
+                <p class="character-bio-label">THE BALANCED ONE</p>
+
+                <h2 id="dream-bio-title">Dream</h2>
+
+                <p>Dream—better known as <strong>“Blue Dream”</strong> for those unmistakable dreamy blue eyes—is the balance in The Resin Team, the one who can cool everybody down without ever fading into the background. And balance is literally in her blood: Blue Dream is generally recognized as a <strong>sativa-dominant hybrid born from Blueberry and Haze</strong>, two very different sides of the cannabis family—Blueberry bringing the heavier, calmer indica influence and Haze bringing the energetic, cerebral sativa side. Dream likes to say she inherited <strong>Mama Blueberry’s calm and Daddy Haze’s head in the clouds</strong>: one taught her when to slow things down, the other taught her when to lift everybody higher. Maybe that's why, when Buddy gets too confrontational, Kush gets too street, Sour gets too caught up in himself, or Noid gets too damn serious, Dream knows exactly how to bring everybody back to center. She’s beautiful, confident and smooth, but don't confuse softness with weakness—Dream is proof that being a hybrid doesn't mean being caught between two worlds; sometimes it means you were born with <strong>the best of both.</strong></p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
 </section>
 
 
@@ -1252,6 +1279,40 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && !buddyBioOverlay.hidden) {
             closeBuddyBio();
+        }
+    });
+})();
+</script> 
+<script>
+(() => {
+    const dreamBioButton = document.querySelector('[data-character="dream"]');
+    const dreamBioOverlay = document.getElementById("dream-bio-overlay");
+    const dreamBioClose = document.getElementById("dream-bio-close");
+
+    function openDreamBio() {
+        dreamBioOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        dreamBioClose.focus();
+    }
+
+    function closeDreamBio() {
+        dreamBioOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        dreamBioButton.focus();
+    }
+
+    dreamBioButton.addEventListener("click", openDreamBio);
+    dreamBioClose.addEventListener("click", closeDreamBio);
+
+    dreamBioOverlay.addEventListener("click", function (event) {
+        if (event.target === dreamBioOverlay) {
+            closeDreamBio();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !dreamBioOverlay.hidden) {
+            closeDreamBio();
         }
     });
 })();
