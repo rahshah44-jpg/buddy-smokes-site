@@ -3925,7 +3925,146 @@ object-position: center;
     color: #050505;
     background: #c9a34a;
 }
+body.bio-open {
+    overflow: hidden;
+}
 
+.character-bio-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.76);
+}
+
+.character-bio-overlay[hidden] {
+    display: none;
+}
+
+.character-bio-popover {
+    position: relative;
+    width: min(60vw, 920px);
+    max-height: 85vh;
+    overflow-y: auto;
+    background:
+        linear-gradient(135deg, rgba(35, 15, 55, 0.96), rgba(5, 12, 5, 0.98));
+    border: 1px solid rgba(201, 163, 74, 0.85);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.85);
+}
+
+.character-bio-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    color: #f3eed8;
+    background: rgba(5, 5, 5, 0.82);
+    border: 1px solid rgba(201, 163, 74, 0.8);
+    font-size: 25px;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.character-bio-close:hover,
+.character-bio-close:focus-visible {
+    color: #050505;
+    background: #c9a34a;
+}
+
+.character-bio-layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.4fr);
+}
+
+.character-bio-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 18px;
+    background: rgba(8, 14, 5, 0.9);
+}
+
+.character-bio-image img {
+    width: 100%;
+    max-height: 72vh;
+    display: block;
+    object-fit: contain;
+}
+
+.character-bio-content {
+    padding: 42px 34px 34px;
+}
+
+.character-bio-label {
+    margin: 0 0 5px;
+    padding: 0;
+    color: #c9a34a;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+}
+
+.character-bio-content h2 {
+    margin: 0 0 18px;
+    color: #f3eed8;
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+}
+
+.character-bio-content > p:not(.character-bio-label) {
+    margin: 0;
+    padding: 0;
+    color: #ddd7c5;
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.character-bio-content .character-bio-closing {
+    margin-top: 20px;
+    color: #f3eed8;
+}
+
+@media (max-width: 700px) {
+    .character-bio-overlay {
+        align-items: flex-start;
+        padding: 12px;
+        overflow-y: auto;
+    }
+
+    .character-bio-popover {
+        width: 100%;
+        max-height: none;
+    }
+
+    .character-bio-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .character-bio-image {
+        min-height: 0;
+        padding: 14px;
+    }
+
+    .character-bio-image img {
+        max-height: 52vh;
+    }
+
+    .character-bio-content {
+        padding: 30px 20px 26px;
+    }
+
+    .character-bio-content h2 {
+        font-size: 32px;
+    }
+}
 
 /* =========================================================
    ANCIENT ROOTS
