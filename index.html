@@ -1032,6 +1032,33 @@
 
     </article>
 
+</div>
+<div class="character-bio-overlay" id="noid-bio-overlay" hidden>
+
+    <article class="character-bio-popover" role="dialog" aria-modal="true" aria-labelledby="noid-bio-title">
+
+        <button class="character-bio-close" id="noid-bio-close" type="button" aria-label="Close Noid biography">&times;</button>
+
+        <div class="character-bio-layout">
+
+            <div class="character-bio-image">
+                <img src="assets/images/Noid Bio Picture.png" alt="Noid">
+            </div>
+
+            <div class="character-bio-content">
+
+                <p class="character-bio-label">THE WILD CARD</p>
+
+                <h2 id="noid-bio-title">Noid</h2>
+
+                <p>Noid is an <strong>all-natural, sharp-tongued strain</strong> whose age is unknown but whose wisdom stretches far beyond recorded history. Sarcastic, pugnacious and unapologetically outspoken, he has spent countless years studying the sun, rain, soil and the laws of Nature—knowledge no laboratory could ever reproduce. Noid refuses to conform to the plastic-covered world around him and is openly critical of anything artificial, especially growth chemicals that interfere with the natural life of the plant. You can always expect him to say something unexpected, because remaining silent has never been in his nature. Whether anyone agrees with him or not, Noid will speak—and when he does, <strong>even the wisest know to listen.</strong></p>
+
+            </div>
+
+        </div>
+
+    </article>
+
 </div>  
 </section>
 
@@ -1439,5 +1466,39 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 })();
 </script>
+ <script>
+(() => {
+    const noidBioButton = document.querySelector('[data-character="noid"]');
+    const noidBioOverlay = document.getElementById("noid-bio-overlay");
+    const noidBioClose = document.getElementById("noid-bio-close");
+
+    function openNoidBio() {
+        noidBioOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        noidBioClose.focus();
+    }
+
+    function closeNoidBio() {
+        noidBioOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        noidBioButton.focus();
+    }
+
+    noidBioButton.addEventListener("click", openNoidBio);
+    noidBioClose.addEventListener("click", closeNoidBio);
+
+    noidBioOverlay.addEventListener("click", function (event) {
+        if (event.target === noidBioOverlay) {
+            closeNoidBio();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !noidBioOverlay.hidden) {
+            closeNoidBio();
+        }
+    });
+})();
+</script> 
 </body>
 </html>
