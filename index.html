@@ -1499,6 +1499,102 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 })();
-</script> 
+</script>
+<div class="character-bio-overlay article-story-overlay" id="changing-face-article" hidden>
+
+    <article class="article-story-popover" role="dialog" aria-modal="true" aria-labelledby="changing-face-title">
+
+        <button class="character-bio-close" id="changing-face-close" type="button" aria-label="Close article">&times;</button>
+
+        <div class="article-story-hero">
+            <img src="assets/images/The Changing Face of Cannabis Culture.png" alt="The Changing Face of Cannabis Culture">
+        </div>
+
+        <div class="article-story-content">
+
+            <span class="article-story-category">CULTURE</span>
+
+            <h2 id="changing-face-title">The Culture Was Never Just a Boys’ Club</h2>
+
+            <p class="article-story-author">By Dream | The Resin Team (TRT)</p>
+
+            <p>For years, popular culture sold one narrow picture of the cannabis consumer: a young man on a couch, smoke in the room, ambition somewhere outside the frame. That image was repeated so often that people started treating it like history. It was never history. It was marketing, stereotype and selective memory. Women have always been part of cannabis culture—as healers, patients, growers, caregivers, activists, artists and entrepreneurs. What is changing now is not their presence. What is changing is their visibility.</p>
+
+            <p>CNN’s <em>Weed 8: Women and Weed</em>, reported by Dr. Sanjay Gupta, arrived at the right moment. The documentary examines the growing number of women using cannabis and the women helping shape the legal market. Gupta travels to Oklahoma, where medical cannabis created an unlikely green rush in a politically conservative state. The setting matters. It shows that cannabis does not belong to one coast, one political identity or one type of person. It also shows women moving from private consumption into public leadership.</p>
+
+            <p>That shift challenges more than the old “stoner” stereotype. It challenges the assumptions placed on women. A man who uses cannabis may be treated as relaxed, creative or rebellious. A woman—especially a mother or professional—can still be judged as irresponsible, unstable or unfit. That double standard has forced many women to keep their use private even when cannabis helps them manage pain, sleep problems, menopause symptoms or the pressure of daily life. Visibility changes that conversation, but visibility alone does not guarantee respect.</p>
+
+            <p>The business side contains another contradiction. Women are among the fastest-growing groups of cannabis consumers, yet leadership and investment do not automatically follow consumer growth. The industry uses phrases such as “female-focused” and “women’s wellness,” but putting soft colors on a package is not the same as placing women in ownership, science, cultivation, product development and policy. If women are valuable enough to target as customers, they are valuable enough to help control the companies, research and rules shaping the market.</p>
+
+            <p>Representation also changes product design. A market built around outdated assumptions may overlook how body composition, hormones, medications and life stages can influence a person’s experience. Women deserve products developed from evidence rather than scaled-down versions of products originally marketed to men. They also deserve clinical conversations in which they can describe cannabis use without expecting shame or dismissal. The point is not to declare one universal “women’s experience.” It is to recognize that a large and varied population has been underserved by both research and public conversation.</p>
+
+            <p>There is also a cultural question hiding underneath the statistics: What happens when cannabis becomes part of ordinary self-care? Cannabis is increasingly discussed alongside sleep routines, yoga, recovery, intimacy and wellness. That can help remove stigma, but it can also sanitize the plant’s history. Cannabis did not suddenly become respectable when companies discovered women with disposable income. Patients, underground growers and activists carried this movement through decades of arrests, ridicule and misinformation. The new culture should welcome women without erasing the people who made the moment possible.</p>
+
+            <p>The changing gender balance also expands the kinds of stories cannabis media can tell. Women are asking different questions about dosage, hormones, pregnancy, aging, safety and the medical evidence behind product claims. Those questions deserve research, not slogans. A responsible industry should not market cannabis as a cure-all simply because a new audience is listening. Respect means giving women accurate information, transparent testing and room to make informed decisions—not replacing an old stereotype with a polished sales pitch.</p>
+
+            <p>Media has a responsibility here as well. Stories should move beyond novelty headlines announcing that women use cannabis. The more useful reporting asks which women have access, who is being studied, whose businesses receive investment and who still faces the harshest judgment. Race, income, age, disability and geography all affect the freedom to participate openly. A wealthy wellness customer and a low-income medical patient may use the same plant while facing entirely different consequences.</p>
+
+            <p>For The Resin Team, balance has never meant silence. It means holding two truths at once. Women are helping move cannabis into a broader and more honest cultural space. At the same time, the industry must prove that it values them as more than a demographic. The “grass ceiling” will not disappear through branding. It disappears when women have authority, access to capital, scientific attention and the freedom to speak about cannabis without being reduced to a label.</p>
+
+            <p class="article-story-closing">Women did not just arrive in cannabis culture. The culture is finally learning to see them.</p>
+
+            <div class="article-story-sources">
+
+                <h3>Sources and Further Reading</h3>
+
+                <p>
+                    <a href="https://cnnpressroom.blogs.cnn.com/2026/04/13/dr-sanjay-gupta-reports-weed-8-women-and-weed/" target="_blank" rel="noopener noreferrer">CNN Press Room: Dr. Sanjay Gupta Reports Weed 8: Women and Weed</a>
+                </p>
+
+                <p>
+                    <a href="https://www.pewresearch.org/short-reads/2026/05/26/facts-about-marijuana/" target="_blank" rel="noopener noreferrer">Pew Research Center: 10 Facts About Americans and Marijuana</a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</div>
+
+<script>
+(() => {
+    const articleButton = document.querySelector('[data-article="changing-face"]');
+    const articleOverlay = document.getElementById("changing-face-article");
+    const articleClose = document.getElementById("changing-face-close");
+
+    function openArticle() {
+        articleOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        articleClose.focus();
+    }
+
+    function closeArticle() {
+        articleOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        articleButton.focus();
+    }
+
+    articleButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        openArticle();
+    });
+
+    articleClose.addEventListener("click", closeArticle);
+
+    articleOverlay.addEventListener("click", function (event) {
+        if (event.target === articleOverlay) {
+            closeArticle();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !articleOverlay.hidden) {
+            closeArticle();
+        }
+    });
+})();
+</script>  
 </body>
 </html>
