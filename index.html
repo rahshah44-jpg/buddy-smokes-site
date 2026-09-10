@@ -2013,6 +2013,67 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 })();
+</script> 
+<script>
+(() => {
+    const viewAllButton =
+        document.getElementById("view-reactions-button");
+
+    const allReactionsModal =
+        document.getElementById("all-reactions-modal");
+
+    const closeAllButton =
+        document.getElementById("all-reactions-close");
+
+    const joinFromReactionsButton =
+        document.getElementById("join-from-reactions-button");
+
+    const joinButton =
+        document.getElementById("join-conversation-button");
+
+    if (
+        !viewAllButton ||
+        !allReactionsModal ||
+        !closeAllButton ||
+        !joinFromReactionsButton ||
+        !joinButton
+    ) {
+        return;
+    }
+
+    function openAllReactions() {
+        allReactionsModal.hidden = false;
+        document.body.classList.add("reaction-modal-open");
+        closeAllButton.focus();
+    }
+
+    function closeAllReactions() {
+        allReactionsModal.hidden = true;
+        document.body.classList.remove("reaction-modal-open");
+        viewAllButton.focus();
+    }
+
+    viewAllButton.addEventListener("click", openAllReactions);
+
+    closeAllButton.addEventListener("click", closeAllReactions);
+
+    allReactionsModal.addEventListener("click", function (event) {
+        if (event.target === allReactionsModal) {
+            closeAllReactions();
+        }
+    });
+
+    joinFromReactionsButton.addEventListener("click", function () {
+        allReactionsModal.hidden = true;
+        joinButton.click();
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !allReactionsModal.hidden) {
+            closeAllReactions();
+        }
+    });
+})();
 </script>  
 </body>
 </html>
