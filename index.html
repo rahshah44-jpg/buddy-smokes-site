@@ -1855,6 +1855,86 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });  
 })();
+</script> 
+<script>
+(() => {
+    const openButton =
+        document.getElementById("join-conversation-button");
+
+    const modal =
+        document.getElementById("join-conversation-modal");
+
+    const closeButton =
+        document.getElementById("join-conversation-close");
+
+    const form =
+        document.getElementById("audience-reaction-form");
+
+    const displayName =
+        document.getElementById("reaction-display-name");
+
+    const message =
+        document.getElementById("reaction-message");
+
+    const characterTotal =
+        document.getElementById("reaction-character-total");
+
+    const reviewNote =
+        document.querySelector(".reaction-review-note");
+
+    if (
+        !openButton ||
+        !modal ||
+        !closeButton ||
+        !form ||
+        !displayName ||
+        !message ||
+        !characterTotal
+    ) {
+        return;
+    }
+
+    function openReactionModal() {
+        modal.hidden = false;
+        document.body.classList.add("reaction-modal-open");
+        displayName.focus();
+    }
+
+    function closeReactionModal() {
+        modal.hidden = true;
+        document.body.classList.remove("reaction-modal-open");
+        openButton.focus();
+    }
+
+    openButton.addEventListener("click", openReactionModal);
+
+    closeButton.addEventListener("click", closeReactionModal);
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeReactionModal();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !modal.hidden) {
+            closeReactionModal();
+        }
+    });
+
+    message.addEventListener("input", function () {
+        characterTotal.textContent = message.value.length;
+    });
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (reviewNote) {
+            reviewNote.textContent =
+                "Email delivery will be connected after the form design is approved.";
+        }
+    });
+})();
 </script>  
 </body>
 </html>
