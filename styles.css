@@ -5120,6 +5120,7 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 /* When Archive video is active */
 
 #featured-video .featured-media.wistia-active .top-story-wistia {
+  display: flex !important; 
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
