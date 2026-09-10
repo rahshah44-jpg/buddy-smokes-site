@@ -5724,3 +5724,89 @@ body.reaction-modal-open {
         font-size: 25px;
     }
 }
+/* =========================================================
+   VIEW ALL AUDIENCE REACTIONS
+   ========================================================= */
+
+.all-reactions-panel {
+    width: min(100%, 820px);
+}
+
+.all-reactions-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+
+    max-height: 52vh;
+    margin: 24px 0;
+    padding-right: 8px;
+
+    overflow-y: auto;
+}
+
+.all-reaction-card {
+    padding: 20px;
+
+    border: 1px solid #34383d;
+    border-top-color: rgba(201, 163, 74, 0.55);
+
+    background: rgba(5, 5, 5, 0.55);
+}
+
+.all-reaction-card p {
+    margin: 15px 0 0;
+
+    color: #d0d0d0;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.join-from-reactions {
+    display: block;
+
+    width: 100%;
+    min-height: 44px;
+    padding: 0 20px;
+
+    border: 1px solid var(--gold);
+
+    background: var(--olive-light);
+    color: var(--cream);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.9px;
+
+    cursor: pointer;
+}
+
+.join-from-reactions:hover {
+    background: #4b5f1f;
+    border-color: var(--gold);
+}
+
+.all-reactions-list::-webkit-scrollbar {
+    width: 10px;
+}
+
+.all-reactions-list::-webkit-scrollbar-track {
+    background: #111311;
+}
+
+.all-reactions-list::-webkit-scrollbar-thumb {
+    background: #686868;
+    border: 2px solid #111311;
+}
+
+.all-reactions-list::-webkit-scrollbar-thumb:hover {
+    background: #858890;
+}
+
+@media (max-width: 700px) {
+    .all-reactions-list {
+        grid-template-columns: 1fr;
+        max-height: 55vh;
+    }
+}
