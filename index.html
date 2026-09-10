@@ -1620,7 +1620,53 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
     </article>
+<div class="character-bio-overlay article-story-overlay" id="legalization-broken-article" hidden>
 
+    <article class="article-story-popover" role="dialog" aria-modal="true" aria-labelledby="legalization-broken-title">
+
+        <button class="character-bio-close" id="legalization-broken-close" type="button" aria-label="Close article">&times;</button>
+
+        <div class="article-story-hero">
+            <img src="assets/images/We Legalized It. So Why Does It Still Feel Broken.png" alt="Legal But Broken commentary artwork">
+        </div>
+
+        <div class="article-story-content">
+
+            <span class="article-story-category">COMMENTARY</span>
+
+            <h2 id="legalization-broken-title">We Legalized It. So Why Does It Still Feel Broken?</h2>
+
+            <p class="article-story-author">By Buddy | The Resin Team (TRT)</p>
+
+            <p>Cannabis legalization was supposed to end the nonsense. Stop arresting people over a plant. Replace underground sales with tested products. Create legitimate businesses, jobs and tax revenue. Give patients access. Repair some of the damage caused by the drug war. That was the pitch. In many places, legalization delivered pieces of that promise. It also built a legal market so expensive, restricted and uneven that the people who carried cannabis culture are often locked outside of it.</p>
+
+            <p>The first problem is the split between state permission and federal prohibition. A business can follow every rule issued by its state and still face federal restrictions involving banking, transportation, taxes and interstate commerce. That conflict forces legal operators to carry costs other industries would consider absurd. Compliance requires lawyers, specialized accountants, security, tracking systems, testing and local approvals before a business sells its first product.</p>
+
+            <p>Large companies complain about those costs, but small businesses feel them harder. A well-funded operator can survive delays and hire experts. A local applicant may spend savings on rent and licensing while waiting months—or years—for approval. Social-equity applicants are often invited into the process with promises of opportunity and then handed the same expensive maze without enough capital, real estate or technical support to finish it.</p>
+
+            <p>Consumers feel the broken system too. If legal products cost substantially more because of taxes and compliance expenses, some buyers remain in the unlicensed market. Lawmakers then blame illicit sellers without asking whether the legal system was designed to compete. A regulated market must protect public health, but regulation becomes self-defeating when it makes legal participation impossible for businesses and unattractive to consumers.</p>
+
+            <p>The patchwork also punishes geography. Crossing a state line can transform lawful possession into a serious problem, even when both states permit cannabis in some form. A product acceptable under one jurisdiction’s testing or packaging rules may be prohibited next door. National brands cannot move inventory like ordinary consumer-goods companies, so they duplicate facilities and compliance systems. Those costs eventually land on workers, small partners and customers.</p>
+
+            <p>Oversupply creates the opposite problem. In mature markets, too much product and too many operators can drive wholesale prices down. Consumers may enjoy lower prices, but growers and retailers can be pushed toward failure. The industry can grow in units sold while businesses lose revenue. That helps explain why public support, expanding access and impressive market projections do not automatically produce healthy companies.</p>
+
+            <p>Then there is the cultural extraction. People once arrested, fired or separated from their families over cannabis now watch corporations package the same plant as luxury wellness. That transition is not justice by itself. Legalization without expungement leaves criminal records intact. Legalization without access to ownership lets new investors profit from a market created through someone else’s punishment. Legalization without respect for legacy growers treats history as a branding opportunity.</p>
+
+            <p>None of this means legalization failed completely. Tested products are better than mystery products. Adults should not be arrested for possession. Patients should not have to search underground for medicine. Legal businesses create jobs and public revenue. The mistake is pretending that passing a legalization law completes the work.</p>
+
+            <p>Tax revenue deserves the same scrutiny. Big collection totals sound impressive, but residents should be able to see where the money goes. If cannabis taxes are set too high, legal businesses lose customers. If the revenue disappears into a general budget without visible reinvestment, communities may reasonably ask what legalization changed for them. A sustainable tax system must fund public needs without squeezing the regulated market until it breaks.</p>
+
+            <p>A functional system needs reasonable taxes, accessible licensing and room for businesses of different sizes. It needs enforcement aimed at dangerous conduct, not a return to drug-war tactics under a new name. It needs expungement that happens automatically wherever possible. It needs independent testing, accurate labeling and rules that protect consumers without handing the market to whoever can afford the most attorneys.</p>
+
+            <p>It also needs honesty. Cannabis is neither a harmless miracle nor a social plague. It is a plant with medical potential, adult-use risks, cultural meaning and enormous economic value. A mature legal system should be able to hold all four truths without turning any one of them into propaganda.</p>
+
+            <p class="article-story-closing">Legalization opened the gate, but opening a gate is not the same as building a road. Right now, the road has tolls, traps and lanes reserved for people with money. If lawmakers want the legal market to work, they must stop measuring success only by the number of states that legalized or the amount of tax revenue collected. Measure arrests erased. Measure small businesses surviving. Measure patient access, product safety and whether communities harmed by prohibition have ownership in what came next. Until then, cannabis may be legal—but the system surrounding it will still feel broken.</p>
+
+        </div>
+
+    </article>
+
+</div>
 </div>
 <script>
 (() => {
@@ -1690,6 +1736,40 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && !noidArticleOverlay.hidden) {
             closeNoidArticle();
+        }
+    }); 
+    const legalizationBrokenButton = document.querySelector('[data-article="legalization-broken"]');
+    const legalizationBrokenOverlay = document.getElementById("legalization-broken-article");
+    const legalizationBrokenClose = document.getElementById("legalization-broken-close");
+
+    function openLegalizationBrokenArticle() {
+        legalizationBrokenOverlay.hidden = false;
+        document.body.classList.add("bio-open");
+        legalizationBrokenClose.focus();
+    }
+
+    function closeLegalizationBrokenArticle() {
+        legalizationBrokenOverlay.hidden = true;
+        document.body.classList.remove("bio-open");
+        legalizationBrokenButton.focus();
+    }
+
+    legalizationBrokenButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        openLegalizationBrokenArticle();
+    });
+
+    legalizationBrokenClose.addEventListener("click", closeLegalizationBrokenArticle);
+
+    legalizationBrokenOverlay.addEventListener("click", function (event) {
+        if (event.target === legalizationBrokenOverlay) {
+            closeLegalizationBrokenArticle();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !legalizationBrokenOverlay.hidden) {
+            closeLegalizationBrokenArticle();
         }
     });  
 })();
