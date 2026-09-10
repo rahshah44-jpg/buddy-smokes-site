@@ -519,7 +519,77 @@
   </div>
 
 </section>
+<div
+    class="reaction-modal"
+    id="join-conversation-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="join-conversation-title"
+    hidden>
 
+    <div class="reaction-modal-panel">
+
+        <button
+            type="button"
+            class="reaction-modal-close"
+            id="join-conversation-close"
+            aria-label="Close Join the Conversation">
+            ×
+        </button>
+
+        <span class="reaction-modal-label">AUDIENCE REACTIONS</span>
+
+        <h2 id="join-conversation-title">
+            JOIN THE CONVERSATION
+        </h2>
+
+        <p class="reaction-modal-intro">
+            Keep it blunt, but keep it about the conversation.
+            Threats, targeted harassment, spam and discriminatory slurs
+            will not be published.
+        </p>
+
+        <form id="audience-reaction-form">
+
+            <label for="reaction-display-name">
+                DISPLAY NAME
+            </label>
+
+            <input
+                type="text"
+                id="reaction-display-name"
+                name="display-name"
+                maxlength="40"
+                required>
+
+            <label for="reaction-message">
+                YOUR REACTION
+            </label>
+
+            <textarea
+                id="reaction-message"
+                name="reaction"
+                maxlength="600"
+                rows="6"
+                required></textarea>
+
+            <div class="reaction-character-count">
+                <span id="reaction-character-total">0</span>/600
+            </div>
+
+            <button type="submit" class="reaction-submit">
+                SUBMIT REACTION
+            </button>
+
+            <p class="reaction-review-note">
+                Reactions are reviewed before appearing publicly.
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
 </div><!-- end hero-center-column -->
         
 <aside id="sidebar">
