@@ -3525,24 +3525,43 @@ background-color: #ffffff;
 
 .join-conversation,
 .view-reactions {
-  color: var(--gold-light);
+    min-height: 34px;
+    padding: 0 15px;
 
-  font-size: 9px;
-  font-weight: 800;
+    border: 1px solid var(--gold-light);
 
-  letter-spacing: 0.7px;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+
+    cursor: pointer;
 }
 
-.join-conversation:hover,
-.view-reactions:hover {
-  color: #f3eed8;
+.join-conversation {
+    background: var(--gold-light);
+    color: #080908;
 }
 
 .view-reactions {
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
 
-  gap: 7px;
+    background: transparent;
+    color: var(--gold-light);
+}
+
+.join-conversation:hover {
+    background: #f3eed8;
+    border-color: #f3eed8;
+}
+
+.view-reactions:hover {
+    background: rgba(201, 163, 74, 0.12);
+    color: #f3eed8;
+    border-color: #f3eed8;
 }
 
 
