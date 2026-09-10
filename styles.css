@@ -5099,6 +5099,7 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 /* Wistia occupies EXACTLY the YouTube player area */
 
 #featured-video .top-story-wistia {
+  display: none !important; 
   position: absolute !important;
 
   inset: 0 !important;
