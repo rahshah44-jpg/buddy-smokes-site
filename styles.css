@@ -3977,20 +3977,21 @@ object-position: center;
 
 .character-bio-button {
     flex-shrink: 0;
-    padding: 5px 8px;
-    color: #f3eed8;
-    background: transparent;
+    padding: 6px 10px;
+    color: var(--gold-light);
+    background: rgba(41, 55, 16, 0.85);
     border: 1px solid rgba(201, 163, 74, 0.75);
-    font-family: "Bebas Neue", "Arial Narrow", sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 12px;
+    font-weight: 800;
     letter-spacing: 0.5px;
     cursor: pointer;
 }
 
 .character-bio-button:hover,
 .character-bio-button:focus-visible {
-    color: #050505;
-    background: #c9a34a;
+    color: var(--gold-light);
+    background: var(--olive);
 }
 body.bio-open {
     overflow: hidden;
