@@ -2664,7 +2664,60 @@ body > footer {
 .subscribe-form button:hover {
   background: var(--olive);
 }
+.subscribe-disclaimer {
+    margin: 2px 0 0 !important;
 
+    color: #929292 !important;
+
+    font-size: 10px !important;
+    line-height: 1.45 !important;
+}
+
+.subscribe-error {
+    margin: 0 !important;
+
+    color: #e7c86b !important;
+
+    font-size: 10px !important;
+    line-height: 1.4 !important;
+}
+
+.subscribe-success {
+    padding: 14px;
+
+    border: 1px solid var(--gold);
+
+    background: rgba(59, 75, 24, 0.55);
+    color: var(--cream);
+}
+
+.subscribe-success strong {
+    display: block;
+    margin-bottom: 6px;
+
+    color: var(--gold-light);
+
+    font-size: 13px;
+    letter-spacing: 0.8px;
+}
+
+.subscribe-success p {
+    margin: 0;
+
+    color: #c8c3b4;
+
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.subscribe-form input.subscribe-invalid {
+    border-color: #e7c86b;
+}
+
+.subscribe-form button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
 
 /* =========================================================
    SOCIAL / CONNECT
