@@ -677,17 +677,50 @@
       new drops and exclusive content.
     </p>
 
-    <div class="subscribe-form">
-      <input
+<form
+    class="subscribe-form"
+    id="newsletter-subscribe-form"
+    novalidate>
+
+    <input
         type="email"
+        id="newsletter-email"
+        name="email"
         placeholder="Your email address"
         aria-label="Email address"
-      >
+        autocomplete="email"
+        required>
 
-      <button type="button">
+    <p
+        class="subscribe-error"
+        id="subscribe-error"
+        role="alert"
+        hidden>
+    </p>
+
+    <button type="submit" id="subscribe-button">
         SUBSCRIBE
-      </button>
-    </div>
+    </button>
+
+    <p class="subscribe-disclaimer">
+        21+ only. No spam. Unsubscribe anytime.
+    </p>
+
+</form>
+
+<div
+    class="subscribe-success"
+    id="subscribe-success"
+    role="status"
+    hidden>
+
+    <strong>YOU’RE ON THE LIST</strong>
+
+    <p>
+        Check your email to confirm your subscription.
+    </p>
+
+</div>
 
   </section>
 
