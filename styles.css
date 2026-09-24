@@ -5153,33 +5153,27 @@ body > footer .adult-content-notice span:not(:last-child)::after {
 /* Wistia occupies EXACTLY the YouTube player area */
 
 #featured-video .top-story-wistia {
-  display: none !important; 
+  display: block !important;
   position: absolute !important;
-
-  inset: 0 !important;
-
+  left: -99999px !important;
+  top: 0 !important;
   width: 100% !important;
   height: 100% !important;
-
   z-index: 20 !important;
-
   opacity: 0 !important;
-  visibility: hidden !important;
   pointer-events: none !important;
-
   background: #000 !important;
 }
 
-
 /* When Archive video is active */
-
-#featured-video .featured-media.wistia-active .top-story-wistia {
-  display: flex !important; 
+#featured-video .featured-media.wistia-active .top-story-wistia.is-active {
+  left: 0 !important;
+  top: 0 !important;
+  display: flex !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
 }
-
 
 /* Hide YouTube while Archive video is playing */
 
