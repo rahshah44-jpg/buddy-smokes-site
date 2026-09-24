@@ -1414,66 +1414,54 @@ document.addEventListener("DOMContentLoaded", function () {
   async
   type="module">
 </script>
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
+  const archiveItems = document.querySelectorAll("#archive .archive-item");
+  const players = [
+    document.getElementById("top-story-wistia-1"),
+    document.getElementById("top-story-wistia-2"),
+    document.getElementById("top-story-wistia-3"),
+    document.getElementById("top-story-wistia-4")
+  ];
+  const mediaFrame = document.querySelector("#featured-video .featured-media");
+  const youtubePlayer = document.querySelector(".featured-youtube-video");
+  const closeButton = document.getElementById("archive-player-close");
 
-  const launch =
-    document.getElementById("archive-wistia-launch-1");
+  if (!mediaFrame || !closeButton || players.some(player => !player)) return;
 
-  const mediaFrame =
-    document.querySelector("#featured-video .featured-media");
+  players.forEach(function (player, index) {
+    const item = archiveItems[index];
+    if (!item) return;
 
-  const wistiaPlayer =
-    document.getElementById("top-story-wistia");
+    item.addEventListener("click", function (event) {
+      event.preventDefault();
 
-  const youtubePlayer =
-    document.querySelector(".featured-youtube-video");
+      if (youtubePlayer) youtubePlayer.src = youtubePlayer.src;
 
-  const closeButton =
-    document.getElementById("archive-player-close");
+      players.forEach(function (otherPlayer) {
+        if (typeof otherPlayer.pause === "function") otherPlayer.pause();
+        otherPlayer.classList.remove("is-active");
+      });
 
+      player.classList.add("is-active");
+      mediaFrame.classList.add("wistia-active");
+      player.play();
 
-  if (!launch || !mediaFrame || !wistiaPlayer || !closeButton) {
-    return;
-  }
-
-
-  launch.addEventListener("click", function () {
-
-    /* Stop YouTube if it was playing */
-    if (youtubePlayer) {
-      youtubePlayer.src = youtubePlayer.src;
-    }
-
-    mediaFrame.classList.add("wistia-active");
-
-    /* Bring viewer to the existing TOP STORY player */
-    document
-      .getElementById("featured-video")
-      .scrollIntoView({
+      document.getElementById("featured-video").scrollIntoView({
         behavior: "smooth",
         block: "start"
       });
-
-    if (typeof wistiaPlayer.play === "function") {
-      wistiaPlayer.play();
-    }
-
+    });
   });
-
 
   closeButton.addEventListener("click", function () {
-
-    if (typeof wistiaPlayer.pause === "function") {
-      wistiaPlayer.pause();
-    }
-
+    players.forEach(function (player) {
+      if (typeof player.pause === "function") player.pause();
+      player.classList.remove("is-active");
+    });
     mediaFrame.classList.remove("wistia-active");
-
     closeButton.blur();
-
   });
-
 });
 </script>
 <script>
