@@ -3105,6 +3105,8 @@ background-color: #ffffff;
 /* LARGE PLAY BUTTON */
 
 .podcast-main-play {
+  position: relative;
+  z-index: 4;   
   width: 76px;
   height: 76px;
 
