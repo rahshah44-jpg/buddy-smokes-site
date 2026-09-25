@@ -3101,33 +3101,34 @@ background-color: #ffffff;
   letter-spacing: 1.2px;
 }
 
-
 /* LARGE PLAY BUTTON */
 
 .podcast-main-play {
   position: relative;
-  z-index: 4;   
+  z-index: 4;
   width: 76px;
   height: 76px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding-left: 15px;
-
+  padding: 0;
   border: 2px solid #ffffff;
   border-radius: 50%;
-
   background: rgba(0, 0, 0, 0.42);
-
   color: #ffffff;
-
-  font-size: 30px;
-
+  font-size: 0;
   cursor: pointer;
 }
 
+.podcast-main-play::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 22px solid #ffffff;
+  transform: translate(-33.33%, -50%);
+}
 
 /* =========================================================
    PODCAST PLAYER CONTROL BAR
