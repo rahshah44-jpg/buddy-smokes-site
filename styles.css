@@ -5888,15 +5888,18 @@ body.reaction-modal-open {
         max-height: 55vh;
     }
 }
+.closing-row #about,
+.closing-row #culture {
+  min-height: 220px !important;
+}
+
 .closing-row #about {
   position: relative;
+  padding-right: 215px !important;
 }
 
 .studio-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 160px;
-  align-items: start;
-  gap: 24px;
+  display: block;
 }
 
 .studio-copy h2 {
@@ -5909,23 +5912,24 @@ body.reaction-modal-open {
 
 .studio-logo {
   display: block;
-  position: static;
-  width: 160px;
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 150px;
   height: auto;
-  max-height: 205px;
+  max-height: 185px;
   object-fit: contain;
-  justify-self: end;
 }
 
 @media (max-width: 520px) {
-  .studio-content {
-    grid-template-columns: minmax(0, 1fr) 110px;
-    gap: 12px;
+  .closing-row #about {
+    padding-right: 31px !important;
   }
 
   .studio-logo {
-    width: 110px;
-    max-height: 145px;
-    margin: 0;
+    position: static;
+    width: 145px;
+    max-height: 190px;
+    margin: 12px 0 0 auto;
   }
 }
