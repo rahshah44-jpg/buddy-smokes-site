@@ -1413,89 +1413,50 @@ document.addEventListener("DOMContentLoaded", function () {
 <script src="https://fast.wistia.com/embed/9jkfadh9mi.js" async type="module"></script>
 <script src="https://fast.wistia.com/embed/wkthxdbzml.js" async type="module"></script>
 <script>
-<script>
 document.addEventListener("DOMContentLoaded", function () {
-  const archiveItems = [...document.querySelectorAll("#archive .archive-item")].slice(0, 4);
-  const players = [1, 2, 3, 4].map(number =>
-    document.getElementById(`top-story-wistia-${number}`)
-  );
+  const archiveItems = document.querySelectorAll("#archive .archive-item");
+  const players = [
+    document.getElementById("top-story-wistia-1"),
+    document.getElementById("top-story-wistia-2"),
+    document.getElementById("top-story-wistia-3"),
+    document.getElementById("top-story-wistia-4")
+  ];
   const mediaFrame = document.querySelector("#featured-video .featured-media");
-  const featuredVideo = document.getElementById("featured-video");
   const youtubePlayer = document.querySelector(".featured-youtube-video");
   const closeButton = document.getElementById("archive-player-close");
 
-  if (!mediaFrame || !featuredVideo || !closeButton ||
-      players.some(player => !player)) return;
+  if (!mediaFrame || !closeButton || players.some(player => !player)) return;
 
-  let activePlayer = null;
+  players.forEach(function (player, index) {
+    const item = archiveItems[index];
+    if (!item) return;
 
-  function pauseOtherPlayers(selectedPlayer) {
-    players.forEach(player => {
-      if (player !== selectedPlayer && typeof player.pause === "function") {
-        player.pause();
-      }
-    });
-  }
-
-  players.forEach(player => {
-    player.addEventListener("play", () => pauseOtherPlayers(player));
-  });
-
-  archiveItems.forEach((item, index) => {
     item.addEventListener("click", function (event) {
       event.preventDefault();
 
-      const selectedPlayer = players[index];
-      pauseOtherPlayers(selectedPlayer);
-
-      players.forEach(player => player.classList.remove("is-active"));
-      selectedPlayer.classList.add("is-active");
-      activePlayer = selectedPlayer;
-      mediaFrame.classList.add("wistia-active");
-
       if (youtubePlayer) youtubePlayer.src = youtubePlayer.src;
 
-      // Prevent Space from activating this thumbnail again.
-      item.blur();
-      if (event.target instanceof HTMLElement) event.target.blur();
-
-      // Position the video at the top of the viewport.
-      window.scrollTo({
-        top: Math.max(
-          0,
-          featuredVideo.getBoundingClientRect().top + window.scrollY - 16
-        ),
-        behavior: "smooth"
+      players.forEach(function (otherPlayer) {
+        if (typeof otherPlayer.pause === "function") otherPlayer.pause();
+        otherPlayer.classList.remove("is-active");
       });
 
-      // Keep play() inside the click event for one-click playback.
-      if (typeof selectedPlayer.play === "function") selectedPlayer.play();
+      player.classList.add("is-active");
+      mediaFrame.classList.add("wistia-active");
+      player.play();
+
+      document.getElementById("featured-video").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     });
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (!activePlayer || event.code !== "Space" || event.repeat) return;
-
-    const target = event.target;
-    if (target instanceof HTMLElement &&
-        target.closest("input, textarea, select, [contenteditable], wistia-player, #archive-player-close")) {
-      return;
-    }
-
-    event.preventDefault();
-    if (activePlayer.state === "playing") {
-      activePlayer.pause();
-    } else {
-      activePlayer.play();
-    }
   });
 
   closeButton.addEventListener("click", function () {
-    players.forEach(player => {
+    players.forEach(function (player) {
       if (typeof player.pause === "function") player.pause();
       player.classList.remove("is-active");
     });
-    activePlayer = null;
     mediaFrame.classList.remove("wistia-active");
     closeButton.blur();
   });
