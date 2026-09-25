@@ -851,7 +851,8 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
   id="podcast-wistia-player"
   class="podcast-wistia-player"
   media-id="9jkfadh9mi"
-  aspect="1.7777777777777777">
+  aspect="1.7777777777777777"
+  end-video-behavior="reset">
 </wistia-player>
       </div>
       
@@ -914,6 +915,10 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
     screen.classList.add("is-playing");
     player.play();
   });
+  player.addEventListener("ended", () => {
+    player.currentTime = 0;
+    screen.classList.remove("is-playing");
+  });  
 })();
 </script>
 <!-- =======================================================
