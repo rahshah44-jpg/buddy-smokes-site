@@ -908,13 +908,20 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
     playButton.disabled = false;
   });
 
-  playButton.addEventListener("click", () => {
-    document.querySelectorAll("#featured-video .top-story-wistia")
-      .forEach(otherPlayer => otherPlayer.pause?.());
+  function playPodcast(event) {
+    event.preventDefault();
+    if (playButton.disabled) return;
 
     screen.classList.add("is-playing");
     player.play();
-  });
+
+    document.querySelectorAll("#featured-video .top-story-wistia")
+      .forEach(otherPlayer => otherPlayer.pause?.());
+  }
+
+  playButton.addEventListener("click", playPodcast);
+  document.querySelector("#podcast .view-podcasts")
+    .addEventListener("click", playPodcast);
   player.addEventListener("ended", () => {
     player.currentTime = 0;
     screen.classList.remove("is-playing");
