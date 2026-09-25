@@ -896,7 +896,26 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
   </div>
 
 </section>
+<script>
+(() => {
+  const screen = document.querySelector("#podcast .podcast-screen");
+  const playButton = document.querySelector("#podcast .podcast-main-play");
+  const player = document.getElementById("podcast-wistia-player");
+  if (!screen || !playButton || !player) return;
 
+  player.addEventListener("api-ready", () => {
+    playButton.disabled = false;
+  });
+
+  playButton.addEventListener("click", () => {
+    document.querySelectorAll("#featured-video .top-story-wistia")
+      .forEach(otherPlayer => otherPlayer.pause?.());
+
+    screen.classList.add("is-playing");
+    player.play();
+  });
+})();
+</script>
 <!-- =======================================================
      INTERVIEW ROOM
      ======================================================= -->
