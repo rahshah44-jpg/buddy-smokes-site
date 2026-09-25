@@ -3064,7 +3064,26 @@ background-position: center center;
 background-repeat: no-repeat;
 background-color: #ffffff;
 }
+.podcast-wistia-player {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
 
+.podcast-screen.is-playing .podcast-wistia-player {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.podcast-screen.is-playing .podcast-main-play,
+.podcast-screen.is-playing .podcast-screen-label {
+  display: none;
+}
 
 /* temporary player label */
 
