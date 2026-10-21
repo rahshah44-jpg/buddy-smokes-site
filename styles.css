@@ -105,13 +105,13 @@ body > header {
   top: -54px;
   z-index: 20;
 }
-.site-logo::after {
-  content: "™";
+.site-logo-tm {
   position: absolute;
-  left: 174px;
-  top: -42px;
 
-  z-index: 25;
+  right: 8px;
+  bottom: 28px;
+
+  z-index: 40;
 
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
@@ -119,6 +119,8 @@ body > header {
   line-height: 1;
 
   color: #f3eed8;
+
+  pointer-events: none;
 }
 body > header nav {
   display: flex;
