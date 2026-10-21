@@ -105,7 +105,21 @@ body > header {
   top: -54px;
   z-index: 20;
 }
+.site-logo::after {
+  content: "™";
+  position: absolute;
+  left: 174px;
+  top: -42px;
 
+  z-index: 25;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+
+  color: #f3eed8;
+}
 body > header nav {
   display: flex;
   align-items: center;
