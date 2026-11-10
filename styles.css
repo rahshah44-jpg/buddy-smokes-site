@@ -5926,15 +5926,37 @@ body.reaction-modal-open {
   margin: 0 !important;
 }
 
-.studio-logo {
-  display: block;
+.studio-logo-wrap {
   position: absolute;
   top: 18px;
   right: 22px;
+
+  width: 150px;
+  max-height: 185px;
+}
+
+.studio-logo {
+  display: block;
+  position: static;
+
   width: 150px;
   height: auto;
   max-height: 185px;
+
   object-fit: contain;
+}
+
+.studio-logo-tm {
+  position: absolute;
+
+  right: -18px;
+  top: 38px;
+
+  z-index: 10;
+
+  font-size: 15px !important;
+
+  pointer-events: none;
 }
 
 @media (max-width: 520px) {
