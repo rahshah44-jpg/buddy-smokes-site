@@ -5949,3 +5949,12 @@ body.reaction-modal-open {
     margin: 12px 0 0 auto;
   }
 }
+.tm-mark {
+  font-family: "Bebas Neue", sans-serif !important;
+  font-size: 0.58em !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  vertical-align: super !important;
+  letter-spacing: 0 !important;
+  margin-left: 1px !important;
+}
