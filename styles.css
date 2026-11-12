@@ -5949,12 +5949,12 @@ body.reaction-modal-open {
 .studio-logo-tm {
   position: absolute;
 
-  right: -18px;
-  top: 38px;
+right: -2px;
+top: 30px;
 
   z-index: 10;
 
-  font-size: 15px !important;
+  font-size: 22px !important;
 
   pointer-events: none;
 }
