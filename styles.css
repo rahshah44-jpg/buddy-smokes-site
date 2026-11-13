@@ -1005,14 +1005,21 @@ body > header .main-nav > a:not(.connect-button):hover {
 }
 /* FOLLOW popup */
 
+body > header {
+  z-index: 3000;
+}
+
 .follow-menu {
   position: relative;
   flex: 0 0 auto;
-  z-index: 2000;
+  z-index: 3000;
 }
 
 .follow-toggle {
+  position: relative;
+
   list-style: none;
+
   display: flex;
   align-items: center;
   gap: 7px;
@@ -1023,7 +1030,8 @@ body > header .main-nav > a:not(.connect-button):hover {
   color: var(--cream);
   background: #0b0d08;
 
-  border: 1px solid rgba(201, 163, 74, 0.65);
+  border: 1px solid rgba(201, 163, 74, 0.75);
+  border-radius: 6px;
 
   font-size: 12px;
   font-weight: 800;
@@ -1031,6 +1039,8 @@ body > header .main-nav > a:not(.connect-button):hover {
 
   cursor: pointer;
   white-space: nowrap;
+
+  z-index: 3200;
 }
 
 .follow-toggle::-webkit-details-marker {
@@ -1045,10 +1055,42 @@ body > header .main-nav > a:not(.connect-button):hover {
 .follow-menu[open] .follow-toggle {
   color: var(--gold-light);
   border-color: var(--gold-light);
+
+  box-shadow:
+    0 0 7px rgba(224, 192, 108, 0.35),
+    0 0 14px rgba(201, 163, 74, 0.16);
 }
 
 .follow-toggle i {
   font-size: 15px;
+}
+
+/* X CLOSE BUTTON */
+.follow-menu[open] > .follow-toggle::after {
+  content: "×";
+
+  position: absolute;
+
+  top: 51px;
+  left: calc(50% + 172px);
+
+  width: 26px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #f3eed8;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+
+  background: transparent;
+
+  z-index: 3400;
 }
 
 .follow-popup {
@@ -1056,25 +1098,33 @@ body > header .main-nav > a:not(.connect-button):hover {
 
   top: calc(100% + 16px);
   left: 50%;
+
   transform: translateX(-50%);
 
   width: 410px;
+
   padding: 20px 18px 17px;
 
-  background: rgba(6, 8, 5, 0.98);
+  background: rgba(6, 8, 5, 0.99);
 
-  border: 1px solid rgba(201, 163, 74, 0.95);
+  border: 1px solid rgba(224, 192, 108, 0.95);
+  border-radius: 13px;
+
   box-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.9),
-    0 0 10px rgba(201, 163, 74, 0.25);
+    0 12px 35px rgba(0, 0, 0, 0.92),
+    0 0 8px rgba(224, 192, 108, 0.50),
+    0 0 18px rgba(201, 163, 74, 0.22);
 
-  z-index: 2100;
+  overflow: visible;
+
+  z-index: 3100;
 }
 
 .follow-popup::before {
   content: "";
 
   position: absolute;
+
   top: -9px;
   left: 50%;
 
@@ -1083,17 +1133,19 @@ body > header .main-nav > a:not(.connect-button):hover {
 
   background: #080a06;
 
-  border-left: 1px solid rgba(201, 163, 74, 0.95);
-  border-top: 1px solid rgba(201, 163, 74, 0.95);
+  border-left: 1px solid rgba(224, 192, 108, 0.95);
+  border-top: 1px solid rgba(224, 192, 108, 0.95);
 
   transform: translateX(-50%) rotate(45deg);
+
+  z-index: 1;
 }
 
 .follow-popup-title {
   position: relative;
-  z-index: 2;
 
   margin-bottom: 15px;
+  padding-right: 24px;
 
   color: var(--cream);
 
@@ -1103,15 +1155,18 @@ body > header .main-nav > a:not(.connect-button):hover {
   letter-spacing: 0.4px;
 
   text-align: center;
+
+  z-index: 2;
 }
 
 .follow-popup-icons {
   position: relative;
-  z-index: 2;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
+
+  z-index: 2;
 }
 
 .follow-popup-icons a {
@@ -1139,7 +1194,7 @@ body > header .main-nav > a:not(.connect-button):hover {
   background: #292929;
 
   border: 1px solid #3b3b3b;
-  border-radius: 6px;
+  border-radius: 7px;
 
   font-size: 23px;
 
@@ -1156,8 +1211,11 @@ body > header .main-nav > a:not(.connect-button):hover {
 
 .follow-popup-icons a:hover i {
   color: var(--cream);
+
   background: #11130d;
+
   border-color: var(--gold-light);
+
   transform: translateY(-2px);
 }
 /* Search bar */
