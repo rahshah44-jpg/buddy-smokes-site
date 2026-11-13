@@ -3513,6 +3513,182 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 })();
+</script>
+<script>
+(() => {
+    const searchBox = document.querySelector(".site-search");
+
+    if (!searchBox) {
+        return;
+    }
+
+    const searchInput = searchBox.querySelector('input[type="text"]');
+    const searchButton = searchBox.querySelector("button");
+
+    if (!searchInput || !searchButton) {
+        return;
+    }
+
+    const searchableSelector = [
+        "main h1",
+        "main h2",
+        "main h3",
+        "main h4",
+        "main p",
+        "main a",
+        "main span",
+        "main small",
+        "main li",
+        "aside h1",
+        "aside h2",
+        "aside h3",
+        "aside h4",
+        "aside p",
+        "aside a",
+        "aside span",
+        "aside small",
+        "aside li",
+        "footer a",
+        "footer p",
+        "footer span",
+        "footer small"
+    ].join(",");
+
+    let lastQuery = "";
+    let currentMatchIndex = -1;
+    let highlightedElement = null;
+
+    function isVisible(element) {
+        if (element.closest("[hidden]")) {
+            return false;
+        }
+
+        const style = window.getComputedStyle(element);
+
+        return (
+            style.display !== "none" &&
+            style.visibility !== "hidden" &&
+            element.getClientRects().length > 0
+        );
+    }
+
+    function clearHighlight() {
+        if (!highlightedElement) {
+            return;
+        }
+
+        highlightedElement.style.outline =
+            highlightedElement.dataset.searchOldOutline || "";
+
+        highlightedElement.style.outlineOffset =
+            highlightedElement.dataset.searchOldOutlineOffset || "";
+
+        delete highlightedElement.dataset.searchOldOutline;
+        delete highlightedElement.dataset.searchOldOutlineOffset;
+
+        highlightedElement = null;
+    }
+
+    function findMatches(query) {
+        const normalizedQuery = query.trim().toLowerCase();
+
+        const matches = Array.from(
+            document.querySelectorAll(searchableSelector)
+        ).filter((element) => {
+
+            if (!isVisible(element)) {
+                return false;
+            }
+
+            if (element.closest(".site-search")) {
+                return false;
+            }
+
+            const text = (element.textContent || "")
+                .replace(/\s+/g, " ")
+                .trim()
+                .toLowerCase();
+
+            return text.includes(normalizedQuery);
+        });
+
+        return matches.filter((element) => {
+            return !matches.some((otherElement) => {
+                return (
+                    otherElement !== element &&
+                    element.contains(otherElement)
+                );
+            });
+        });
+    }
+
+    function runSiteSearch() {
+        const query = searchInput.value.trim();
+
+        clearHighlight();
+
+        if (!query) {
+            searchInput.focus();
+            return;
+        }
+
+        const matches = findMatches(query);
+
+        if (!matches.length) {
+            const originalPlaceholder = "Search...";
+
+            searchInput.value = "";
+            searchInput.placeholder = `No results for "${query}"`;
+
+            setTimeout(() => {
+                searchInput.placeholder = originalPlaceholder;
+            }, 2200);
+
+            return;
+        }
+
+        if (query.toLowerCase() === lastQuery) {
+            currentMatchIndex =
+                (currentMatchIndex + 1) % matches.length;
+        } else {
+            lastQuery = query.toLowerCase();
+            currentMatchIndex = 0;
+        }
+
+        const match = matches[currentMatchIndex];
+
+        match.dataset.searchOldOutline =
+            match.style.outline || "";
+
+        match.dataset.searchOldOutlineOffset =
+            match.style.outlineOffset || "";
+
+        match.style.outline = "2px solid #c9a34a";
+        match.style.outlineOffset = "4px";
+
+        highlightedElement = match;
+
+        match.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+    searchButton.addEventListener("click", runSiteSearch);
+
+    searchInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            runSiteSearch();
+        }
+    });
+
+    searchInput.addEventListener("input", () => {
+        if (searchInput.value.trim().toLowerCase() !== lastQuery) {
+            currentMatchIndex = -1;
+        }
+    });
+})();
 </script>  
 </body>
 </html>
