@@ -667,6 +667,66 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
     </div>
 
 </div>  
+<script>
+const joinConversationButton = document.getElementById("join-conversation-button");
+const viewReactionsButton = document.getElementById("view-reactions-button");
+const joinConversationModal = document.getElementById("join-conversation-modal");
+const allReactionsModal = document.getElementById("all-reactions-modal");
+const joinConversationClose = document.getElementById("join-conversation-close");
+const allReactionsClose = document.getElementById("all-reactions-close");
+const joinFromReactionsButton = document.getElementById("join-from-reactions-button");
+const reactionMessage = document.getElementById("reaction-message");
+const reactionCharacterTotal = document.getElementById("reaction-character-total");
+
+function openJoinConversation() {
+    allReactionsModal.hidden = true;
+    joinConversationModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    document.getElementById("reaction-display-name").focus();
+}
+
+function openAllReactions() {
+    joinConversationModal.hidden = true;
+    allReactionsModal.hidden = false;
+    document.body.style.overflow = "hidden";
+}
+
+function closeReactionModals() {
+    joinConversationModal.hidden = true;
+    allReactionsModal.hidden = true;
+    document.body.style.overflow = "";
+}
+
+joinConversationButton.addEventListener("click", openJoinConversation);
+viewReactionsButton.addEventListener("click", openAllReactions);
+
+joinConversationClose.addEventListener("click", closeReactionModals);
+allReactionsClose.addEventListener("click", closeReactionModals);
+
+joinFromReactionsButton.addEventListener("click", openJoinConversation);
+
+joinConversationModal.addEventListener("click", function(event) {
+    if (event.target === joinConversationModal) {
+        closeReactionModals();
+    }
+});
+
+allReactionsModal.addEventListener("click", function(event) {
+    if (event.target === allReactionsModal) {
+        closeReactionModals();
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeReactionModals();
+    }
+});
+
+reactionMessage.addEventListener("input", function() {
+    reactionCharacterTotal.textContent = reactionMessage.value.length;
+});
+</script>  
 </div><!-- end hero-center-column -->
         
 <aside id="sidebar">
