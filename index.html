@@ -684,47 +684,61 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
 <form
     class="subscribe-form"
     id="newsletter-subscribe-form"
-    novalidate>
+    method="POST"
+    action="https://d62d4439.sibforms.com/serve/MUIFADLJewrIrMRiGXhPkjF3dYmBnXRTwGR3zNgXXbl6rz-V6L16Hte_clQ0N9sXM7AXmWe2N6ESAip2KtLIpvklNa1uYX12nLrSw_E66_6pigMUsaLs6RvL6BVQ4PIFfUfsSzINPsjtu3h_cl_8pu6MvF3nrhOoShLFIqrleJldKvLIjoD7StrALEqGVrZvCJ7d3PMzIbDzoykm4A=="
+    data-type="subscription">
 
     <input
         type="email"
         id="newsletter-email"
-        name="email"
+        name="EMAIL"
         placeholder="Your email address"
         aria-label="Email address"
         autocomplete="email"
         required>
 
-    <p
-        class="subscribe-error"
-        id="subscribe-error"
-        role="alert"
-        hidden>
-    </p>
+    <label
+        for="newsletter-opt-in"
+        style="display:flex;align-items:flex-start;color:#929292;font-size:9px;line-height:1.35;cursor:pointer;">
+
+        <input
+            type="checkbox"
+            id="newsletter-opt-in"
+            name="OPT_IN"
+            value="1"
+            required
+            style="width:auto;height:auto;padding:0;margin:2px 6px 0 0;flex:0 0 auto;">
+
+        <span>
+            I agree to receive email updates, news and promotional messages
+            from My Story Pictures, LLC and BuddySmokes.com.
+        </span>
+
+    </label>
+
+    <input
+        type="text"
+        name="email_address_check"
+        value=""
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        style="position:absolute;left:-9999px;width:1px;height:1px;">
+
+    <input type="hidden" name="locale" value="en">
 
     <button type="submit" id="subscribe-button">
         SUBSCRIBE
     </button>
 
     <p class="subscribe-disclaimer">
-21+ only. No spam. Unsubscribe anytime.<br><a href="#" class="privacy-inline-link" data-legal-overlay="privacy-notice-overlay">Privacy Notice</a> &bull; <a href="#" class="privacy-inline-link" data-legal-overlay="privacy-policy-overlay">Privacy Policy</a>
+        21+ only. No spam. Unsubscribe anytime.<br>
+        <a href="#" class="privacy-inline-link" data-legal-overlay="privacy-notice-overlay">Privacy Notice</a>
+        &bull;
+        <a href="#" class="privacy-inline-link" data-legal-overlay="privacy-policy-overlay">Privacy Policy</a>
     </p>
 
 </form>
-
-<div
-    class="subscribe-success"
-    id="subscribe-success"
-    role="status"
-    hidden>
-
-    <strong>YOU’RE ON THE LIST</strong>
-
-    <p>
-        Check your email to confirm your subscription.
-    </p>
-
-</div>
 
   </section>
 
