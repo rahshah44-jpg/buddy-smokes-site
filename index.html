@@ -615,6 +615,8 @@ function createFeaturedReaction(item) {
 
     const likeButton = document.createElement("button");
     likeButton.type = "button";
+    likeButton.className = "reaction-like-display";
+    likeButton.setAttribute("aria-label", `${item.likes || 0} likes`);
     likeButton.innerHTML = '<i class="fa-regular fa-heart"></i>';
     likeButton.appendChild(
         document.createTextNode(` ${item.likes || 0}`)
@@ -622,6 +624,8 @@ function createFeaturedReaction(item) {
 
     const replyButton = document.createElement("button");
     replyButton.type = "button";
+    replyButton.className = "reaction-reply-button";
+    replyButton.dataset.replyTo = item.displayName;
     replyButton.innerHTML =
         '<i class="fa-solid fa-reply"></i> REPLY';
 
@@ -688,37 +692,188 @@ const reactionMessage = document.getElementById("reaction-message");
 const reactionCharacterTotal = document.getElementById("reaction-character-total");
 const reactionSubmitButton = audienceReactionForm.querySelector(".reaction-submit");
 const reactionReviewNote = audienceReactionForm.querySelector(".reaction-review-note");
+const reactionMessageLabel = audienceReactionForm.querySelector('label[for="reaction-message"]');
+const joinConversationTitle = document.getElementById("join-conversation-title");
+
+let currentReplyTarget = "";
+
+const submissionTypeInput = document.createElement("input");
+submissionTypeInput.type = "hidden";
+submissionTypeInput.name = "submission-type";
+audienceReactionForm.appendChild(submissionTypeInput);
+
+const replyToInput = document.createElement("input");
+replyToInput.type = "hidden";
+replyToInput.name = "reply-to";
+audienceReactionForm.appendChild(replyToInput);
 
 const defaultReactionNote =
     "Reactions are reviewed before appearing publicly.";
 
+function setReactionMode() {
+    currentReplyTarget = "";
+
+    joinConversationTitle.textContent =
+        "JOIN THE CONVERSATION";
+
+    reactionMessageLabel.textContent =
+        "YOUR REACTION";
+
+    reactionSubmitButton.textContent =
+        "SUBMIT REACTION";
+
+    reactionReviewNote.textContent =
+        defaultReactionNote;
+
+    submissionTypeInput.value = "reaction";
+    submissionTypeInput.defaultValue = "reaction";
+
+    replyToInput.value = "";
+    replyToInput.defaultValue = "";
+}
+
+function setReplyMode(displayName) {
+    currentReplyTarget = displayName;
+
+    joinConversationTitle.textContent =
+        `REPLY TO ${displayName}`;
+
+    reactionMessageLabel.textContent =
+        "YOUR REPLY";
+
+    reactionSubmitButton.textContent =
+        "SUBMIT REPLY";
+
+    reactionReviewNote.textContent =
+        "Replies are reviewed before appearing publicly.";
+
+    submissionTypeInput.value = "reply";
+    submissionTypeInput.defaultValue = "reply";
+
+    replyToInput.value = displayName;
+    replyToInput.defaultValue = displayName;
+}
+
 function openJoinConversation() {
+    setReactionMode();
+
     allReactionsModal.hidden = true;
     joinConversationModal.hidden = false;
-    reactionReviewNote.textContent = defaultReactionNote;
+
     document.body.style.overflow = "hidden";
-    document.getElementById("reaction-display-name").focus();
+
+    document
+        .getElementById("reaction-display-name")
+        .focus();
+}
+
+function openReply(displayName) {
+    setReplyMode(displayName);
+
+    allReactionsModal.hidden = true;
+    joinConversationModal.hidden = false;
+
+    document.body.style.overflow = "hidden";
+
+    document
+        .getElementById("reaction-display-name")
+        .focus();
+}
+
+function addAllReactionActions() {
+    const cards =
+        allReactionsList.querySelectorAll(".all-reaction-card");
+
+    cards.forEach(function(card, index) {
+        if (card.querySelector(".reaction-actions")) {
+            return;
+        }
+
+        const item = approvedReactions[index];
+
+        if (!item) {
+            return;
+        }
+
+        const actions = document.createElement("div");
+        actions.className = "reaction-actions";
+
+        const likeButton = document.createElement("button");
+        likeButton.type = "button";
+        likeButton.className = "reaction-like-display";
+        likeButton.setAttribute(
+            "aria-label",
+            `${item.likes || 0} likes`
+        );
+        likeButton.innerHTML =
+            '<i class="fa-regular fa-heart"></i>';
+
+        likeButton.appendChild(
+            document.createTextNode(` ${item.likes || 0}`)
+        );
+
+        const replyButton = document.createElement("button");
+        replyButton.type = "button";
+        replyButton.className = "reaction-reply-button";
+        replyButton.dataset.replyTo = item.displayName;
+        replyButton.innerHTML =
+            '<i class="fa-solid fa-reply"></i> REPLY';
+
+        actions.appendChild(likeButton);
+        actions.appendChild(replyButton);
+
+        card.appendChild(actions);
+    });
 }
 
 function openAllReactions() {
+    addAllReactionActions();
+
     joinConversationModal.hidden = true;
     allReactionsModal.hidden = false;
+
     document.body.style.overflow = "hidden";
 }
 
 function closeReactionModals() {
     joinConversationModal.hidden = true;
     allReactionsModal.hidden = true;
+
     document.body.style.overflow = "";
 }
 
-joinConversationButton.addEventListener("click", openJoinConversation);
-viewReactionsButton.addEventListener("click", openAllReactions);
+joinConversationButton.addEventListener("click", function() {
+    openJoinConversation();
+});
 
-joinConversationClose.addEventListener("click", closeReactionModals);
-allReactionsClose.addEventListener("click", closeReactionModals);
+viewReactionsButton.addEventListener("click", function() {
+    openAllReactions();
+});
 
-joinFromReactionsButton.addEventListener("click", openJoinConversation);
+joinConversationClose.addEventListener(
+    "click",
+    closeReactionModals
+);
+
+allReactionsClose.addEventListener(
+    "click",
+    closeReactionModals
+);
+
+joinFromReactionsButton.addEventListener("click", function() {
+    openJoinConversation();
+});
+
+document.addEventListener("click", function(event) {
+    const replyButton =
+        event.target.closest(".reaction-reply-button");
+
+    if (!replyButton) {
+        return;
+    }
+
+    openReply(replyButton.dataset.replyTo);
+});
 
 joinConversationModal.addEventListener("click", function(event) {
     if (event.target === joinConversationModal) {
@@ -739,9 +894,47 @@ document.addEventListener("keydown", function(event) {
 });
 
 reactionMessage.addEventListener("input", function() {
-    reactionCharacterTotal.textContent = reactionMessage.value.length;
+    reactionCharacterTotal.textContent =
+        reactionMessage.value.length;
 });
 
+const reactionNoteObserver = new MutationObserver(function() {
+    if (!currentReplyTarget) {
+        return;
+    }
+
+    if (
+        reactionReviewNote.textContent.trim() ===
+        "Submitting your reaction..."
+    ) {
+        reactionReviewNote.textContent =
+            "Submitting your reply...";
+    }
+
+    if (
+        reactionReviewNote.textContent.trim() ===
+        "Thanks. Your reaction has been submitted for review."
+    ) {
+        reactionReviewNote.textContent =
+            "Thanks. Your reply has been submitted for review.";
+    }
+
+    if (
+        reactionReviewNote.textContent.trim() ===
+        "Your reaction could not be submitted. Please try again."
+    ) {
+        reactionReviewNote.textContent =
+            "Your reply could not be submitted. Please try again.";
+    }
+});
+
+reactionNoteObserver.observe(
+    reactionReviewNote,
+    {
+        childList: true,
+        subtree: true
+    }
+);
 audienceReactionForm.addEventListener("submit", async function(event) {
     event.preventDefault();
 
