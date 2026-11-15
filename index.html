@@ -419,81 +419,7 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
 
   <div class="reactions-frame">
 
-    <!-- REACTION 1 -->
-    <article class="reaction-card">
-
-      <div class="reaction-user">
-
-        <div class="reaction-avatar">
-          <i class="fa-solid fa-user"></i>
-        </div>
-
-        <div>
-          <strong>@viewer01</strong>
-          <span>Audience Member</span>
-        </div>
-
-      </div>
-
-      <p>
-        “This is the kind of conversation I want to hear more of.
-        Looking forward to seeing where Buddy takes this.”
-      </p>
-
-      <div class="reaction-actions">
-
-        <button type="button">
-          <i class="fa-regular fa-heart"></i>
-          24
-        </button>
-
-        <button type="button">
-          <i class="fa-solid fa-reply"></i>
-          REPLY
-        </button>
-
-      </div>
-
-    </article>
-
-
-    <!-- REACTION 2 -->
-    <article class="reaction-card">
-
-      <div class="reaction-user">
-
-        <div class="reaction-avatar">
-          <i class="fa-solid fa-user"></i>
-        </div>
-
-        <div>
-          <strong>@viewer02</strong>
-          <span>Audience Member</span>
-        </div>
-
-      </div>
-
-      <p>
-        “Buddy and Noid are funny, but there is a real conversation
-        underneath it. I want to see more of this.”
-      </p>
-
-      <div class="reaction-actions">
-
-        <button type="button">
-          <i class="fa-regular fa-heart"></i>
-          17
-        </button>
-
-        <button type="button">
-          <i class="fa-solid fa-reply"></i>
-          REPLY
-        </button>
-
-      </div>
-
-    </article>
-
+ <!-- Featured approved reactions are inserted here automatically. -->
 
     <!-- REACTIONS FOOTER -->
 <div class="reactions-footer">
@@ -615,46 +541,7 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
 
         <div class="all-reactions-list">
 
-            <article class="all-reaction-card">
-
-                <div class="reaction-user">
-                    <div class="reaction-avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div>
-                        <strong>@viewer01</strong>
-                        <span>Audience Member</span>
-                    </div>
-                </div>
-
-                <p>
-                    “This is the kind of conversation I want to hear more of.
-                    Looking forward to seeing where Buddy takes this.”
-                </p>
-
-            </article>
-
-            <article class="all-reaction-card">
-
-                <div class="reaction-user">
-                    <div class="reaction-avatar">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
-
-                    <div>
-                        <strong>@viewer02</strong>
-                        <span>Audience Member</span>
-                    </div>
-                </div>
-
-                <p>
-                    “Buddy and Noid are funny, but there is a real conversation
-                    underneath it. I want to see more of this.”
-                </p>
-
-            </article>
-
+<!-- Approved reactions are inserted here automatically. -->
         </div>
 
         <button
@@ -668,6 +555,121 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
 
 </div>  
 <script>
+const approvedReactions = [
+    {
+        displayName: "@viewer01",
+        reaction: "This is the kind of conversation I want to hear more of. Looking forward to seeing where Buddy takes this.",
+        likes: 24,
+        featured: true
+    },
+    {
+        displayName: "@viewer02",
+        reaction: "Buddy and Noid are funny, but there is a real conversation underneath it. I want to see more of this.",
+        likes: 17,
+        featured: true
+    }
+];
+
+const reactionsFrame = document.querySelector(".reactions-frame");
+const reactionsFooter = document.querySelector(".reactions-footer");
+const allReactionsList = document.querySelector(".all-reactions-list");
+
+function createReactionUser(displayName) {
+    const user = document.createElement("div");
+    user.className = "reaction-user";
+
+    user.innerHTML = `
+        <div class="reaction-avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+            <strong></strong>
+            <span>Audience Member</span>
+        </div>
+    `;
+
+    user.querySelector("strong").textContent = displayName;
+
+    return user;
+}
+
+function createFeaturedReaction(item) {
+    const article = document.createElement("article");
+    article.className = "reaction-card";
+    article.dataset.approvedReaction = "true";
+
+    article.appendChild(createReactionUser(item.displayName));
+
+    const message = document.createElement("p");
+    message.textContent = `“${item.reaction}”`;
+    article.appendChild(message);
+
+    const actions = document.createElement("div");
+    actions.className = "reaction-actions";
+
+    const likeButton = document.createElement("button");
+    likeButton.type = "button";
+    likeButton.innerHTML = '<i class="fa-regular fa-heart"></i>';
+    likeButton.appendChild(
+        document.createTextNode(` ${item.likes || 0}`)
+    );
+
+    const replyButton = document.createElement("button");
+    replyButton.type = "button";
+    replyButton.innerHTML =
+        '<i class="fa-solid fa-reply"></i> REPLY';
+
+    actions.appendChild(likeButton);
+    actions.appendChild(replyButton);
+
+    article.appendChild(actions);
+
+    return article;
+}
+
+function createAllReaction(item) {
+    const article = document.createElement("article");
+    article.className = "all-reaction-card";
+
+    article.appendChild(createReactionUser(item.displayName));
+
+    const message = document.createElement("p");
+    message.textContent = `“${item.reaction}”`;
+    article.appendChild(message);
+
+    return article;
+}
+
+function renderApprovedReactions() {
+    document
+        .querySelectorAll('.reaction-card[data-approved-reaction="true"]')
+        .forEach(function(card) {
+            card.remove();
+        });
+
+    allReactionsList.innerHTML = "";
+
+    approvedReactions
+        .filter(function(item) {
+            return item.featured;
+        })
+        .slice(0, 2)
+        .forEach(function(item) {
+            reactionsFrame.insertBefore(
+                createFeaturedReaction(item),
+                reactionsFooter
+            );
+        });
+
+    approvedReactions.forEach(function(item) {
+        allReactionsList.appendChild(
+            createAllReaction(item)
+        );
+    });
+}
+
+renderApprovedReactions();
+
 const joinConversationButton = document.getElementById("join-conversation-button");
 const viewReactionsButton = document.getElementById("view-reactions-button");
 const joinConversationModal = document.getElementById("join-conversation-modal");
@@ -681,7 +683,8 @@ const reactionCharacterTotal = document.getElementById("reaction-character-total
 const reactionSubmitButton = audienceReactionForm.querySelector(".reaction-submit");
 const reactionReviewNote = audienceReactionForm.querySelector(".reaction-review-note");
 
-const defaultReactionNote = "Reactions are reviewed before appearing publicly.";
+const defaultReactionNote =
+    "Reactions are reviewed before appearing publicly.";
 
 function openJoinConversation() {
     allReactionsModal.hidden = true;
@@ -783,7 +786,7 @@ audienceReactionForm.addEventListener("submit", async function(event) {
         reactionSubmitButton.textContent = "SUBMIT REACTION";
     }
 });
-</script> 
+</script>
 </div><!-- end hero-center-column -->
         
 <aside id="sidebar">
