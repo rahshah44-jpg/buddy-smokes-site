@@ -548,7 +548,7 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
             will not be published.
         </p>
 
-        <form id="audience-reaction-form">
+<form id="audience-reaction-form" action="https://formspree.io/f/xzereegz" method="POST">
 
             <label for="reaction-display-name">
                 DISPLAY NAME
@@ -675,12 +675,18 @@ const allReactionsModal = document.getElementById("all-reactions-modal");
 const joinConversationClose = document.getElementById("join-conversation-close");
 const allReactionsClose = document.getElementById("all-reactions-close");
 const joinFromReactionsButton = document.getElementById("join-from-reactions-button");
+const audienceReactionForm = document.getElementById("audience-reaction-form");
 const reactionMessage = document.getElementById("reaction-message");
 const reactionCharacterTotal = document.getElementById("reaction-character-total");
+const reactionSubmitButton = audienceReactionForm.querySelector(".reaction-submit");
+const reactionReviewNote = audienceReactionForm.querySelector(".reaction-review-note");
+
+const defaultReactionNote = "Reactions are reviewed before appearing publicly.";
 
 function openJoinConversation() {
     allReactionsModal.hidden = true;
     joinConversationModal.hidden = false;
+    reactionReviewNote.textContent = defaultReactionNote;
     document.body.style.overflow = "hidden";
     document.getElementById("reaction-display-name").focus();
 }
@@ -726,7 +732,58 @@ document.addEventListener("keydown", function(event) {
 reactionMessage.addEventListener("input", function() {
     reactionCharacterTotal.textContent = reactionMessage.value.length;
 });
-</script>  
+
+audienceReactionForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    if (!audienceReactionForm.reportValidity()) {
+        return;
+    }
+
+    reactionSubmitButton.disabled = true;
+    reactionSubmitButton.textContent = "SUBMITTING...";
+    reactionReviewNote.textContent = "Submitting your reaction...";
+
+    const formData = new FormData(audienceReactionForm);
+
+    formData.append(
+        "source",
+        "BuddySmokes.com Audience Reactions"
+    );
+
+    formData.append(
+        "submission_time",
+        new Date().toISOString()
+    );
+
+    try {
+        const response = await fetch(audienceReactionForm.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+
+        if (response.ok) {
+            audienceReactionForm.reset();
+            reactionCharacterTotal.textContent = "0";
+
+            reactionReviewNote.textContent =
+                "Thanks. Your reaction has been submitted for review.";
+        } else {
+            reactionReviewNote.textContent =
+                "Your reaction could not be submitted. Please try again.";
+        }
+    } catch (error) {
+        reactionReviewNote.textContent =
+            "Your reaction could not be submitted. Please try again.";
+    } finally {
+        reactionSubmitButton.disabled = false;
+        reactionSubmitButton.textContent = "SUBMIT REACTION";
+    }
+});
+</script> 
 </div><!-- end hero-center-column -->
         
 <aside id="sidebar">
