@@ -468,13 +468,13 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
             JOIN THE CONVERSATION
         </h2>
 
-        <p class="reaction-modal-intro">
-            Keep it blunt, but keep it about the conversation.
-            Threats, targeted harassment, spam and discriminatory slurs
-            will not be published.
-        </p>
+<p class="reaction-modal-intro">
+    Keep it blunt, but keep it about the conversation.
+    Posts appear immediately. Threats, targeted harassment, spam
+    and discriminatory slurs may be removed.
+</p>
 
-<form id="audience-reaction-form" action="https://formspree.io/f/xzereegz" method="POST">
+<form id="audience-reaction-form">
 
             <label for="reaction-display-name">
                 DISPLAY NAME
@@ -506,10 +506,9 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
                 SUBMIT REACTION
             </button>
 
-            <p class="reaction-review-note">
-                Reactions are reviewed before appearing publicly.
-            </p>
-
+<p class="reaction-review-note">
+    Posts appear immediately. Community-rule violations may be removed.
+</p>
         </form>
 
     </div>
@@ -555,30 +554,86 @@ src="https://www.youtube.com/embed/znN4-aRryEI?rel=0"
 
 </div>  
 <script>
-const approvedReactions = [
-    {
-        displayName: "@CocoLoco",
-        reaction: "This is the kind of conversation I want to hear more of. Looking forward to seeing where Buddy takes this.",
-        likes: 24,
-        featured: true
-    },
-    {
-        displayName: "@I-SmokeSoWhat",
-        reaction: "Buddy and Noid are funny, but there is a real conversation underneath it. I want to see more of this.",
-        likes: 17,
-        featured: true
-    },
-    {
-        displayName: "@TheCannabisKid",
-        reaction: "I heard there's a female in TRT (The Resin Team) and she's on Nikki M's level. When is she dropping the first song? All that talk, I hope not to be disappointed, real talk.",
-        likes: 0,
-        featured: false
-    }
-];
+const SUPABASE_URL =
+    "https://xcphtggrnqgyvgremjwh.supabase.co";
 
-const reactionsFrame = document.querySelector(".reactions-frame");
-const reactionsFooter = document.querySelector(".reactions-footer");
-const allReactionsList = document.querySelector(".all-reactions-list");
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_Q99ZuHiLCnOezUiIcgYDwA_wktsK_Ch";
+
+const REACTIONS_API =
+    `${SUPABASE_URL}/rest/v1/audience_reactions`;
+
+let liveReactions = [];
+let currentReplyParentId = null;
+let currentReplyTarget = "";
+
+const reactionsFrame =
+    document.querySelector(".reactions-frame");
+
+const reactionsFooter =
+    document.querySelector(".reactions-footer");
+
+const allReactionsList =
+    document.querySelector(".all-reactions-list");
+
+const joinConversationButton =
+    document.getElementById("join-conversation-button");
+
+const viewReactionsButton =
+    document.getElementById("view-reactions-button");
+
+const joinConversationModal =
+    document.getElementById("join-conversation-modal");
+
+const allReactionsModal =
+    document.getElementById("all-reactions-modal");
+
+const joinConversationClose =
+    document.getElementById("join-conversation-close");
+
+const allReactionsClose =
+    document.getElementById("all-reactions-close");
+
+const joinFromReactionsButton =
+    document.getElementById("join-from-reactions-button");
+
+const audienceReactionForm =
+    document.getElementById("audience-reaction-form");
+
+const reactionDisplayName =
+    document.getElementById("reaction-display-name");
+
+const reactionMessage =
+    document.getElementById("reaction-message");
+
+const reactionCharacterTotal =
+    document.getElementById("reaction-character-total");
+
+const reactionSubmitButton =
+    audienceReactionForm.querySelector(".reaction-submit");
+
+const reactionReviewNote =
+    audienceReactionForm.querySelector(".reaction-review-note");
+
+const reactionMessageLabel =
+    audienceReactionForm.querySelector(
+        'label[for="reaction-message"]'
+    );
+
+const joinConversationTitle =
+    document.getElementById("join-conversation-title");
+
+const defaultReactionNote =
+    "Posts appear immediately. Community-rule violations may be removed.";
+
+function getSupabaseHeaders(extraHeaders = {}) {
+    return {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        "Content-Type": "application/json",
+        ...extraHeaders
+    };
+}
 
 function createReactionUser(displayName) {
     const user = document.createElement("div");
@@ -594,72 +649,251 @@ function createReactionUser(displayName) {
         </div>
     `;
 
-    user.querySelector("strong").textContent = displayName;
+    user.querySelector("strong").textContent =
+        displayName;
 
     return user;
 }
 
-function createFeaturedReaction(item) {
-    const article = document.createElement("article");
-    article.className = "reaction-card";
-    article.dataset.approvedReaction = "true";
+function hasLikedReaction(reactionId) {
+    try {
+        return localStorage.getItem(
+            `buddy-smokes-liked-${reactionId}`
+        ) === "1";
+    } catch (error) {
+        return false;
+    }
+}
 
-    article.appendChild(createReactionUser(item.displayName));
+function rememberLikedReaction(reactionId) {
+    try {
+        localStorage.setItem(
+            `buddy-smokes-liked-${reactionId}`,
+            "1"
+        );
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-    const message = document.createElement("p");
-    message.textContent = `“${item.reaction}”`;
-    article.appendChild(message);
-
+function createReactionActions(item) {
     const actions = document.createElement("div");
     actions.className = "reaction-actions";
 
     const likeButton = document.createElement("button");
     likeButton.type = "button";
     likeButton.className = "reaction-like-display";
-    likeButton.setAttribute("aria-label", `${item.likes || 0} likes`);
-    likeButton.innerHTML = '<i class="fa-regular fa-heart"></i>';
-    likeButton.appendChild(
-        document.createTextNode(` ${item.likes || 0}`)
+    likeButton.dataset.likeId = item.id;
+
+    const alreadyLiked =
+        hasLikedReaction(item.id);
+
+    likeButton.disabled = alreadyLiked;
+
+    const heartIcon =
+        document.createElement("i");
+
+    heartIcon.className = alreadyLiked
+        ? "fa-solid fa-heart"
+        : "fa-regular fa-heart";
+
+    const likeTotal =
+        document.createElement("span");
+
+    likeTotal.textContent =
+        ` ${item.likes || 0}`;
+
+    likeButton.appendChild(heartIcon);
+    likeButton.appendChild(likeTotal);
+
+    likeButton.setAttribute(
+        "aria-label",
+        `${item.likes || 0} likes`
     );
 
-    const replyButton = document.createElement("button");
+    const replyButton =
+        document.createElement("button");
+
     replyButton.type = "button";
-    replyButton.className = "reaction-reply-button";
-    replyButton.dataset.replyTo = item.displayName;
+    replyButton.className =
+        "reaction-reply-button";
+
+    replyButton.dataset.replyId =
+        item.id;
+
+    replyButton.dataset.replyTo =
+        item.display_name;
+
     replyButton.innerHTML =
         '<i class="fa-solid fa-reply"></i> REPLY';
 
     actions.appendChild(likeButton);
     actions.appendChild(replyButton);
 
-    article.appendChild(actions);
-
-    return article;
+    return actions;
 }
 
-function createAllReaction(item) {
-    const article = document.createElement("article");
-    article.className = "all-reaction-card";
+function createFeaturedReaction(item) {
+    const article =
+        document.createElement("article");
 
-    article.appendChild(createReactionUser(item.displayName));
+    article.className = "reaction-card";
+    article.dataset.liveReaction = "true";
+    article.dataset.reactionId = item.id;
 
-    const message = document.createElement("p");
-    message.textContent = `“${item.reaction}”`;
+    article.appendChild(
+        createReactionUser(item.display_name)
+    );
+
+    const message =
+        document.createElement("p");
+
+    message.textContent =
+        `“${item.message}”`;
+
     article.appendChild(message);
 
+    article.appendChild(
+        createReactionActions(item)
+    );
+
     return article;
 }
 
-function renderApprovedReactions() {
+function createReplyItem(
+    item,
+    repliesByParent,
+    depth = 1
+) {
+    const reply =
+        document.createElement("div");
+
+    reply.className =
+        "reaction-reply-item";
+
+    reply.style.marginTop = "14px";
+    reply.style.marginLeft = "14px";
+    reply.style.paddingLeft = "14px";
+    reply.style.borderLeft =
+        "1px solid rgba(212, 176, 64, 0.45)";
+
+    reply.appendChild(
+        createReactionUser(item.display_name)
+    );
+
+    const message =
+        document.createElement("p");
+
+    message.textContent =
+        `“${item.message}”`;
+
+    reply.appendChild(message);
+
+    reply.appendChild(
+        createReactionActions(item)
+    );
+
+    const childReplies =
+        repliesByParent.get(item.id) || [];
+
+    childReplies.forEach(function(child) {
+        reply.appendChild(
+            createReplyItem(
+                child,
+                repliesByParent,
+                depth + 1
+            )
+        );
+    });
+
+    return reply;
+}
+
+function createAllReaction(
+    item,
+    repliesByParent
+) {
+    const article =
+        document.createElement("article");
+
+    article.className =
+        "all-reaction-card";
+
+    article.dataset.reactionId =
+        item.id;
+
+    article.appendChild(
+        createReactionUser(item.display_name)
+    );
+
+    const message =
+        document.createElement("p");
+
+    message.textContent =
+        `“${item.message}”`;
+
+    article.appendChild(message);
+
+    article.appendChild(
+        createReactionActions(item)
+    );
+
+    const replies =
+        repliesByParent.get(item.id) || [];
+
+    replies.forEach(function(reply) {
+        article.appendChild(
+            createReplyItem(
+                reply,
+                repliesByParent
+            )
+        );
+    });
+
+    return article;
+}
+
+function renderLiveReactions() {
     document
-        .querySelectorAll('.reaction-card[data-approved-reaction="true"]')
+        .querySelectorAll(
+            '.reaction-card[data-live-reaction="true"]'
+        )
         .forEach(function(card) {
             card.remove();
         });
 
     allReactionsList.innerHTML = "";
 
-    approvedReactions
+    const repliesByParent =
+        new Map();
+
+    liveReactions.forEach(function(item) {
+        if (!item.parent_id) {
+            return;
+        }
+
+        if (
+            !repliesByParent.has(
+                item.parent_id
+            )
+        ) {
+            repliesByParent.set(
+                item.parent_id,
+                []
+            );
+        }
+
+        repliesByParent
+            .get(item.parent_id)
+            .push(item);
+    });
+
+    const topLevelReactions =
+        liveReactions.filter(function(item) {
+            return !item.parent_id;
+        });
+
+    topLevelReactions
         .filter(function(item) {
             return item.featured;
         })
@@ -671,46 +905,54 @@ function renderApprovedReactions() {
             );
         });
 
-    approvedReactions.forEach(function(item) {
+    topLevelReactions.forEach(function(item) {
         allReactionsList.appendChild(
-            createAllReaction(item)
+            createAllReaction(
+                item,
+                repliesByParent
+            )
         );
     });
 }
 
-renderApprovedReactions();
+async function loadReactions() {
+    const query =
+        "?select=id,display_name,message,parent_id,featured,likes,status,created_at" +
+        "&status=eq.published" +
+        "&order=created_at.asc";
 
-const joinConversationButton = document.getElementById("join-conversation-button");
-const viewReactionsButton = document.getElementById("view-reactions-button");
-const joinConversationModal = document.getElementById("join-conversation-modal");
-const allReactionsModal = document.getElementById("all-reactions-modal");
-const joinConversationClose = document.getElementById("join-conversation-close");
-const allReactionsClose = document.getElementById("all-reactions-close");
-const joinFromReactionsButton = document.getElementById("join-from-reactions-button");
-const audienceReactionForm = document.getElementById("audience-reaction-form");
-const reactionMessage = document.getElementById("reaction-message");
-const reactionCharacterTotal = document.getElementById("reaction-character-total");
-const reactionSubmitButton = audienceReactionForm.querySelector(".reaction-submit");
-const reactionReviewNote = audienceReactionForm.querySelector(".reaction-review-note");
-const reactionMessageLabel = audienceReactionForm.querySelector('label[for="reaction-message"]');
-const joinConversationTitle = document.getElementById("join-conversation-title");
+    try {
+        const response = await fetch(
+            `${REACTIONS_API}${query}`,
+            {
+                headers:
+                    getSupabaseHeaders()
+            }
+        );
 
-let currentReplyTarget = "";
+        if (!response.ok) {
+            throw new Error(
+                await response.text()
+            );
+        }
 
-const submissionTypeInput = document.createElement("input");
-submissionTypeInput.type = "hidden";
-submissionTypeInput.name = "submission-type";
-audienceReactionForm.appendChild(submissionTypeInput);
+        liveReactions =
+            await response.json();
 
-const replyToInput = document.createElement("input");
-replyToInput.type = "hidden";
-replyToInput.name = "reply-to";
-audienceReactionForm.appendChild(replyToInput);
+        renderLiveReactions();
+    } catch (error) {
+        console.error(
+            "Could not load reactions:",
+            error
+        );
 
-const defaultReactionNote =
-    "Reactions are reviewed before appearing publicly.";
+        allReactionsList.innerHTML =
+            "<p>Reactions are temporarily unavailable.</p>";
+    }
+}
 
 function setReactionMode() {
+    currentReplyParentId = null;
     currentReplyTarget = "";
 
     joinConversationTitle.textContent =
@@ -724,16 +966,17 @@ function setReactionMode() {
 
     reactionReviewNote.textContent =
         defaultReactionNote;
-
-    submissionTypeInput.value = "reaction";
-    submissionTypeInput.defaultValue = "reaction";
-
-    replyToInput.value = "";
-    replyToInput.defaultValue = "";
 }
 
-function setReplyMode(displayName) {
-    currentReplyTarget = displayName;
+function setReplyMode(
+    reactionId,
+    displayName
+) {
+    currentReplyParentId =
+        reactionId;
+
+    currentReplyTarget =
+        displayName;
 
     joinConversationTitle.textContent =
         `REPLY TO ${displayName}`;
@@ -745,13 +988,7 @@ function setReplyMode(displayName) {
         "SUBMIT REPLY";
 
     reactionReviewNote.textContent =
-        "Replies are reviewed before appearing publicly.";
-
-    submissionTypeInput.value = "reply";
-    submissionTypeInput.defaultValue = "reply";
-
-    replyToInput.value = displayName;
-    replyToInput.defaultValue = displayName;
+        "Replies appear immediately after posting.";
 }
 
 function openJoinConversation() {
@@ -760,79 +997,36 @@ function openJoinConversation() {
     allReactionsModal.hidden = true;
     joinConversationModal.hidden = false;
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
-    document
-        .getElementById("reaction-display-name")
-        .focus();
+    reactionDisplayName.focus();
 }
 
-function openReply(displayName) {
-    setReplyMode(displayName);
+function openReply(
+    reactionId,
+    displayName
+) {
+    setReplyMode(
+        reactionId,
+        displayName
+    );
 
     allReactionsModal.hidden = true;
     joinConversationModal.hidden = false;
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 
-    document
-        .getElementById("reaction-display-name")
-        .focus();
-}
-
-function addAllReactionActions() {
-    const cards =
-        allReactionsList.querySelectorAll(".all-reaction-card");
-
-    cards.forEach(function(card, index) {
-        if (card.querySelector(".reaction-actions")) {
-            return;
-        }
-
-        const item = approvedReactions[index];
-
-        if (!item) {
-            return;
-        }
-
-        const actions = document.createElement("div");
-        actions.className = "reaction-actions";
-
-        const likeButton = document.createElement("button");
-        likeButton.type = "button";
-        likeButton.className = "reaction-like-display";
-        likeButton.setAttribute(
-            "aria-label",
-            `${item.likes || 0} likes`
-        );
-        likeButton.innerHTML =
-            '<i class="fa-regular fa-heart"></i>';
-
-        likeButton.appendChild(
-            document.createTextNode(` ${item.likes || 0}`)
-        );
-
-        const replyButton = document.createElement("button");
-        replyButton.type = "button";
-        replyButton.className = "reaction-reply-button";
-        replyButton.dataset.replyTo = item.displayName;
-        replyButton.innerHTML =
-            '<i class="fa-solid fa-reply"></i> REPLY';
-
-        actions.appendChild(likeButton);
-        actions.appendChild(replyButton);
-
-        card.appendChild(actions);
-    });
+    reactionDisplayName.focus();
 }
 
 function openAllReactions() {
-    addAllReactionActions();
-
     joinConversationModal.hidden = true;
     allReactionsModal.hidden = false;
 
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow =
+        "hidden";
 }
 
 function closeReactionModals() {
@@ -842,13 +1036,119 @@ function closeReactionModals() {
     document.body.style.overflow = "";
 }
 
-joinConversationButton.addEventListener("click", function() {
-    openJoinConversation();
-});
+async function handleLike(likeButton) {
+    const reactionId =
+        likeButton.dataset.likeId;
 
-viewReactionsButton.addEventListener("click", function() {
-    openAllReactions();
-});
+    if (
+        !reactionId ||
+        hasLikedReaction(reactionId)
+    ) {
+        return;
+    }
+
+    likeButton.disabled = true;
+
+    try {
+        const response = await fetch(
+            `${SUPABASE_URL}/rest/v1/rpc/increment_reaction_like`,
+            {
+                method: "POST",
+                headers:
+                    getSupabaseHeaders(),
+                body: JSON.stringify({
+                    reaction_id:
+                        reactionId
+                })
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                await response.text()
+            );
+        }
+
+        const result =
+            await response.json();
+
+        if (result === null) {
+            throw new Error(
+                "Like could not be recorded."
+            );
+        }
+
+        const newLikeTotal =
+            Number(result);
+
+        const reaction =
+            liveReactions.find(
+                function(item) {
+                    return (
+                        item.id ===
+                        reactionId
+                    );
+                }
+            );
+
+        if (reaction) {
+            reaction.likes =
+                newLikeTotal;
+        }
+
+        rememberLikedReaction(
+            reactionId
+        );
+
+        document
+            .querySelectorAll(
+                `.reaction-like-display[data-like-id="${reactionId}"]`
+            )
+            .forEach(
+                function(button) {
+                    button.disabled = true;
+
+                    const icon =
+                        button.querySelector("i");
+
+                    const total =
+                        button.querySelector("span");
+
+                    if (icon) {
+                        icon.className =
+                            "fa-solid fa-heart";
+                    }
+
+                    if (total) {
+                        total.textContent =
+                            ` ${newLikeTotal}`;
+                    }
+
+                    button.setAttribute(
+                        "aria-label",
+                        `${newLikeTotal} likes`
+                    );
+                }
+            );
+    } catch (error) {
+        console.error(
+            "Could not record like:",
+            error
+        );
+
+        likeButton.disabled = false;
+    }
+}
+
+joinConversationButton.addEventListener(
+    "click",
+    openJoinConversation
+);
+
+viewReactionsButton.addEventListener(
+    "click",
+    openAllReactions
+);
 
 joinConversationClose.addEventListener(
     "click",
@@ -860,131 +1160,225 @@ allReactionsClose.addEventListener(
     closeReactionModals
 );
 
-joinFromReactionsButton.addEventListener("click", function() {
-    openJoinConversation();
-});
+joinFromReactionsButton.addEventListener(
+    "click",
+    openJoinConversation
+);
 
-document.addEventListener("click", function(event) {
-    const replyButton =
-        event.target.closest(".reaction-reply-button");
+document.addEventListener(
+    "click",
+    async function(event) {
+        const replyButton =
+            event.target.closest(
+                ".reaction-reply-button"
+            );
 
-    if (!replyButton) {
-        return;
-    }
+        if (replyButton) {
+            openReply(
+                replyButton.dataset.replyId,
+                replyButton.dataset.replyTo
+            );
 
-    openReply(replyButton.dataset.replyTo);
-});
+            return;
+        }
 
-joinConversationModal.addEventListener("click", function(event) {
-    if (event.target === joinConversationModal) {
-        closeReactionModals();
-    }
-});
+        const likeButton =
+            event.target.closest(
+                ".reaction-like-display"
+            );
 
-allReactionsModal.addEventListener("click", function(event) {
-    if (event.target === allReactionsModal) {
-        closeReactionModals();
-    }
-});
-
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        closeReactionModals();
-    }
-});
-
-reactionMessage.addEventListener("input", function() {
-    reactionCharacterTotal.textContent =
-        reactionMessage.value.length;
-});
-
-const reactionNoteObserver = new MutationObserver(function() {
-    if (!currentReplyTarget) {
-        return;
-    }
-
-    if (
-        reactionReviewNote.textContent.trim() ===
-        "Submitting your reaction..."
-    ) {
-        reactionReviewNote.textContent =
-            "Submitting your reply...";
-    }
-
-    if (
-        reactionReviewNote.textContent.trim() ===
-        "Thanks. Your reaction has been submitted for review."
-    ) {
-        reactionReviewNote.textContent =
-            "Thanks. Your reply has been submitted for review.";
-    }
-
-    if (
-        reactionReviewNote.textContent.trim() ===
-        "Your reaction could not be submitted. Please try again."
-    ) {
-        reactionReviewNote.textContent =
-            "Your reply could not be submitted. Please try again.";
-    }
-});
-
-reactionNoteObserver.observe(
-    reactionReviewNote,
-    {
-        childList: true,
-        subtree: true
+        if (likeButton) {
+            await handleLike(
+                likeButton
+            );
+        }
     }
 );
-audienceReactionForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
 
-    if (!audienceReactionForm.reportValidity()) {
-        return;
-    }
-
-    reactionSubmitButton.disabled = true;
-    reactionSubmitButton.textContent = "SUBMITTING...";
-    reactionReviewNote.textContent = "Submitting your reaction...";
-
-    const formData = new FormData(audienceReactionForm);
-
-    formData.append(
-        "source",
-        "BuddySmokes.com Audience Reactions"
-    );
-
-    formData.append(
-        "submission_time",
-        new Date().toISOString()
-    );
-
-    try {
-        const response = await fetch(audienceReactionForm.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-                "Accept": "application/json"
-            }
-        });
-
-        if (response.ok) {
-            audienceReactionForm.reset();
-            reactionCharacterTotal.textContent = "0";
-
-            reactionReviewNote.textContent =
-                "Thanks. Your reaction has been submitted for review.";
-        } else {
-            reactionReviewNote.textContent =
-                "Your reaction could not be submitted. Please try again.";
+joinConversationModal.addEventListener(
+    "click",
+    function(event) {
+        if (
+            event.target ===
+            joinConversationModal
+        ) {
+            closeReactionModals();
         }
-    } catch (error) {
-        reactionReviewNote.textContent =
-            "Your reaction could not be submitted. Please try again.";
-    } finally {
-        reactionSubmitButton.disabled = false;
-        reactionSubmitButton.textContent = "SUBMIT REACTION";
     }
-});
+);
+
+allReactionsModal.addEventListener(
+    "click",
+    function(event) {
+        if (
+            event.target ===
+            allReactionsModal
+        ) {
+            closeReactionModals();
+        }
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+        if (event.key === "Escape") {
+            closeReactionModals();
+        }
+    }
+);
+
+reactionMessage.addEventListener(
+    "input",
+    function() {
+        reactionCharacterTotal.textContent =
+            reactionMessage.value.length;
+    }
+);
+
+audienceReactionForm.addEventListener(
+    "submit",
+    async function(event) {
+        event.preventDefault();
+
+        if (
+            !audienceReactionForm.reportValidity()
+        ) {
+            return;
+        }
+
+        const rawDisplayName =
+            reactionDisplayName.value.trim();
+
+        const cleanDisplayName =
+            rawDisplayName
+                .replace(/^@+/, "")
+                .trim();
+
+        const message =
+            reactionMessage.value.trim();
+
+        if (!cleanDisplayName) {
+            reactionReviewNote.textContent =
+                "Please enter a display name.";
+
+            return;
+        }
+
+        if (!message) {
+            reactionReviewNote.textContent =
+                "Please enter your reaction.";
+
+            return;
+        }
+
+        const displayName =
+            `@${cleanDisplayName}`.slice(
+                0,
+                40
+            );
+
+        const isReply =
+            Boolean(
+                currentReplyParentId
+            );
+
+        reactionSubmitButton.disabled =
+            true;
+
+        reactionSubmitButton.textContent =
+            "POSTING...";
+
+        reactionReviewNote.textContent =
+            isReply
+                ? "Posting your reply..."
+                : "Posting your reaction...";
+
+        const payload = {
+            display_name:
+                displayName,
+            message:
+                message,
+            parent_id:
+                currentReplyParentId,
+            status:
+                "published",
+            featured:
+                false,
+            likes:
+                0
+        };
+
+        try {
+            const response =
+                await fetch(
+                    REACTIONS_API,
+                    {
+                        method: "POST",
+                        headers:
+                            getSupabaseHeaders({
+                                Prefer:
+                                    "return=representation"
+                            }),
+                        body:
+                            JSON.stringify(
+                                payload
+                            )
+                    }
+                );
+
+            if (!response.ok) {
+                throw new Error(
+                    await response.text()
+                );
+            }
+
+            const createdRows =
+                await response.json();
+
+            const createdReaction =
+                createdRows[0];
+
+            if (createdReaction) {
+                liveReactions.push(
+                    createdReaction
+                );
+
+                renderLiveReactions();
+            }
+
+            audienceReactionForm.reset();
+
+            reactionCharacterTotal.textContent =
+                "0";
+
+            reactionReviewNote.textContent =
+                isReply
+                    ? "Posted. Your reply is now live."
+                    : "Posted. Your reaction is now live.";
+        } catch (error) {
+            console.error(
+                "Could not post reaction:",
+                error
+            );
+
+            reactionReviewNote.textContent =
+                isReply
+                    ? "Your reply could not be posted. Please try again."
+                    : "Your reaction could not be posted. Please try again.";
+        } finally {
+            reactionSubmitButton.disabled =
+                false;
+
+            reactionSubmitButton.textContent =
+                isReply
+                    ? "SUBMIT REPLY"
+                    : "SUBMIT REACTION";
+        }
+    }
+);
+
+loadReactions();
 </script>
 </div><!-- end hero-center-column -->
         
