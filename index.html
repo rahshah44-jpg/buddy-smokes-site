@@ -635,7 +635,20 @@ function getSupabaseHeaders(extraHeaders = {}) {
     };
 }
 
-function createReactionUser(displayName) {
+function formatReactionDate(createdAt) {
+    if (!createdAt) {
+        return "";
+    }
+
+    return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "America/Los_Angeles"
+    }).format(new Date(createdAt));
+}
+
+function createReactionUser(displayName, createdAt) {
     const user = document.createElement("div");
     user.className = "reaction-user";
 
@@ -645,12 +658,20 @@ function createReactionUser(displayName) {
         </div>
         <div>
             <strong></strong>
-            <span>Audience Member</span>
+            <span></span>
         </div>
     `;
 
     user.querySelector("strong").textContent =
         displayName;
+
+    const formattedDate =
+        formatReactionDate(createdAt);
+
+    user.querySelector("span").textContent =
+        formattedDate
+            ? `Audience Member · ${formattedDate}`
+            : "Audience Member";
 
     return user;
 }
@@ -778,7 +799,7 @@ function createReplyItem(
         "1px solid rgba(212, 176, 64, 0.45)";
 
     reply.appendChild(
-        createReactionUser(item.display_name)
+createReactionUser(item.display_name, item.created_at)
     );
 
     const message =
