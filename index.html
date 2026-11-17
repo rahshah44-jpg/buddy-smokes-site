@@ -763,7 +763,7 @@ function createFeaturedReaction(item) {
     article.dataset.reactionId = item.id;
 
     article.appendChild(
-        createReactionUser(item.display_name)
+        createReactionUser(item.display_name, item.created_at)
     );
 
     const message =
@@ -844,7 +844,7 @@ function createAllReaction(
         item.id;
 
     article.appendChild(
-        createReactionUser(item.display_name)
+        createReactionUser(item.display_name, item.created_at)
     );
 
     const message =
