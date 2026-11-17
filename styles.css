@@ -5984,6 +5984,10 @@ font-size: 0.38em !important;
    MOBILE LANDING + LAUNCH LAYOUT
    ========================================================= */
 
+.mobile-landing-brand {
+  display: none;
+}
+
 @media (max-width: 720px) {
 
   /* =======================================================
@@ -6029,57 +6033,51 @@ font-size: 0.38em !important;
 
 
   /* =======================================================
-     1. CULTURE TITLE
+     1. BUDDY SMOKES + CANNABIS CAMPAIGN TITLE
      ======================================================= */
 
-  .culture-title {
+  .mobile-landing-brand {
     order: 1 !important;
 
+    display: block !important;
+
     width: 96% !important;
-    height: 74px !important;
-    min-height: 74px !important;
 
-    margin: 14px auto 0 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    gap: 8px !important;
-
-    position: relative !important;
-  }
-
-  .culture-title h2 {
-    margin: 0 !important;
-
-    font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
-
-    font-size: 26px !important;
-    font-weight: 400 !important;
-
-    line-height: 1 !important;
-
-    letter-spacing: 1px !important;
-
-    text-align: center !important;
+    margin: 18px auto 8px !important;
 
     color: #f3eed8 !important;
 
-    white-space: normal !important;
+    font-family: Georgia, "Times New Roman", serif !important;
+
+    font-size: clamp(28px, 8vw, 42px) !important;
+    font-weight: 700 !important;
+
+    line-height: 1.05 !important;
+
+    letter-spacing: -0.5px !important;
+
+    text-align: center !important;
+
+    position: relative !important;
+
+    z-index: 20 !important;
   }
 
-  .culture-title .culture-line:first-child {
-    width: 34px !important;
-    min-width: 34px !important;
+  .mobile-brand-tm {
+    display: inline-block !important;
 
-    flex: 0 0 34px !important;
-  }
+    margin-left: 2px !important;
 
-  .culture-title .culture-line:last-child {
-    min-width: 34px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 
-    flex: 1 1 auto !important;
+    font-size: 0.30em !important;
+    font-weight: 700 !important;
+
+    line-height: 1 !important;
+
+    vertical-align: super !important;
+
+    transform: translateY(-1px) !important;
   }
 
 
@@ -6095,14 +6093,14 @@ font-size: 0.38em !important;
     left: auto !important;
     top: auto !important;
 
-    width: min(92vw, 410px) !important;
+    width: 96% !important;
     height: auto !important;
 
-    margin: 2px auto 4px !important;
+    margin: 0 auto !important;
 
-    display: block !important;
-
-    align-self: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
     z-index: 20 !important;
   }
@@ -6112,138 +6110,118 @@ font-size: 0.38em !important;
 
     display: block !important;
 
-    width: 100% !important;
+    width: min(90vw, 430px) !important;
     height: auto !important;
 
-    max-height: 54svh !important;
-
-    object-fit: contain !important;
+    max-height: none !important;
 
     margin: 0 auto !important;
+
+    object-fit: contain !important;
   }
 
 
-  /* Buddy logo trademark */
+  /* Buddy logo ™ */
 
   .site-logo-tm {
     position: absolute !important;
 
-    right: 7% !important;
-    bottom: 9% !important;
-
     top: auto !important;
     left: auto !important;
 
+    right: 10% !important;
+    bottom: 18% !important;
+
     margin: 0 !important;
+
+    color: #f3eed8 !important;
 
     font-family: Arial, Helvetica, sans-serif !important;
 
-    font-size: 10px !important;
-    font-weight: 400 !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
 
     line-height: 1 !important;
-
-    color: #f3eed8 !important;
 
     z-index: 30 !important;
   }
 
 
   /* =======================================================
-     3. NAVIGATION + SEARCH
+     3. THE CULTURE HAS CHARACTERS
      ======================================================= */
 
-  body > header .main-nav,
-  .main-nav {
+  .culture-title {
     order: 3 !important;
 
     width: 96% !important;
 
-    margin: 2px auto 0 !important;
+    height: auto !important;
+    min-height: 64px !important;
 
-    display: grid !important;
-
-    grid-template-columns:
-      repeat(3, minmax(0, 1fr)) !important;
-
-    gap: 7px !important;
-
-    position: relative !important;
-
-    padding-bottom: 46px !important;
-
-    z-index: 30 !important;
-  }
-
-  .main-nav > a {
-    min-width: 0 !important;
-
-    padding: 9px 3px !important;
+    margin: 2px auto 10px !important;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    text-align: center !important;
+    gap: 9px !important;
 
-    background: rgba(5, 5, 5, 0.62) !important;
+    position: relative !important;
+  }
 
-    border: 1px solid rgba(201, 163, 74, 0.48) !important;
+  .culture-title h2 {
+    flex: 0 1 auto !important;
+
+    margin: 0 !important;
 
     color: #f3eed8 !important;
 
-    font-size: 10px !important;
-    line-height: 1.1 !important;
-  }
+    font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
 
-
-  /* SEARCH */
-
-  .site-search {
-    grid-column: 1 / -1 !important;
-
-    width: 100% !important;
-
-    margin: 2px 0 0 !important;
-  }
-
-  .site-search input {
-    background: rgba(5, 5, 5, 0.76) !important;
-  }
-
-
-  /* =======================================================
-     BOLDER SCROLL ARROW
-     ======================================================= */
-
-  .main-nav::after {
-    content: "↓";
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 2px;
-
-    transform: translateX(-50%);
-
-    color: #e0c06c !important;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 34px !important;
-    font-weight: 900 !important;
+    font-size: clamp(21px, 6vw, 27px) !important;
+    font-weight: 400 !important;
 
     line-height: 1 !important;
 
-    text-shadow:
-      0 1px 0 #000,
-      0 0 7px rgba(224, 192, 108, 0.50);
+    letter-spacing: 1px !important;
 
-    pointer-events: none;
+    text-align: center !important;
+
+    white-space: nowrap !important;
   }
 
+  .mobile-culture-tm {
+    display: inline-block !important;
 
-  /* Remove old arrow from Culture title */
+    margin-left: 1px !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 0.42em !important;
+    font-weight: 700 !important;
+
+    vertical-align: super !important;
+
+    transform: translateY(-1px) !important;
+  }
+
+  .culture-title .culture-line:first-child {
+    width: 24px !important;
+    min-width: 24px !important;
+
+    flex: 1 1 24px !important;
+
+    height: 2px !important;
+  }
+
+  .culture-title .culture-line:last-child {
+    min-width: 24px !important;
+
+    flex: 1 1 24px !important;
+
+    height: 2px !important;
+  }
 
   .culture-title::after {
     content: none !important;
@@ -6252,43 +6230,153 @@ font-size: 0.38em !important;
 
 
   /* =======================================================
+     4. NAVIGATION
+     ======================================================= */
+
+  body > header .main-nav,
+  .main-nav {
+    order: 4 !important;
+
+    width: 96% !important;
+
+    margin: 0 auto 24px !important;
+    padding: 0 !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 9px !important;
+
+    position: relative !important;
+
+    z-index: 30 !important;
+  }
+
+  .main-nav > a {
+    min-width: 0 !important;
+    min-height: 58px !important;
+
+    padding: 8px 4px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(5, 5, 5, 0.68) !important;
+
+    border:
+      1px solid rgba(201, 163, 74, 0.62) !important;
+
+    color: #f3eed8 !important;
+
+    font-size: 11px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: 0.5px !important;
+
+    line-height: 1.1 !important;
+
+    text-align: center !important;
+  }
+
+
+  /* =======================================================
+     SEARCH
+     ======================================================= */
+
+  .site-search {
+    grid-column: 1 / -1 !important;
+
+    width: 100% !important;
+    height: 54px !important;
+
+    margin: 3px 0 0 !important;
+
+    display: flex !important;
+
+    border:
+      1px solid rgba(201, 163, 74, 0.62) !important;
+
+    background: rgba(5, 5, 5, 0.74) !important;
+  }
+
+  .site-search input {
+    flex: 1 !important;
+
+    width: auto !important;
+    height: 100% !important;
+
+    padding: 0 16px !important;
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    color: #f3eed8 !important;
+
+    font-size: 16px !important;
+  }
+
+  .site-search button {
+    width: 54px !important;
+    height: 100% !important;
+
+    padding: 0 !important;
+
+    flex: 0 0 54px !important;
+
+    border: 0 !important;
+    border-left:
+      1px solid rgba(201, 163, 74, 0.25) !important;
+
+    background: transparent !important;
+
+    color: #e0c06c !important;
+
+    font-size: 21px !important;
+  }
+
+
+  /* =======================================================
      MOBILE CONTENT ORDER
      ======================================================= */
 
   #featured-video {
-    order: 4 !important;
-  }
-
-  #audience-reactions {
     order: 5 !important;
   }
 
-  #sidebar .stay-connected {
+  #audience-reactions {
     order: 6 !important;
   }
 
-  #podcast {
+  #sidebar .stay-connected {
     order: 7 !important;
   }
 
-  #interviews {
+  #podcast {
     order: 8 !important;
   }
 
-  #culture-banner {
+  #interviews {
     order: 9 !important;
   }
 
-  #latest {
+  #culture-banner {
     order: 10 !important;
   }
 
-  #characters {
+  #latest {
     order: 11 !important;
   }
 
-  #archive {
+  #characters {
     order: 12 !important;
+  }
+
+  #archive {
+    order: 13 !important;
   }
 
 
@@ -6300,20 +6388,21 @@ font-size: 0.38em !important;
     display: none !important;
   }
 
+  #sidebar > section.advertisement-panel:nth-of-type(2),
   #sidebar > section.advertisement-panel:nth-of-type(3) {
     display: flex !important;
-
-    order: 13 !important;
   }
 
-  #sidebar > section.advertisement-panel:nth-of-type(4) {
-    display: flex !important;
-
+  #sidebar > section.advertisement-panel:nth-of-type(2) {
     order: 14 !important;
   }
 
-  #sidebar .business-panel {
+  #sidebar > section.advertisement-panel:nth-of-type(3) {
     order: 15 !important;
+  }
+
+  #sidebar .business-panel {
+    order: 16 !important;
 
     margin-top: 0 !important;
   }
@@ -6324,7 +6413,7 @@ font-size: 0.38em !important;
      ======================================================= */
 
   .closing-row {
-    order: 16 !important;
+    order: 17 !important;
 
     width: 96% !important;
 
@@ -6399,10 +6488,10 @@ font-size: 0.38em !important;
 
 
   /* =======================================================
-     MOBILE MY STORY PICTURES
+     MY STORY PICTURES MOBILE
      ======================================================= */
 
-  #about {
+  body #about {
     width: 100% !important;
 
     margin: 0 !important;
@@ -6412,35 +6501,33 @@ font-size: 0.38em !important;
     text-align: center !important;
   }
 
-  #about .closing-label,
-  #about > h2,
-  #about .studio-content > p {
+  body #about .closing-label,
+  body #about > h2,
+  body #about .studio-content > p {
     display: none !important;
   }
 
-  #about .studio-content {
+  body #about .studio-content {
     width: 100% !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    display: grid !important;
+    display: flex !important;
+    flex-direction: column !important;
 
-    grid-template-columns: 1fr !important;
-
-    justify-items: center !important;
     align-items: center !important;
+    justify-content: center !important;
 
     gap: 18px !important;
 
     text-align: center !important;
   }
 
-  #about .studio-logo-wrap {
+  body #about .studio-logo-wrap {
     position: relative !important;
 
-    width: min(78vw, 280px) !important;
-    height: auto !important;
+    width: min(76vw, 280px) !important;
 
     margin: 0 auto !important;
     padding: 0 !important;
@@ -6453,7 +6540,7 @@ font-size: 0.38em !important;
     transform: none !important;
   }
 
-  #about .studio-logo {
+  body #about .studio-logo {
     position: static !important;
 
     display: block !important;
@@ -6465,23 +6552,10 @@ font-size: 0.38em !important;
 
     margin: 0 auto !important;
 
-    left: auto !important;
-    right: auto !important;
-
     transform: none !important;
   }
 
-  #about .studio-logo-tm {
-    position: absolute !important;
-
-    right: 1px !important;
-    bottom: 2px !important;
-  }
-
-
-  /* MSP READ MORE */
-
-  #about .mobile-closing-readmore {
+  body #about .mobile-closing-readmore {
     position: static !important;
 
     display: inline-flex !important;
@@ -6491,17 +6565,15 @@ font-size: 0.38em !important;
 
     margin: 0 auto !important;
 
-    z-index: 5 !important;
-
     transform: none !important;
   }
 
 
   /* =======================================================
-     MOBILE MISSION STATEMENT
+     MISSION STATEMENT MOBILE
      ======================================================= */
 
-  #culture {
+  body #culture {
     width: 100% !important;
 
     margin: 0 !important;
@@ -6517,12 +6589,12 @@ font-size: 0.38em !important;
     text-align: center !important;
   }
 
-  #culture .closing-label,
-  #culture > p {
+  body #culture .closing-label,
+  body #culture > p {
     display: none !important;
   }
 
-  #culture > h2 {
+  body #culture > h2 {
     width: 100% !important;
 
     margin: 0 0 18px !important;
@@ -6530,7 +6602,7 @@ font-size: 0.38em !important;
     text-align: center !important;
   }
 
-  #culture .mobile-closing-readmore {
+  body #culture .mobile-closing-readmore {
     position: static !important;
 
     display: inline-flex !important;
@@ -6541,8 +6613,6 @@ font-size: 0.38em !important;
     margin: 0 auto !important;
 
     transform: none !important;
-
-    z-index: 5 !important;
   }
 
 
@@ -6551,7 +6621,7 @@ font-size: 0.38em !important;
      ======================================================= */
 
   body > footer {
-    order: 17 !important;
+    order: 18 !important;
 
     width: 96% !important;
 
