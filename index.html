@@ -888,22 +888,19 @@ function renderLiveReactions() {
             .push(item);
     });
 
-    const topLevelReactions =
-        liveReactions.filter(function(item) {
-            return !item.parent_id;
-        });
+const topLevelReactions =
+    liveReactions.filter(function(item) {
+        return !item.parent_id;
+    });
 
-    topLevelReactions
-        .filter(function(item) {
-            return item.featured;
-        })
-        .slice(0, 2)
-        .forEach(function(item) {
-            reactionsFrame.insertBefore(
-                createFeaturedReaction(item),
-                reactionsFooter
-            );
-        });
+topLevelReactions
+    .slice(0, 2)
+    .forEach(function(item) {
+        reactionsFrame.insertBefore(
+            createFeaturedReaction(item),
+            reactionsFooter
+        );
+    });
 
     topLevelReactions.forEach(function(item) {
         allReactionsList.appendChild(
@@ -916,10 +913,10 @@ function renderLiveReactions() {
 }
 
 async function loadReactions() {
-    const query =
-        "?select=id,display_name,message,parent_id,featured,likes,status,created_at" +
-        "&status=eq.published" +
-        "&order=created_at.asc";
+const query =
+    "?select=id,display_name,message,parent_id,featured,likes,status,created_at" +
+    "&status=eq.published" +
+    "&order=created_at.desc";
 
     try {
         const response = await fetch(
