@@ -5980,3 +5980,279 @@ font-size: 0.38em !important;
   letter-spacing: 0 !important;
   margin-left: 1px !important;
 }
+/* =========================================================
+   MOBILE LAUNCH LAYOUT
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+  /* ---------- MOBILE BACKGROUND ---------- */
+
+  body::before {
+    z-index: 0 !important;
+
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-size: cover !important;
+
+    opacity: 0.34 !important;
+    filter: blur(1px) !important;
+  }
+
+  body::after {
+    background: rgba(0, 0, 0, 0.24) !important;
+  }
+
+
+  /* ---------- COMPACT MOBILE HEADER ---------- */
+
+  body > header {
+    width: 96% !important;
+
+    margin-top: 18px !important;
+
+    min-height: 0 !important;
+
+    padding: 12px 14px 14px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+
+    background: rgba(41, 55, 16, 0.90) !important;
+
+    overflow: visible !important;
+  }
+
+  .site-logo {
+    position: relative !important;
+
+    left: auto !important;
+    top: auto !important;
+
+    width: 150px !important;
+    height: auto !important;
+
+    margin: 0 auto 10px !important;
+  }
+
+  .site-logo img {
+    position: static !important;
+
+    width: 150px !important;
+    height: auto !important;
+  }
+
+  body > header .main-nav {
+    width: 100% !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 8px !important;
+  }
+
+  body > header .main-nav > a {
+    text-align: center !important;
+    font-size: 10px !important;
+  }
+
+  .site-search {
+    grid-column: 1 / -1 !important;
+
+    width: 100% !important;
+  }
+
+
+  /* ---------- FLATTEN MOBILE PAGE STRUCTURE ---------- */
+
+  main {
+    display: flex !important;
+    flex-direction: column !important;
+
+    padding-top: 12px !important;
+  }
+
+  #hero,
+  .homepage-layout,
+  .hero-center-column,
+  #sidebar {
+    display: contents !important;
+  }
+
+
+  /* ---------- MOBILE CONTENT ORDER ---------- */
+
+  .culture-title {
+    order: 1;
+  }
+
+  #featured-video {
+    order: 2;
+  }
+
+  #audience-reactions {
+    order: 3;
+  }
+
+  #sidebar .stay-connected {
+    order: 4;
+  }
+
+  #podcast {
+    order: 5;
+  }
+
+  #interviews {
+    order: 6;
+  }
+
+  #culture-banner {
+    order: 7;
+  }
+
+  #latest {
+    order: 8;
+  }
+
+  #characters {
+    order: 9;
+  }
+
+  #archive {
+    order: 10;
+  }
+
+
+  /* ---------- MOBILE ADS: SHOW ONLY TWO ---------- */
+
+  #sidebar .advertisement-panel {
+    display: none !important;
+  }
+
+  #sidebar > section.advertisement-panel:nth-of-type(3) {
+    display: flex !important;
+    order: 11;
+  }
+
+  #sidebar > section.advertisement-panel:nth-of-type(4) {
+    display: flex !important;
+    order: 12;
+  }
+
+  #sidebar .business-panel {
+    order: 13;
+
+    margin-top: 0 !important;
+  }
+
+  .closing-row {
+    order: 14;
+  }
+
+
+  /* ---------- MOBILE WIDTHS ---------- */
+
+  .culture-title,
+  #featured-video,
+  #audience-reactions,
+  #sidebar .stay-connected,
+  #podcast,
+  #interviews,
+  #culture-banner,
+  #latest,
+  #characters,
+  #archive,
+  #sidebar .advertisement-panel,
+  #sidebar .business-panel,
+  .closing-row {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    box-sizing: border-box;
+  }
+
+
+  /* ---------- MOBILE SECTION SPACING ---------- */
+
+  #featured-video,
+  #audience-reactions,
+  #sidebar .stay-connected,
+  #podcast,
+  #interviews,
+  #culture-banner,
+  #latest,
+  #characters,
+  #archive,
+  #sidebar .advertisement-panel,
+  #sidebar .business-panel,
+  .closing-row {
+    margin-top: 0 !important;
+    margin-bottom: 22px !important;
+  }
+
+
+  /* ---------- CULTURE TITLE ---------- */
+
+  .culture-title {
+    height: auto !important;
+
+    margin-top: 14px !important;
+    margin-bottom: 20px !important;
+
+    gap: 8px !important;
+  }
+
+  .culture-title h2 {
+    font-size: 24px !important;
+
+    line-height: 1 !important;
+
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .culture-title .culture-line:first-child {
+    width: 28px !important;
+    min-width: 28px !important;
+    flex-basis: 28px !important;
+  }
+
+  .culture-title .culture-line:last-child {
+    min-width: 28px !important;
+  }
+
+
+  /* ---------- STACK MOBILE CONTENT ---------- */
+
+  .podcast-frame,
+  .lower-card-grid,
+  .character-grid,
+  #latest,
+  .closing-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .closing-row {
+    display: grid !important;
+
+    gap: 18px !important;
+  }
+
+  #about,
+  #culture {
+    width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #archive {
+    margin-top: 0 !important;
+  }
+
+}
